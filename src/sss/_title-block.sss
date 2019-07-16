@@ -1,8 +1,10 @@
 .title-block
-	padding: 55px 0 60px
+	display: flex
+	justify-content: space-between
+	align-items: center
 
 	h1 
-		font-size: rem(30)
+		font-size: rem(24)
 		line-height: 40px
 		font-weight: 600
 
@@ -19,18 +21,26 @@
 
 	&__link
 		position: relative
-		padding-right: 45px
+		padding-right: 35px
 		color: #C39367
 		line-height: 1
 		text-decoration: underline
 		text-decoration-color: transparent
 		transition: text-decoration-color .3s ease
 
+		&:first-child
+			&:before
+				content: ''
+				display: inline-block
+				size: 14px
+				background-image: url('../img/ico-home.svg')
+
+
 		&:hover 
 			text-decoration-color: currentColor
 
 		&:after
-			content: '/'
+			content: '-'
 			position: absolute
 			right: 16px
 			top: calc(50% - 7px)

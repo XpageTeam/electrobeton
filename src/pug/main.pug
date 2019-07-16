@@ -7,313 +7,185 @@ html(lang="ru")
 		include inc/css.pug
 	body.main.loading
 		include inc/header.pug
-		include inc/search-top.pug
+
+		.speed-btn-cont
+			.speed-btn
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-calc.svg", alt="")
+					.speed-btn__item-text Рассчитать цену
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-write.svg", alt="")
+					.speed-btn__item-text Написать нам Написать нам
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-call.svg", alt="")
+					.speed-btn__item-text Позвонить
+
+
 		
 		main#content
-			section.slider-cont
-				.wrapper
-					.slider-title.title Товары недели
-					.slider
-						.swiper-container
-							.swiper-wrapper
-								.swiper-slide
-									.cat-item-block
-										.cat-item
-											a(href="").cat-item__img
-												figure
-													img(src="img/photos/cat-1.png")
-												.cat-item__label.cat-item__label--percent
-													.cat-item__label-circle
-											a(href="").cat-item__info
-												.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
-												.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
-											.cat-item__prices
-												.cat-item__prices-bl
-													.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
-													.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
-												.cat-item__price--count 17 шт.
-											.cat-item__order
-												a.cat-favorite.added(href="#")
-												.cat-counter
-													button.cat-counter__btn.cat-counter__btn--minus
-													input.cat-counter__input(type="text" value="1" readonly)
-													button.cat-counter__btn.cat-counter__btn--plus
-												a.cat-cart(href="#")
-								.swiper-slide
-									.cat-item-block
-										.cat-item
-											a(href="").cat-item__img
-												figure
-													img(src="img/photos/cat-1.png")
-												.cat-item__label.cat-item__label--percent
-													.cat-item__label-circle
-													.cat-item__label-info Скидка 10%
-												.cat-item__label.cat-item__label--recept
-													.cat-item__label-circle
-													.cat-item__label-info Для покупки этого товара вам потребуется рецепт
-											a(href="").cat-item__info
-												.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
-												.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
-											.cat-item__prices
-												.cat-item__prices-bl
-													.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
-													.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
-												.cat-item__price--count 17 шт.
-											.cat-item__order
-												a.cat-favorite.added(href="#")
-												.cat-counter
-													button.cat-counter__btn.cat-counter__btn--minus
-													input.cat-counter__input(type="text" value="1" readonly)
-													button.cat-counter__btn.cat-counter__btn--plus
-												a.cat-cart(href="#")
-								- for (let i = 0; i < 4; i++)
-									.swiper-slide
-										.cat-item-block
-											.cat-item
-												a(href="").cat-item__img
-													figure
-														img(src="img/photos/cat-1.png")
-													.cat-item__label.cat-item__label--recept
-														.cat-item__label-circle
-														.cat-item__label-info Для покупки этого товара вам потребуется рецепт
-												a(href="").cat-item__info
-													.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
-													.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
-												.cat-item__prices
-													.cat-item__prices-bl
-														.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
-														.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
-													.cat-item__price--count 17 шт.
-												.cat-item__order
-													a.cat-favorite(href="#")
-													.cat-counter
-														button.cat-counter__btn.cat-counter__btn--minus
-														input.cat-counter__input(type="text" value="1" readonly)
-														button.cat-counter__btn.cat-counter__btn--plus
-													a.cat-cart(href="#")
-
-						.slider__nav
-							.swiper-arrow.swiper-button-prev
-							.swiper-arrow.swiper-button-next
-			section.main-banner-cont
-				.wrapper
-					.main-banner
-						a(href="")
-							picture
-								source(srcset="img/main-banner.jpg" media="screen and (min-width: 700px)" data-main="data-main")
-								source(srcset="img/main-banner.jpg" media="screen and (max-width: 700px)") 
-								img
-
-			//- script
-			//- 	| window.sliders = "[[{date: '', img: ''. link: '', title: '', text: ''}, {}, {}, {}, ], [], [], []]"
-
-			section.main-sliders__cont
-				.wrapper
-					.main-sliders
-						.main-sliders__title-cont
-							.main-sliders__title Часто спрашивают
-							.main-sliders__btns-cont
-								.main-sliders__btns
-									.main-sliders__btn.active(data-id="12") Витамины и БАДЫ
-									.main-sliders__btn(data-id="2") Косметика
-									.main-sliders__btn(data-id="3") Грипп и простуда
-									.main-sliders__btn(data-id="4") Аллергия
-								a(href="").btn.btn--arrow Полный каталог
-
-						.main-sliders__sliders
-							.stock-slider.active#12
-								.main-sliders-arrow
-									.swiper-arrow.swiper-button-prev
-									.swiper-arrow.swiper-button-next
-								.swiper-list
-									.swiper-wrapper
-										- for (let i = 0; i < 4; i++)
-											.swiper-slide
-												.cat-item-block
-													.cat-item
-														a(href="").cat-item__img
-															figure
-																img(src="img/photos/cat-1.png")
-															.cat-item__label.cat-item__label--percent
-																.cat-item__label-circle
-														a(href="").cat-item__info
-															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
-															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
-														.cat-item__prices
-															.cat-item__prices-bl
-																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
-																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
-															.cat-item__price--count 17 шт.
-														.cat-item__order
-															a.cat-favorite.added(href="#")
-															.cat-counter
-																button.cat-counter__btn.cat-counter__btn--minus
-																input.cat-counter__input(type="text" value="1" readonly)
-																button.cat-counter__btn.cat-counter__btn--plus
-															a.cat-cart(href="#")
-								.stock-slider-btn
-									a(href="").btn.btn--arrow Показать ещё
-
-							.stock-slider#2
-								.main-sliders-arrow
-									.swiper-arrow.swiper-button-prev
-									.swiper-arrow.swiper-button-next
-								.swiper-list
-									.swiper-wrapper
-										- for (let i = 0; i < 2; i++)
-											.swiper-slide
-												.cat-item-block
-													.cat-item
-														a(href="").cat-item__img
-															figure
-																img(src="img/photos/cat-1.png")
-															.cat-item__label.cat-item__label--percent
-																.cat-item__label-circle
-														a(href="").cat-item__info
-															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
-															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
-														.cat-item__prices
-															.cat-item__prices-bl
-																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
-																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
-															.cat-item__price--count 17 шт.
-														.cat-item__order
-															a.cat-favorite.added(href="#")
-															.cat-counter
-																button.cat-counter__btn.cat-counter__btn--minus
-																input.cat-counter__input(type="text" value="1" readonly)
-																button.cat-counter__btn.cat-counter__btn--plus
-															a.cat-cart(href="#")
-							.stock-slider#3
-								.main-sliders-arrow
-									.swiper-arrow.swiper-button-prev
-									.swiper-arrow.swiper-button-next
-								.swiper-list
-									.swiper-wrapper
-										- for (let i = 0; i < 3; i++)
-											.swiper-slide
-												.cat-item-block
-													.cat-item
-														a(href="").cat-item__img
-															figure
-																img(src="img/photos/cat-1.png")
-															.cat-item__label.cat-item__label--percent
-																.cat-item__label-circle
-														a(href="").cat-item__info
-															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
-															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
-														.cat-item__prices
-															.cat-item__prices-bl
-																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
-																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
-															.cat-item__price--count 17 шт.
-														.cat-item__order
-															a.cat-favorite.added(href="#")
-															.cat-counter
-																button.cat-counter__btn.cat-counter__btn--minus
-																input.cat-counter__input(type="text" value="1" readonly)
-																button.cat-counter__btn.cat-counter__btn--plus
-															a.cat-cart(href="#")
-								.stock-slider-btn
-									a(href="").btn.btn--arrow Показать ещё
-
-							.stock-slider#4
-								.main-sliders-arrow
-									.swiper-arrow.swiper-button-prev
-									.swiper-arrow.swiper-button-next
-								.swiper-list
-									.swiper-wrapper
-										- for (let i = 0; i < 1; i++)
-											.swiper-slide
-												.cat-item-block
-													.cat-item
-														a(href="").cat-item__img
-															figure
-																img(src="img/photos/cat-1.png")
-															.cat-item__label.cat-item__label--percent
-																.cat-item__label-circle
-														a(href="").cat-item__info
-															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
-															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
-														.cat-item__prices
-															.cat-item__prices-bl
-																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
-																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
-															.cat-item__price--count 17 шт.
-														.cat-item__order
-															a.cat-favorite.added(href="#")
-															.cat-counter
-																button.cat-counter__btn.cat-counter__btn--minus
-																input.cat-counter__input(type="text" value="1" readonly)
-																button.cat-counter__btn.cat-counter__btn--plus
-															a.cat-cart(href="#")
-
-			section.main-bonus__cont
-				.wrapper
-					.main-bonus
-						.main-bonus__info
-							.main-bonus__title Оформи карту и получай<br> на неё бонусы!
-							.main-bonus__text После оформления заказа на сайте возможно расхождение наличия забронированных вами товаров с остатками в выбранной вами аптеке. 
-							.main-bonus__btn
-								a(href="").btn.btn--arrow Подробнее
-						.main-bonus__img
-							figure
-								img(src="img/card-img.png")
-
-			section.slider-cont
-				.wrapper
-					.slider-title.title Новости
-					.slider
-						.swiper-container
-							.swiper-wrapper
-								- for (let i = 0; i < 4; i++)
-									.swiper-slide
-										.news-item-block
-											a(href="").news-item
-												.news-item__title С наступающим Новым Годом! Обратите внимание на график работы в праздничные дни
-												.news-item__text Акционерное общество «Областной аптечный склад» поздравляет Вас с наступающим Новым годом! ...
-												.news-item__bot
-													.btn.btn--arrow Читать
-													.news-item__date 01.01.2019
-
-
-
-						.slider__nav
-							.swiper-arrow.swiper-button-prev
-							.swiper-arrow.swiper-button-next
-
-					.slider-btn
-						a(href="").btn.btn--arrow Все новости
-			section.main-advantages-cont
-				.wrapper
-					.main-advantages
-						.main-advantages__title Интернет-аптека
-						.main-advantages__text Срочно понадобились лекарства? Нет времени ходить по аптекам Челябинска в поисках всего необходимого? Закажите лекарства через наш интернет-каталог. Мы привезем заказ в ближайшую к вам аптеку. Не знаете, что выбрать? Обратитесь за помощью к нашим вежливым менеджерам. Они не оставят ваши вопросы без внимания. Также вы можете загрузить на сайт рецепт от вашего врача, мы сами соберем для вас необходимые лекарства. Вам останется их только забрать.
-						.main-advantages__list-title 5 причин выбрать «Государственную аптеку»:
-						.main-advantages__list 
-							.main-advantages__item
+			.content
+				section.main-banner-cont
+					.wrapper
+						.main-banner
+							h2.main-banner__subtitle Более 100 типоразмеров бетонныхкорпусов для БКТП
+							h1.main-banner__title Производство блочных комплектных<br> трансформаторных подстанций
+							.main-banner__img
 								figure
-									img(src="img/ico-main-advantages-1.svg", alt="")
-								.main-advantages__item-text 95 лет безупречной репутации. За почти вековую историю мы заслужили признание жителей города. Нам доверяют! Ведь мы сотрудничаем с ведущими фармацевтическими компаниями мира. Кроме того, у нас представлен самый широкий каталог товаров.
+									img(src="img/photos/main-banner.jpg", alt="")
+				section.main-catalog-cont
+					.wrapper
+						.main-catalog
+							.main-catalog__list
+								.main-catalog__item-cont.main-catalog__item-cont--big
+									.main-catalog__item
+										.main-catalog__item-label Каталог продукции
+										.main-catalog__item-title Наше предприятие ведет своё летоисчисление с 21 мая 2001 года
+										a(href="#").btn Перейти в каталог
+								a(href="#").main-catalog__item-cont
+									.main-catalog__item
+										figure.main-catalog__item-img
+											img(src="img/photos/cat-1.jpg", alt="")
+										.main-catalog__item-bot
+											.main-catalog__item-title Трансформаторные подстанции
+											.circle-arrow
+								a(href="#").main-catalog__item-cont
+									.main-catalog__item
+										figure.main-catalog__item-img
+											img(src="img/photos/cat-2.jpg", alt="")
+										.main-catalog__item-bot
+											.main-catalog__item-title Ячейки КРУ
+											.circle-arrow
+								a(href="#").main-catalog__item-cont
+									.main-catalog__item
+										figure.main-catalog__item-img
+											img(src="img/photos/cat-3.jpg", alt="")
+										.main-catalog__item-bot
+											.main-catalog__item-title Ячейки КСО
+											.circle-arrow
+								a(href="#").main-catalog__item-cont
+									.main-catalog__item
+										figure.main-catalog__item-img
+											img(src="img/photos/cat-4.jpg", alt="")
+										.main-catalog__item-bot
+											.main-catalog__item-title Реклоузер, пункт коммерческого учета
+											.circle-arrow
+								a(href="#").main-catalog__item-cont
+									.main-catalog__item
+										figure.main-catalog__item-img
+											img(src="img/photos/cat-5.jpg", alt="")
+										.main-catalog__item-bot
+											.main-catalog__item-title Ячейки ЯКНО, КРН
+											.circle-arrow
+								a(href="#").main-catalog__item-cont
+									.main-catalog__item
+										figure.main-catalog__item-img
+											img(src="img/photos/cat-6.jpg", alt="")
+										.main-catalog__item-bot
+											.main-catalog__item-title Выкатные элементы 
+											.circle-arrow
+				section.main-about-cont
+					.wrapper
+						.main-about
+							.main-about__info
+								.main-about__title О нас
+								.main-about__text
+									.text-page
+										p Наше предприятие ведет своё летоисчисление с 21 мая 2001 года. Изначально компания занималась несколькими направлениями:
+										p В июле 2003 года принято решение провести ребрендинг компании и целостное изменение идеологии бренда. Основным профилем предприятия стало производство и поставка электротехнического оборудования, классом напряжения 0,4-10-35 кВ. Удачный ребрендинг позволил нашей компании выйти на новый уровень развития, привлечь внимание новых партнёров и увеличить лояльность существующих.
+								a(href="").btn Узнать больше
+							.main-about__img
+								img(src="img/photos/about.jpg", alt="")
+				section.main-advantages-cont
+					.wrapper
+						.main-advantages
+							.main-advantages__list
+								.main-advantages__item-cont
+									.main-advantages__item
+										figure.main-advantages__item-img
+											img(src="img/advantages-1.svg", alt="")
+										.main-advantages__item-info
+											.main-advantages__item-title ГОСТы по энергетике
+											.main-advantages__item-text Данный раздел содержит полный пакет ГОСТов по энергетике
+								.main-advantages__item-cont
+									.main-advantages__item
+										figure.main-advantages__item-img
+											img(src="img/advantages-2.svg", alt="")
+										.main-advantages__item-info
+											.main-advantages__item-title ПУЭ: Правила Электроустановок
+											.main-advantages__item-text Как не «сгореть» на работе. Жизненно важная информация
+				section.main-gallery-cont
+					.wrapper
+						.main-gallery
+							.main-gallery__top
+								.main-gallery__info
+									.main-gallery__title Фото производства
+									.main-gallery__text Мы поставляем интересующую Вас продукцию в Челябинске и в любом регионы России, СНГ и Ближнего Востока, обеспечив решение всех организационных вопросов, связанных с поставкой, погрузкой и транспортировкой продукции, таможенных вопросов, а также...
+								.main-gallery__btn
+									a(href="").btn Посмотреть все фото
+							.main-gallery__list
+								a(href="img/photos/gallery-1.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item
+										figure
+											img(src="img/photos/gallery-1.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+								a(href="img/photos/gallery-2.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item
+										figure
+											img(src="img/photos/gallery-2.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+								a(href="img/photos/gallery-3.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item
+										figure
+											img(src="img/photos/gallery-3.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+								a(href="img/photos/gallery-4.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item
+										figure
+											img(src="img/photos/gallery-4.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+				section.main-gallery-cont
+				.wrapper
+					.main-gallery
+						.main-gallery__top
+							.main-gallery__info
+								.main-gallery__title Видео
+								.main-gallery__text Мы поставляем интересующую Вас продукцию в Челябинске и в любом регионы России, СНГ и Ближнего Востока, обеспечив решение всех организационных вопросов, связанных с поставкой, погрузкой и транспортировкой продукции, таможенных вопросов, а также...
+							.main-gallery__btn
+								a(href="").btn Посмотреть все видео
+						.main-gallery__list
+							a(href="img/photos/gallery-1.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item.video
+									figure
+										img(src="img/photos/gallery-1.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
+							a(href="img/photos/gallery-2.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item.video
+									figure
+										img(src="img/photos/gallery-2.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
+							a(href="img/photos/gallery-3.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item.video
+									figure
+										img(src="img/photos/gallery-3.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
+							a(href="img/photos/gallery-4.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item.video
+									figure
+										img(src="img/photos/gallery-4.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
 
-							.main-advantages__item
-								figure
-									img(src="img/ico-main-advantages-2.svg", alt="")
-								.main-advantages__item-text 250 аптек и аптечных пунктов по Челябинской области. Вы без проблем заберете свой заказ, где бы вы ни находились. Мы поможем сэкономить ваше время и деньги.
-							.main-advantages__item
-								figure
-									img(src="img/ico-main-advantages-3.svg", alt="")
-								.main-advantages__item-text Складской комплекс класса «А». Лекарства хранятся в специальных помещениях, оборудованных холодильными камерами. Есть отдельное помещение для хранения сильнодействующих и психотропных лекарственных средств.
 
-							.main-advantages__item
-								figure
-									img(src="img/ico-main-advantages-4.svg", alt="")
-								.main-advantages__item-text Мы - единственное в области предприятие, которое изготавливает лекарственные средства по индивидуальным рецептам, выписанным врачами лечебно-профилактических учреждений.
-							.main-advantages__item
-								figure
-									img(src="img/ico-main-advantages-5.svg", alt="")
-								.main-advantages__item-text У нас только безопасная и качественная продукция. Все препараты, включая не лекарственные средства, БАДы, проходят тщательный контроль.
-							.main-advantages__item
-								.main-advantages__item-text Интернет-аптека «Областного аптечного склада» — это быстро, выгодно и надежно! Оформите заказ через форму на сайте. Поместите необходимые лекарства в «Корзину» и укажите свои контактные данные. Заказ также можно сделать по телефону: 8-800-200-74-03. Также вы можете позвонить по многоканальному телефону: 8-800-100-74-03 чтобы уточнить есть ли в ближайшем пункте выдач нужный препарат, сколько он стоит и другую необходимую информацию.
+
 		include inc/footer.pug
 		include inc/scripts.pug

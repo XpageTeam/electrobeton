@@ -9,99 +9,38 @@
 @import "_title-block.sss"
 @import "_standart-page.sss"
 
-@import "_search-top.sss"
-@import "_slider-row.sss"
-@import "_cat-item.sss"
-@import "_main-banner.sss"
-@import "_stock-slider.sss"
-@import "_main-bonus.sss"
-@import "_news.sss"
-@import "_main-advantages.sss"
+@import "_speed-btn.sss"
+@import "_main-page.sss"
+@import "_slider-gallery.sss"
 
-
-
-.scroll-top
-	display: none !important
-
-.title
-	font-size: rem(26)
 
 
 .btn
-	padding: 17px 22px
-	border-radius: 5px
-	display: flex
-	align-items: center
+	border-radius: 30px
+	background: var(--main-color)
+	border: 1px solid transparent
+	padding: 15px 23px
+	display: inline-block
+	color: #fff
 	line-height: 1
-	color: inherit
-	border: 1px solid var(--main-color)
-	transition: background .3s ease, color .3s ease
+	transition: background .5s ease, color .5s ease, border-color .5s ease
 
+	&:hover
+		border-color: var(--main-color)
+		background-color: #fff
+		color: #000
 
-	&--arrow
-		&:after
-			content: ''
-			display: block
-			size: 11px 8px
-			background-image: url('../img/ico-btn-arrow.svg')
-			background-repeat: no-repeat
-			background-position: center
-			margin-left: 13px
-
-
-
-.slider
+.main
 	position: relative
+	background-image: url('../img/page-bg.svg')
+	background-repeat: no-repeat
+	background-position: top right
 
-	&-cont
-		padding: 40px 0
-
-		.btn
-			&:hover
-				background: var(--main-color)
-				color: #fff
-
-				&:after
-					background-image: url('../img/ico-btn-arrow-w.svg')
-
-	&__nav
-		position: absolute
-		top: calc(50% - 25px)
-		left: -90px
-		right: -90px
-		display: flex
-		justify-content: space-between
-
-	&-btn
-		display: flex
-		justify-content: center
-		margin-top: 57px
+.inner
+	.content
+		margin-top: 60px
 
 
-.swiper-arrow
-	position: relative
-	left: auto
-	right: auto
-	bottom: auto
-	top: auto
-	size: 50px
-	border-radius: 5px
-	background: var(--background-color)
-	margin: 0
 
-	&:after
-		content: ''
-		position: absolute
-		top: calc(50% - 8px)
-		left: calc(50% - 11px)
-		display: block
-		size:  16px
-		border-right: 1px solid #393939
-		border-top: 1px solid #393939
-		transform: rotate(45deg)
-
-
-.swiper-button-prev
-	transform: rotate(-180deg)
 
 

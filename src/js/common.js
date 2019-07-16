@@ -69,152 +69,40 @@ document.addEventListener("DOMContentLoaded", e => {
 
 	require("./jquery.fancybox.js");
 
-
-	let swiperPartners = new Swiper(".slider .swiper-container", {
-		slidesPerView: 4,
-		a11y:{
-			enabled: document.body.classList.contains("special__body")
-		},
+	var galleryThumbs = new Swiper('.gallery-thumbs', {
+		spaceBetween: 23,
+		slidesPerView: 5,
 		loop: true,
-		roundLengths: true,
-		autoplay: false,
-		spaceBetween: 40,
-		navigation: {
-	        nextEl: '.slider__nav .swiper-button-next',
-	        prevEl: '.slider__nav .swiper-button-prev',
-	    },
-	    breakpoints: {
-			1000: {
-				slidesPerView: 2,
-				spaceBetween: 20,
-			},
-			660: {
-				slidesPerView: 1,
-				spaceBetween: 20,
-			},
-			
-		}
-	});
+		freeMode: true,
+		// loopedSlides: 5, //looped slides should be the same
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+    });
 
-
-	let swiperStandartBanner = new Swiper(".standart-slider .swiper-container", {
-
+    var galleryTop = new Swiper('.gallery-top', {
+		spaceBetween: 10,
 		effect: "fade",
-		a11y:{
-			enabled: document.body.classList.contains("special__body")
-		},
-		slidesPerView: 1,
 		loop: true,
-		roundLengths: true,
-		autoplay: true,
-		pagination: {
-			el: ".swiper-pagination",
-			type: "fraction",
-			clickable: true
-		},
+		// loopedSlides: 5, //looped slides should be the same
 		navigation: {
-	        nextEl: '.standart-slider .swiper-button-next',
-	        prevEl: '.standart-slider .swiper-button-prev',
-	      },
-	});
-
-	let swiperStandartTextSlider = new Swiper(".standart__text-slider  .swiper-container", {
-
-		slidesPerView: 4,
-		loop: true,
-		roundLengths: true,
-		// autoplay: true,
-		spaceBetween: 40,
-		pagination: {
-			el: ".swiper-pagination",
-			type: "fraction",
-			clickable: true
+			nextEl: '.gallery-thumbs .swiper-button-next',
+			prevEl: '.gallery-thumbs .swiper-button-prev',
+			},
+			thumbs: {
+			swiper: galleryThumbs,
 		},
-		navigation: {
-	        nextEl: '.standart__text-slider .swiper-button-next',
-	        prevEl: '.standart__text-slider .swiper-button-prev',
-	      },
-	});
+    });
+
+
+	
+
+	
 
 
 
-	$(window).on('scroll load', function(){
-		if ($(".support-stat__item-num").length)
-			if ($(".support-stat__item-num").offset().top + 50 <=
-				$(window).scrollTop() + $(window).height()){
-					$(".support-stat__item-num:not(.countered)").each((i, el) => {
-						let $this = $(el),
-							speed = 0;
-
-						switch (i){
-							case 0:
-								speed = 4000;
-							break;
-							case 1:
-								speed = 2000;
-							break;
-
-							default:
-								speed = 3000;
-						}
-
-						$this.width($this.width())
-
-						$this.countTo({
-							speed: speed,
-							onComplete(){
-								$this.width("auto")
-							}
-						});
-
-						$this.addClass("countered");
-					});
-			}
-
-	})
+	
 
 
-	if($('body').hasClass('page-personal')){
-
-
-
-		var list = document.querySelector('#filial__list');
-
-		if(list){
-			window.observer = new MutationObserver(function(mutations) {
-			    mutations.forEach(function(mutation) {
-			     let input = mutation.addedNodes[0].querySelector(".forms-input-cont--file:first-child:nth-last-child(2) .forms__input--file");
-
-			     // console.log(mutation, input)
-
-			     if (input)
-			     	input.addEventListener("change", InputFileChange);
-			    });
-			});
-			  
-			observer.observe(list, {
-			  	attributes: false, 
-			  	childList: true, 
-			  	characterData: false
-			})
-		  	
-		}
-
-		$("body").on("change", ".forms__input--file", function(e){
-
-			var value = $(this)[0].files[0].name;
-			// console.log(value);
-			var inputHasFile = $(this).next('input[type="text"]').val(value);
-
-			if(inputHasFile.length){
-				$(this).nextAll('label').remove();
-				// $(this).nextAll(".js__input-del").addClass('close-input');
-			}
-
-		});
-
-
-	};
 
 
 	$('.submenu').each((i,el) => {

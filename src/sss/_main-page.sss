@@ -1,0 +1,221 @@
+.main-banner
+	&__subtitle
+		font-size: 12px
+		text-transform: uppercase
+		color: rgba(0, 0, 0, 0.3)
+		margin-bottom: 20px
+
+	&__title
+		font-size: rem(34)
+		line-height: 40px
+
+	&__img
+		margin-top: 110px
+
+		img
+			border-radius: 5px
+
+
+.main-catalog
+	border-bottom: 1px solid #EBEBEB
+	padding-bottom: 90px
+
+	&-cont
+		margin-top: 90px
+
+	&__list
+		display: flex
+		flex-wrap: wrap
+		margin: 0 0 -40px -40px
+
+	&__item
+		&-bot
+			display: flex
+			justify-content: space-between
+			margin-top: 30px
+			font-size: rem(16)
+
+		&-cont
+			width: calc((100% - 40px * 4) / 4)
+			margin: 0 0 40px 40px
+
+			img
+				display: block
+
+			&--big
+				width: calc((100% - 40px * 2) / 2)
+				color: #fff
+
+				.btn
+					background: #fff
+					margin-top: 60px
+					color: #000
+
+				.main-catalog__item
+					background: var(--main-color)
+					padding: 58px 85px
+					border-radius: 5px
+
+					&-label
+						font-size: rem(12)
+						text-transform: uppercase
+						font-weight: bold
+						margin-bottom: 25px
+
+					&-title
+						font-size: rem(24)
+
+
+.circle-arrow
+	position: relative
+	size: 32px
+	border-radius: 50%
+	background: var(--main-color)
+	margin-left: 20px
+
+	&:before
+		content: ''
+		position: absolute
+		top: calc(50% - 4px)
+		left: calc(50% - 5px)
+		size: 8px
+		border-top: 1px solid #fff
+		border-right: 1px solid #fff
+		transform: rotate(45deg)
+
+.main-about
+	display: flex
+	align-items: center
+	justify-content: space-between
+
+	&__img
+		flex: none
+
+		img
+			display: block
+
+	&-cont
+		margin-top: 90px
+
+	&__title
+		font-size: rem(24)
+		margin-bottom: 35px
+
+	&__info
+		max-width: 530px
+
+		.btn
+			margin-top: 70px
+
+.main-advantages
+
+	&-cont
+		margin-top: 110px
+
+	&__list
+		display: flex
+		flex-wrap: wrap
+		margin: 0 0 -40px -40px
+
+	&__item
+		display: flex
+		align-items: center
+
+		&-img
+			margin-right: 55px
+
+		&-title
+			font-size: rem(18)
+
+		&-text
+			font-size: rem(14)
+			color: rgba(0, 0, 0, 0.5)
+
+
+		&-cont
+			width: calc((100% - 40px * 2) / 2)
+			margin: 0 0 40px 40px
+			padding: 55px
+			border-radius: 5px
+			box-shadow: var(--box-shadow)
+
+
+.main-gallery
+	&-cont
+		margin: 100px 0
+
+	&__top
+		display: flex
+		align-items: flex-end
+		justify-content: space-between
+		margin-bottom: 70px
+
+	&__info
+		max-width: 680px
+
+
+	&__title
+		font-size: rem(24)
+
+	&__text
+		font-size: rem(14)
+		margin-top: 30px
+
+	&__list
+		display: flex
+		margin: 0 0 -40px -40px
+
+	&__item
+
+		img
+			display: block
+
+
+		&-title
+			font-size: rem(16)
+
+		&-address
+			position: relative
+			margin-top: 30px
+			color: rgba(0, 0, 0, 0.5)
+			font-size: rem(12)
+			padding-left: 20px
+
+			&:before
+				content: ''
+				display: block
+				position: absolute
+				left: 0
+				top: 0
+				size: 10px 14px
+				background-image: url('../img/ico-location.svg')
+				background-position: center
+				background-repeat: no-repeat
+
+		&-cont
+			width: calc((100% - 40px * 4) / 4)
+			margin: 0 0 40px 40px
+
+			figure
+				margin-bottom: 30px
+
+		&.video
+
+			figure
+				position: relative
+
+				&:before
+					content: ''
+					position: absolute
+					top: calc(50% - 40px)
+					left: calc(50% - 40px)
+					size: 80px
+					border-radius: 50%
+					background-color: var(--main-color)
+					z-index: 10
+					display: block
+					background-image: url('../img/ico-treangle.svg')
+					background-position: center
+					background-repeat: no-repeat
+
+

@@ -188,7 +188,6 @@ li
 
 	> *:not(:first-child)
 		margin-top: rem(24)
-		max-width: 1050px
 
 	strong
 		font-weight: bold
@@ -338,13 +337,16 @@ li
 	&__link
 		position: relative
 		display: flex
+		size: 42px
+		border-radius: 50%
 		align-items: center
 		justify-content: center
-		background-color: var(--backgroundColor)
 		background-position: center
 		background-repeat: no-repeat
 		transition: background .3s ease, border-color .3s ease
-		border: 1px solid transparent
+		border-width: 1px 
+		border-style: solid 
+		border-color: transparent
 
 
 		&:not(:last-child)
@@ -359,7 +361,7 @@ li
 
 @media screen and (max-width: 1500px)
 
-	.wrapper, .wrapper--min
+	.wrapper
 		box-sizing: border-box
 		width: 100%
 

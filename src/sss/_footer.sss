@@ -1,14 +1,48 @@
 .footer
 	color: #000
-	background: var(--background-color)
-	padding: 45px 0 50px
+	padding: 0 0 60px
 
-	&-top, &-bot
+
+	&-el
+		margin-left: 85px
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+
+		&__title
+			position: relative
+			margin-bottom: 20px
+			padding-left: 20px
+
+			&:before
+				content: ''
+				display: block
+				position: absolute
+				left: 0
+				top: 0
+				size: 10px 14px
+				background-image: url('../img/ico-location.svg')
+				background-position: center
+				background-repeat: no-repeat
+
+		&__text
+			display: flex
+			flex-direction: column
+			align-items: flex-start
+
+
+	&-top
 		display: flex
 		align-items: center
+		border-top: 1px solid #F2F2F2
+		padding-top: 60px
 
 	&-bot
-		margin-top: 45px
+		display: flex
+		align-items: flex-start
+		margin-top: 50px
+		padding-top: 50px
+		border-top: 1px solid #F2F2F2
 		justify-content: space-between
 
 	&-logo
@@ -17,33 +51,19 @@
 	a
 		text-decoration: none
 
-	&-links
-		display: flex
-		flex-direction: column
-		margin-left: auto
 
-		a
-			color: var(--main-color)
+	&-btn
+		.btn
+			background-color: var(--second-color)
 
-	&-menu
-		column-count: 2
-		break-inside: avoid
-		column-gap: 130px
-		margin-right: 130px
-		margin-left: auto
 
-	&-oferta
-		color: #A3A0A0
-		font-size: rem(12)
-		max-width: 325px
+	.soc__link
+		background-color: var(--main-color)
 
-	&-copy
-		display: flex
-		flex-direction: column
 
 .dev
 	display: flex
 	align-items: center
-	background: #E8E8E8
+	background: #fff
 	border-radius: 5px
 	padding: 6px 8px

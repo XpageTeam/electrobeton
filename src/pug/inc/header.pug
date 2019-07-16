@@ -1,0 +1,54 @@
+.mobile-menu
+header.head
+	.head-top-cont
+		.wrapper
+			.head-top
+				.head-logo
+					a.logo(href="#")
+						img(src="img/logo.svg")
+
+
+				.head-soc
+					.soc
+						a.soc__link(href="#") 
+							img(src="img/ico-vk.svg")
+						a.soc__link(href="#") 
+							img(src="img/ico-inst.svg")
+				.head-phone
+					a(href="tel:8 (800) 200-74-03") 8 (800) 200-74-03
+				.head-callback
+					a(href="#callback") Заказать звонок
+				.head-city
+					select
+						option(value="1") Челябинск
+						option(value="2") Москва
+				.head-address
+					a(href="#") Адреса аптек
+				.head-auth
+					a(href="#") Авторизация
+
+
+	.head-bot-cont
+		.wrapper
+			.head-bot
+				nav.head-menu
+					ul.head-menu__list
+						li.head-menu__item.active
+							a(href="#").head-menu__link Каталог
+						each title in ['О компании', 'Акции', 'Оформление заказа', 'Контакты', 'Справочная служба', 'Бонусная программа']                                               
+							li.head-menu__item
+								a(href="#").head-menu__link=title
+				.head-cart-cont
+					a(href="" data-count="0").head-cart
+						span
+							include ../../img/ico-cart.svg
+
+				.head-favorite-cont
+					a(href="" data-count="0").head-favorite
+						span
+							include ../../img/ico-favorite.svg
+				.burger
+					span
+
+			
+			

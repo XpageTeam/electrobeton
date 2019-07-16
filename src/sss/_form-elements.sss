@@ -1,0 +1,374 @@
+.fancybox
+	&-is-open 
+		.fancybox-bg
+			opacity: 0.98 !important
+
+#forms--find-62
+	max-width: 700px
+
+	.forms__input-cont
+		width: calc((100% - 25px * 2) / 2)
+		margin: 0 0 40px 25px 
+
+		&.forms__input-cont--textarea
+			width: 100%
+
+
+.popup-form
+
+	&.fancybox-content
+		padding: rem(38) rem(47) rem(44)
+		background: #fff
+
+	&__title
+		position: relative
+		margin-bottom: rem(20)
+		font-size: rem(30)
+		font-weight: 600
+		color: #000
+
+	&__text 
+		text-align-last: auto
+		color: #000
+		font-size: rem(14)
+		color: #9BAABB
+		margin-bottom: 30px
+
+	textarea
+		width: 100%
+		min-width: 100%
+		max-width: 100%
+
+		padding-top: 10px
+		padding-bottom: 10px
+		min-height: 100px !important
+
+	.forms-submit-cont
+		margin-top: 40px
+
+
+
+	
+
+	&__content
+		margin-top: 50px
+
+	.button 
+		span 
+			padding: 0
+		input 
+			padding: 0.6em 2em
+			background-color: transparent
+			border: 0
+			font-size: rem(16)
+			font-family: "GothamPro" !important
+			font-weight: 300
+			position: relative
+			z-index: 1000
+
+		&:hover 
+			input 
+				color: #fff
+
+.radio
+	
+	&__input
+		display: none
+
+		&:checked
+
+			+ label
+
+				&:after
+					opacity: 1
+
+	&__label
+		position: relative
+		min-height: 26px
+		display: flex
+		align-items: center
+		cursor: pointer
+		padding-left: 40px
+		user-select: none
+
+		&:before, &:after
+			content: ""
+			position: absolute
+			border-radius: 50%
+
+		&:before
+			top: 3px
+			left: 3px
+			background: var(--backgroundColor)
+			size: 20px
+		
+		&:after
+			top: 9px
+			left: 9px
+			size: 8px
+			transition: opacity .3s ease
+			background: var(--secondColor)
+			opacity: 0
+			z-index: 1
+
+.checkbox
+	position: relative
+
+	&__input
+		position: absolute
+		left: 0
+		opacity: 0
+		pointer-events: none
+
+		&:checked
+
+			~ label
+
+				&:after
+					opacity: 1
+
+	&__label
+		cursor: pointer
+		display: flex
+		position: relative
+		user-select: none
+
+		&:before, &:after
+			content: ""
+			display: inline-block
+
+		&:before
+			flex: none
+			background: var(--backgroundColor)
+			margin: 0 15px 0 0
+			size: 28px
+
+		&:after
+			border: 1px solid var(--mainColor)
+			border-top: none
+			border-left: none
+			size: 6px 10px
+			transform: rotateZ(45deg)
+			position: absolute 7px * * 11px
+			transition: opacity .1s ease
+			opacity: 0
+
+.forms-wrap
+	display: flex
+	flex-wrap: wrap
+	align-items: flex-start
+	margin: 0 0 -25px -40px 
+
+	// .forms__input-cont
+	// 	width: calc((100% - 40px * 2) / 2)
+	// 	margin: 0 0 25px 40px 
+
+	&--column
+		flex-direction: column
+		margin: 0 !important
+
+		.forms
+
+			&__input-cont
+
+				&:not(:first-child)
+					margin: 32px 0 0
+
+
+		input[type="hidden"] + .forms__input-cont
+			margin-top: 0 !important
+
+
+	&--middle
+		margin-top: 20px
+
+	&--bot
+		margin-top: 50px
+		display: flex 
+
+
+
+.forms
+
+
+	&__input
+		padding: 0 30px
+		min-height: 55px
+		border: 1px solid transparent
+		transition: border-color .3s ease
+		background: var(--backgroundColor)
+		font-size: rem(16)
+		color: #000
+		border-radius: 28px !important
+
+		&_error
+			border: 1px solid var(--mainColor)
+			transition: border-color .3s ease
+		&:focus
+			border-color: var(--secondColor)
+
+
+		&--file
+			display: none
+
+			&-support 
+				pointer-events: none
+
+
+
+		&-cont
+			position: relative
+			display: flex
+			flex-direction: column-reverse
+
+
+		&[required] ~ label
+
+			&:after
+				content: "*"
+				display: inline-block
+				color: red
+
+		&--textarea
+			max-width: 100%
+			resize: none
+
+	&__label
+		margin-bottom: 14px
+		flex: none
+		color: #666666
+		transition: top .3s ease
+		pointer-events: none
+
+		&--file
+			&:before
+				content: attr(data-btn-text)
+				position: absolute
+				pointer-events: all
+				background: url('../img/ico-clip.png') center no-repeat, #f4f4f4
+				right: 0
+				bottom: 0
+				cursor: pointer
+				height: 62px
+				width: 60px
+				text-align: right
+				line-height: 49px
+				box-sizing: border-box
+				padding-right: 0.83333vw
+
+	&__error-message
+		position: absolute
+		top: 0
+		right: 0
+
+
+.forms-bot
+	margin: 40px 0 0
+	display: flex
+	justify-content: center
+
+	&__links
+		text-align: left
+
+
+.form-links
+	color: #666
+
+	a 
+		color: var(--mainColor)
+
+
+	&__link
+		color: var(--mainColor)
+		border-bottom: 1px solid #d4e3f6
+
+
+.fancybox
+	&-close-small 
+		color: #fff !important
+		height: 47px !important
+		right: 32px !important
+		top: -13px !important
+		width: 47px !important
+		svg
+			stroke-width: 2.4 !important
+
+	&-bg
+		background: rgba(30, 30, 30, 0.22) !important
+
+
+
+.fancybox-close-small
+	top: 0 !important
+	right: 0 !important
+	color: #000 !important
+
+
+.notetext
+	color: #000 !important
+
+.form_result
+	text-align: center !important
+
+.convert
+	max-width: 710px !important
+
+	.forms__input-cont
+		margin: 0 0 25px 40px
+		width: 100%
+
+
+@media screen and (max-width: 660px)
+
+		
+	.forms-wrap
+		margin: 0 0 -20px 0 !important
+
+
+	.forms__input-cont
+		width: 100% !important
+		margin: 0 0 20px 0 !important
+
+	.fancybox-slide--html .fancybox-content
+		margin-bottom: 0
+	
+	.popup-form
+		&.fancybox-content
+			padding: 2rem 1.4rem 
+			height: 100%
+
+		.popup-form__title
+			font-size: 1.4rem
+			line-height: 1.3
+
+	.fancy-active, .fancybox-active
+		#content, .head, .footer, .fancybox-bg
+			display: none 
+
+		.fancybox-slide--html
+			padding: 0 !important
+
+	.forms
+		&__input
+			padding: 0 20px
+			min-height: 45px
+
+		&__label
+			margin-bottom: 7px
+
+	.popup-form 
+		.button input
+			padding: 0.4em 1em
+
+	.fancybox-close-small
+		position: fixed !important
+		top: 0 !important
+		right: 0 !important
+		z-index: 100
+
+	.forms-wrap--column .forms__input-cont:not(:first-child)
+		margin: 15px 0 0
+
+
+
+

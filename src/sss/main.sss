@@ -1,0 +1,107 @@
+@import "../css/common.css"
+@import "_vars.sss"
+@import "_base.sss"
+@import "_form-elements.sss"
+@import "../css/swiper.css"
+@import "_selectize.sss"
+@import "_header.sss"
+@import "_footer.sss"
+@import "_title-block.sss"
+@import "_standart-page.sss"
+
+@import "_search-top.sss"
+@import "_slider-row.sss"
+@import "_cat-item.sss"
+@import "_main-banner.sss"
+@import "_stock-slider.sss"
+@import "_main-bonus.sss"
+@import "_news.sss"
+@import "_main-advantages.sss"
+
+
+
+.scroll-top
+	display: none !important
+
+.title
+	font-size: rem(26)
+
+
+.btn
+	padding: 17px 22px
+	border-radius: 5px
+	display: flex
+	align-items: center
+	line-height: 1
+	color: inherit
+	border: 1px solid var(--main-color)
+	transition: background .3s ease, color .3s ease
+
+
+	&--arrow
+		&:after
+			content: ''
+			display: block
+			size: 11px 8px
+			background-image: url('../img/ico-btn-arrow.svg')
+			background-repeat: no-repeat
+			background-position: center
+			margin-left: 13px
+
+
+
+.slider
+	position: relative
+
+	&-cont
+		padding: 40px 0
+
+		.btn
+			&:hover
+				background: var(--main-color)
+				color: #fff
+
+				&:after
+					background-image: url('../img/ico-btn-arrow-w.svg')
+
+	&__nav
+		position: absolute
+		top: calc(50% - 25px)
+		left: -90px
+		right: -90px
+		display: flex
+		justify-content: space-between
+
+	&-btn
+		display: flex
+		justify-content: center
+		margin-top: 57px
+
+
+.swiper-arrow
+	position: relative
+	left: auto
+	right: auto
+	bottom: auto
+	top: auto
+	size: 50px
+	border-radius: 5px
+	background: var(--background-color)
+	margin: 0
+
+	&:after
+		content: ''
+		position: absolute
+		top: calc(50% - 8px)
+		left: calc(50% - 11px)
+		display: block
+		size:  16px
+		border-right: 1px solid #393939
+		border-top: 1px solid #393939
+		transform: rotate(45deg)
+
+
+.swiper-button-prev
+	transform: rotate(-180deg)
+
+

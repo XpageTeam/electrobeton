@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Главная
+		include inc/head.pug
+		include inc/css.pug
+	body.main.loading
+		include inc/header.pug
+		include inc/search-top.pug
+		
+		main#content
+			section.slider-cont
+				.wrapper
+					.slider-title.title Товары недели
+					.slider
+						.swiper-container
+							.swiper-wrapper
+								.swiper-slide
+									.cat-item-block
+										.cat-item
+											a(href="").cat-item__img
+												figure
+													img(src="img/photos/cat-1.png")
+												.cat-item__label.cat-item__label--percent
+													.cat-item__label-circle
+											a(href="").cat-item__info
+												.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
+												.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
+											.cat-item__prices
+												.cat-item__prices-bl
+													.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
+													.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
+												.cat-item__price--count 17 шт.
+											.cat-item__order
+												a.cat-favorite.added(href="#")
+												.cat-counter
+													button.cat-counter__btn.cat-counter__btn--minus
+													input.cat-counter__input(type="text" value="1" readonly)
+													button.cat-counter__btn.cat-counter__btn--plus
+												a.cat-cart(href="#")
+								.swiper-slide
+									.cat-item-block
+										.cat-item
+											a(href="").cat-item__img
+												figure
+													img(src="img/photos/cat-1.png")
+												.cat-item__label.cat-item__label--percent
+													.cat-item__label-circle
+													.cat-item__label-info Скидка 10%
+												.cat-item__label.cat-item__label--recept
+													.cat-item__label-circle
+													.cat-item__label-info Для покупки этого товара вам потребуется рецепт
+											a(href="").cat-item__info
+												.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
+												.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
+											.cat-item__prices
+												.cat-item__prices-bl
+													.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
+													.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
+												.cat-item__price--count 17 шт.
+											.cat-item__order
+												a.cat-favorite.added(href="#")
+												.cat-counter
+													button.cat-counter__btn.cat-counter__btn--minus
+													input.cat-counter__input(type="text" value="1" readonly)
+													button.cat-counter__btn.cat-counter__btn--plus
+												a.cat-cart(href="#")
+								- for (let i = 0; i < 4; i++)
+									.swiper-slide
+										.cat-item-block
+											.cat-item
+												a(href="").cat-item__img
+													figure
+														img(src="img/photos/cat-1.png")
+													.cat-item__label.cat-item__label--recept
+														.cat-item__label-circle
+														.cat-item__label-info Для покупки этого товара вам потребуется рецепт
+												a(href="").cat-item__info
+													.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
+													.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
+												.cat-item__prices
+													.cat-item__prices-bl
+														.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
+														.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
+													.cat-item__price--count 17 шт.
+												.cat-item__order
+													a.cat-favorite(href="#")
+													.cat-counter
+														button.cat-counter__btn.cat-counter__btn--minus
+														input.cat-counter__input(type="text" value="1" readonly)
+														button.cat-counter__btn.cat-counter__btn--plus
+													a.cat-cart(href="#")
+
+						.slider__nav
+							.swiper-arrow.swiper-button-prev
+							.swiper-arrow.swiper-button-next
+			section.main-banner-cont
+				.wrapper
+					.main-banner
+						a(href="")
+							picture
+								source(srcset="img/main-banner.jpg" media="screen and (min-width: 700px)" data-main="data-main")
+								source(srcset="img/main-banner.jpg" media="screen and (max-width: 700px)") 
+								img
+
+			//- script
+			//- 	| window.sliders = "[[{date: '', img: ''. link: '', title: '', text: ''}, {}, {}, {}, ], [], [], []]"
+
+			section.main-sliders__cont
+				.wrapper
+					.main-sliders
+						.main-sliders__title-cont
+							.main-sliders__title Часто спрашивают
+							.main-sliders__btns-cont
+								.main-sliders__btns
+									.main-sliders__btn.active(data-id="12") Витамины и БАДЫ
+									.main-sliders__btn(data-id="2") Косметика
+									.main-sliders__btn(data-id="3") Грипп и простуда
+									.main-sliders__btn(data-id="4") Аллергия
+								a(href="").btn.btn--arrow Полный каталог
+
+						.main-sliders__sliders
+							.stock-slider.active#12
+								.main-sliders-arrow
+									.swiper-arrow.swiper-button-prev
+									.swiper-arrow.swiper-button-next
+								.swiper-list
+									.swiper-wrapper
+										- for (let i = 0; i < 4; i++)
+											.swiper-slide
+												.cat-item-block
+													.cat-item
+														a(href="").cat-item__img
+															figure
+																img(src="img/photos/cat-1.png")
+															.cat-item__label.cat-item__label--percent
+																.cat-item__label-circle
+														a(href="").cat-item__info
+															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
+															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
+														.cat-item__prices
+															.cat-item__prices-bl
+																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
+																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
+															.cat-item__price--count 17 шт.
+														.cat-item__order
+															a.cat-favorite.added(href="#")
+															.cat-counter
+																button.cat-counter__btn.cat-counter__btn--minus
+																input.cat-counter__input(type="text" value="1" readonly)
+																button.cat-counter__btn.cat-counter__btn--plus
+															a.cat-cart(href="#")
+								.stock-slider-btn
+									a(href="").btn.btn--arrow Показать ещё
+
+							.stock-slider#2
+								.main-sliders-arrow
+									.swiper-arrow.swiper-button-prev
+									.swiper-arrow.swiper-button-next
+								.swiper-list
+									.swiper-wrapper
+										- for (let i = 0; i < 2; i++)
+											.swiper-slide
+												.cat-item-block
+													.cat-item
+														a(href="").cat-item__img
+															figure
+																img(src="img/photos/cat-1.png")
+															.cat-item__label.cat-item__label--percent
+																.cat-item__label-circle
+														a(href="").cat-item__info
+															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
+															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
+														.cat-item__prices
+															.cat-item__prices-bl
+																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
+																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
+															.cat-item__price--count 17 шт.
+														.cat-item__order
+															a.cat-favorite.added(href="#")
+															.cat-counter
+																button.cat-counter__btn.cat-counter__btn--minus
+																input.cat-counter__input(type="text" value="1" readonly)
+																button.cat-counter__btn.cat-counter__btn--plus
+															a.cat-cart(href="#")
+							.stock-slider#3
+								.main-sliders-arrow
+									.swiper-arrow.swiper-button-prev
+									.swiper-arrow.swiper-button-next
+								.swiper-list
+									.swiper-wrapper
+										- for (let i = 0; i < 3; i++)
+											.swiper-slide
+												.cat-item-block
+													.cat-item
+														a(href="").cat-item__img
+															figure
+																img(src="img/photos/cat-1.png")
+															.cat-item__label.cat-item__label--percent
+																.cat-item__label-circle
+														a(href="").cat-item__info
+															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
+															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
+														.cat-item__prices
+															.cat-item__prices-bl
+																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
+																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
+															.cat-item__price--count 17 шт.
+														.cat-item__order
+															a.cat-favorite.added(href="#")
+															.cat-counter
+																button.cat-counter__btn.cat-counter__btn--minus
+																input.cat-counter__input(type="text" value="1" readonly)
+																button.cat-counter__btn.cat-counter__btn--plus
+															a.cat-cart(href="#")
+								.stock-slider-btn
+									a(href="").btn.btn--arrow Показать ещё
+
+							.stock-slider#4
+								.main-sliders-arrow
+									.swiper-arrow.swiper-button-prev
+									.swiper-arrow.swiper-button-next
+								.swiper-list
+									.swiper-wrapper
+										- for (let i = 0; i < 1; i++)
+											.swiper-slide
+												.cat-item-block
+													.cat-item
+														a(href="").cat-item__img
+															figure
+																img(src="img/photos/cat-1.png")
+															.cat-item__label.cat-item__label--percent
+																.cat-item__label-circle
+														a(href="").cat-item__info
+															.cat-item__title Лиотон 1000 гель 1000ме/г 50г n1
+															.cat-item__text Производитель: Диамедикал Лтд Тест-полоски для ...
+														.cat-item__prices
+															.cat-item__prices-bl
+																.cat-item__price 584.<div class="cent">00 <span class="rub">₽</span></div> 
+																.cat-item__price--old 584.<div class="cent">00 <span class="rub">₽</span></div> 
+															.cat-item__price--count 17 шт.
+														.cat-item__order
+															a.cat-favorite.added(href="#")
+															.cat-counter
+																button.cat-counter__btn.cat-counter__btn--minus
+																input.cat-counter__input(type="text" value="1" readonly)
+																button.cat-counter__btn.cat-counter__btn--plus
+															a.cat-cart(href="#")
+
+			section.main-bonus__cont
+				.wrapper
+					.main-bonus
+						.main-bonus__info
+							.main-bonus__title Оформи карту и получай<br> на неё бонусы!
+							.main-bonus__text После оформления заказа на сайте возможно расхождение наличия забронированных вами товаров с остатками в выбранной вами аптеке. 
+							.main-bonus__btn
+								a(href="").btn.btn--arrow Подробнее
+						.main-bonus__img
+							figure
+								img(src="img/card-img.png")
+
+			section.slider-cont
+				.wrapper
+					.slider-title.title Новости
+					.slider
+						.swiper-container
+							.swiper-wrapper
+								- for (let i = 0; i < 4; i++)
+									.swiper-slide
+										.news-item-block
+											a(href="").news-item
+												.news-item__title С наступающим Новым Годом! Обратите внимание на график работы в праздничные дни
+												.news-item__text Акционерное общество «Областной аптечный склад» поздравляет Вас с наступающим Новым годом! ...
+												.news-item__bot
+													.btn.btn--arrow Читать
+													.news-item__date 01.01.2019
+
+
+
+						.slider__nav
+							.swiper-arrow.swiper-button-prev
+							.swiper-arrow.swiper-button-next
+
+					.slider-btn
+						a(href="").btn.btn--arrow Все новости
+			section.main-advantages-cont
+				.wrapper
+					.main-advantages
+						.main-advantages__title Интернет-аптека
+						.main-advantages__text Срочно понадобились лекарства? Нет времени ходить по аптекам Челябинска в поисках всего необходимого? Закажите лекарства через наш интернет-каталог. Мы привезем заказ в ближайшую к вам аптеку. Не знаете, что выбрать? Обратитесь за помощью к нашим вежливым менеджерам. Они не оставят ваши вопросы без внимания. Также вы можете загрузить на сайт рецепт от вашего врача, мы сами соберем для вас необходимые лекарства. Вам останется их только забрать.
+						.main-advantages__list-title 5 причин выбрать «Государственную аптеку»:
+						.main-advantages__list 
+							.main-advantages__item
+								figure
+									img(src="img/ico-main-advantages-1.svg", alt="")
+								.main-advantages__item-text 95 лет безупречной репутации. За почти вековую историю мы заслужили признание жителей города. Нам доверяют! Ведь мы сотрудничаем с ведущими фармацевтическими компаниями мира. Кроме того, у нас представлен самый широкий каталог товаров.
+
+							.main-advantages__item
+								figure
+									img(src="img/ico-main-advantages-2.svg", alt="")
+								.main-advantages__item-text 250 аптек и аптечных пунктов по Челябинской области. Вы без проблем заберете свой заказ, где бы вы ни находились. Мы поможем сэкономить ваше время и деньги.
+							.main-advantages__item
+								figure
+									img(src="img/ico-main-advantages-3.svg", alt="")
+								.main-advantages__item-text Складской комплекс класса «А». Лекарства хранятся в специальных помещениях, оборудованных холодильными камерами. Есть отдельное помещение для хранения сильнодействующих и психотропных лекарственных средств.
+
+							.main-advantages__item
+								figure
+									img(src="img/ico-main-advantages-4.svg", alt="")
+								.main-advantages__item-text Мы - единственное в области предприятие, которое изготавливает лекарственные средства по индивидуальным рецептам, выписанным врачами лечебно-профилактических учреждений.
+							.main-advantages__item
+								figure
+									img(src="img/ico-main-advantages-5.svg", alt="")
+								.main-advantages__item-text У нас только безопасная и качественная продукция. Все препараты, включая не лекарственные средства, БАДы, проходят тщательный контроль.
+							.main-advantages__item
+								.main-advantages__item-text Интернет-аптека «Областного аптечного склада» — это быстро, выгодно и надежно! Оформите заказ через форму на сайте. Поместите необходимые лекарства в «Корзину» и укажите свои контактные данные. Заказ также можно сделать по телефону: 8-800-200-74-03. Также вы можете позвонить по многоканальному телефону: 8-800-100-74-03 чтобы уточнить есть ли в ближайшем пункте выдач нужный препарат, сколько он стоит и другую необходимую информацию.
+		include inc/footer.pug
+		include inc/scripts.pug

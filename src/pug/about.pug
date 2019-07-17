@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title О компании
+		include inc/head.pug
+		include inc/css.pug
+	body.inner.loading
+		include inc/header.pug
+
+		.speed-btn-cont
+			.speed-btn
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-calc.svg", alt="")
+					.speed-btn__item-text Рассчитать цену
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-write.svg", alt="")
+					.speed-btn__item-text Написать нам написать нам
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-call.svg", alt="")
+					.speed-btn__item-text Позвонить
+
+
+		
+		main#content
+			.title-block__cont
+				.wrapper
+					.title-block
+						.title-block__title
+							h1 О компании
+						.title-block__crumbs
+							.bread-crumbs
+								a.bread-crumbs__link(href="/" title="Главная") 
+								span.bread-crumbs__this О компании
+
+			.content
+				.wrapper
+					section.main-banner-cont
+						.main-banner
+							.main-banner__slider
+								.main-banner__slider-list
+									.swiper-container
+										.main-banner__slider-arrow
+											.swiper-button.swiper-button-prev
+											.swiper-button.swiper-button-next
+										.swiper-wrapper
+											.swiper-slide
+												.main-banner__slider-item
+													figure
+														img(src="img/photos/main-banner.jpg", alt="")
+											.swiper-slide
+												.main-banner__slider-item
+													figure
+														img(src="img/photos/main-banner.jpg", alt="")
+										.swiper-pagination
+					section.about-text-cont
+						.about-text
+							.text-page
+								p Челябинский завод ЭЛЕКТРОБЕТОН является самостоятельным производственным предприятием, рабочие площади более 50 000 м2, имеющий в своем составе конструкторское бюро, испытательную лабораторию, строительно-монтажное управление.
+								p В структуру завода входят производственные цеха по производству комплектных трансформаторных подстанций, блочно-модульных зданий, высоковольтных ячеек, низковольтных комплектных устройств, комплектных распределительных устройств.
+								p Помимо этого мы предоставляем гибкую систему скидок.<br> Осуществляем доставку изготовленного оборудования собственным автотранспортом до объектов заказчика.<br> Монтажным и пусконаладочным организациям - особые условия сотрудничества!
+								p Производим поставку оборудования в лизинг.<br> Региональные отделения завода расположены в г. Москва, Оренбург, Челябинск.
+
+					section.main-gallery-cont
+						.main-gallery
+							.main-gallery__top
+								.main-gallery__info
+									.main-gallery__title Видео
+									.main-gallery__text Мы поставляем интересующую Вас продукцию в Челябинске и в любом регионы России, СНГ и Ближнего Востока, обеспечив решение всех организационных вопросов, связанных с поставкой, погрузкой и транспортировкой продукции, таможенных вопросов, а также...
+								.main-gallery__btn
+									a(href="").btn Посмотреть все видео
+							.main-gallery__list
+								a(href="img/photos/gallery-1.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item.video
+										figure
+											img(src="img/photos/gallery-1.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+								a(href="img/photos/gallery-2.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item.video
+										figure
+											img(src="img/photos/gallery-2.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+								a(href="img/photos/gallery-3.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item.video
+										figure
+											img(src="img/photos/gallery-3.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+								a(href="img/photos/gallery-4.jpg").main-gallery__item-cont.fancybox
+									.main-gallery__item.video
+										figure
+											img(src="img/photos/gallery-4.jpg", alt="")
+										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+										.main-gallery__item-address Атырауской область, Казахстан
+
+
+			
+
+
+
+		include inc/footer.pug
+		include inc/scripts.pug

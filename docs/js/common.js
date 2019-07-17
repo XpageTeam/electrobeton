@@ -10607,7 +10607,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 	__webpack_require__(349);
 
-	var galleryThumbs = new _swiper2.default('.gallery-thumbs', {
+	var galleryThumbs = new _swiper2.default('.gallery-thumbs .swiper-list', {
 		spaceBetween: 23,
 		slidesPerView: 5,
 		loop: true,
@@ -10629,6 +10629,25 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		thumbs: {
 			swiper: galleryThumbs
 		}
+	});
+
+	var mainBanner = new _swiper2.default('.inner .swiper-container', {
+		spaceBetween: 0,
+		slidesPerView: 1,
+		loop: true,
+		freeMode: true,
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+		effect: "fade",
+		navigation: {
+			nextEl: '.main-banner__slider-arrow .swiper-button-next',
+			prevEl: '.main-banner__slider-arrow .swiper-button-prev'
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		}
+
 	});
 
 	(0, _jquery2.default)('.submenu').each(function (i, el) {
@@ -10666,14 +10685,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 (0, _jquery2.default)(window).on("load scroll resize touchmove", function (e) {
-
-	if ((0, _jquery2.default)(window).scrollTop() > 100) {
-
-		setTimeout(function (e) {
-			(0, _jquery2.default)('.history__intro').remove();
-			(0, _jquery2.default)('body').addClass('js__history-animate');
-		}, 200);
-	}
 
 	if ((0, _jquery2.default)(window).scrollTop() > 800) {
 		(0, _jquery2.default)(".scroll-top").fadeIn(300);

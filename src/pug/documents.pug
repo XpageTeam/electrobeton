@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Документы
+		include inc/head.pug
+		include inc/css.pug
+	body.inner.loading
+		include inc/header.pug
+
+		.speed-btn-cont
+			.speed-btn
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-calc.svg", alt="")
+					.speed-btn__item-text Рассчитать цену
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-write.svg", alt="")
+					.speed-btn__item-text Написать нам написать нам
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-call.svg", alt="")
+					.speed-btn__item-text Позвонить
+
+
+		
+		main#content
+			.title-block__cont
+				.wrapper
+					.title-block
+						.title-block__title
+							h1 Документы
+						.title-block__crumbs
+							.bread-crumbs
+								a.bread-crumbs__link(href="/" title="Главная") 
+								span.bread-crumbs__this Документы
+
+			.content
+				.wrapper
+					section.documents-cont
+						.documents
+							.documents-filter-cont
+								.documents-filter
+									a(href="").documents-filter__link Сертификаты
+									a(href="").documents-filter__link Документы
+								// это фильтр для мобильных !!!
+								.mobile-filter
+									select.no-selectize
+										option(value="1") Сертификаты
+										option(value="2") Документы
+
+							.documents__list
+								.documents__item.animated
+									a(href="img/photos/document-1.jpg" data-fancybox="1").documents__item-img.fancybox
+										figure
+											img(src="img/photos/document-1.jpg", alt="")
+										.documents__item-title Сертификат соответствия на ЯКУ-1 и ЯКНО
+								.documents__item.animated
+									a(href="img/photos/document-2.jpg" data-fancybox="1").documents__item-img.fancybox
+										figure
+											img(src="img/photos/document-2.jpg", alt="")
+										.documents__item-title Сертификат соответствия на ЯКУ-1 и ЯКНО
+								.documents__item.animated
+									a(href="img/photos/document-3.jpg" data-fancybox="1").documents__item-img.fancybox
+										figure
+											img(src="img/photos/document-3.jpg", alt="")
+										.documents__item-title Сертификат соответствия на ЯКУ-1 и ЯКНО
+								.documents__item.animated
+									a(href="img/photos/document-4.jpg" data-fancybox="1").documents__item-img.fancybox
+										figure
+											img(src="img/photos/document-4.jpg", alt="")
+										.documents__item-title Сертификат соответствия на ЯКУ-1 и ЯКНО
+								.documents__item.animated
+									a(href="img/photos/document-5.jpg" data-fancybox="1").documents__item-img.fancybox
+										figure
+											img(src="img/photos/document-5.jpg", alt="")
+										.documents__item-title Сертификат соответствия на ЯКУ-1 и ЯКНО
+								.documents__item.animated
+									a(href="img/photos/document-6.jpg" data-fancybox="1").documents__item-img.fancybox
+										figure
+											img(src="img/photos/document-6.jpg", alt="")
+										.documents__item-title Сертификат соответствия на ЯКУ-1 и ЯКНО
+								.documents__item.animated
+									a(href="img/photos/document-7.jpg" data-fancybox="1").documents__item-img.fancybox
+										figure
+											img(src="img/photos/document-7.jpg", alt="")
+										.documents__item-title Сертификат соответствия на ЯКУ-1 и ЯКНО
+
+
+								
+
+
+
+		include inc/footer.pug
+		include inc/scripts.pug

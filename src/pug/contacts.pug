@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Контакты
+		include inc/head.pug
+		include inc/css.pug
+	body.inner.loading
+		include inc/header.pug
+
+		.speed-btn-cont
+			.speed-btn
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-calc.svg", alt="")
+					.speed-btn__item-text Рассчитать цену
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-write.svg", alt="")
+					.speed-btn__item-text Написать нам написать нам
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-call.svg", alt="")
+					.speed-btn__item-text Позвонить
+
+
+		
+		main#content
+			.title-block__cont
+				.wrapper
+					.title-block
+						.title-block__title
+							h1 Контакты
+						.title-block__crumbs
+							.bread-crumbs
+								a.bread-crumbs__link(href="/" title="Главная") 
+								span.bread-crumbs__this Контакты
+
+			.content
+				.wrapper
+					section.contacts-cont
+						.contacts
+							.contacts__list
+								.contacts__item.contacts__item--big
+									.contacts__el
+										.contacts__el-label Адрес
+										.contacts__el-text Челябинская область,<br> Сосновский район, д. Ключи, Промзона 1
+
+									.contacts__el
+										.contacts__el-label Tелефон
+										.contacts__el-item
+											.contacts__item-el 
+												.contacts__el-text 
+													a(href="tel:+7 (351) 729-88-20") +7 (351) 729-88-20
+													.contacts__el-info многоканальный
+										.contacts__el-item
+											.contacts__item-el 
+												.contacts__el-text 
+													a(href="tel:+7 (351) 729-88-20") +7 (351) 729-88-20
+													.contacts__el-info многоканальный
+
+									.contacts__el
+										.contacts__el-label E-mail
+										.contacts__el-text
+											a(href="mailto: info@electrobeton.ru") info@electrobeton.ru
+
+								.contacts__item
+									.contacts__item-top
+										.contacts__item-el
+											.contacts__item-title Иванов Иван
+											.contacts__item-text Генеральный директор
+
+									.contacts__item-bot
+										.contacts__item-el
+											.contacts__item-title Tелефон
+											.contacts__item-text
+												a(href="tel: +7 (351) 729-88-20") +7 (351) 729-88-20
+										.contacts__item-el
+											.contacts__item-title E-mail
+											.contacts__item-text
+												a(href="mailto: info@electrobeton.ru") info@electrobeton.ru
+								.contacts__item
+									.contacts__item-top
+										.contacts__item-el
+											.contacts__item-title Татьяна Ивановна
+											.contacts__item-text Менеджер
+
+									.contacts__item-bot
+										.contacts__item-el
+											.contacts__item-title Tелефон
+											.contacts__item-text
+												a(href="tel: +7 (351) 729-88-20") +7 (351) 729-88-20
+										.contacts__item-el
+											.contacts__item-title E-mail
+											.contacts__item-text
+												a(href="mailto: info@electrobeton.ru") info@electrobeton.ru
+								.contacts__item
+									.contacts__item-top
+										.contacts__item-el
+											.contacts__item-title Татьяна Ивановна
+											.contacts__item-text Менеджер
+
+									.contacts__item-bot
+										.contacts__item-el
+											.contacts__item-title Tелефон
+											.contacts__item-text
+												a(href="tel: +7 (351) 729-88-20") +7 (351) 729-88-20
+										.contacts__item-el
+											.contacts__item-title E-mail
+											.contacts__item-text
+												a(href="mailto: info@electrobeton.ru") info@electrobeton.ru
+								.contacts__item
+									.contacts__item-top
+										.contacts__item-el
+											.contacts__item-title Татьяна Ивановна
+											.contacts__item-text Менеджер
+
+									.contacts__item-bot
+										.contacts__item-el
+											.contacts__item-title Tелефон
+											.contacts__item-text
+												a(href="tel: +7 (351) 729-88-20") +7 (351) 729-88-20
+										.contacts__item-el
+											.contacts__item-title E-mail
+											.contacts__item-text
+												a(href="mailto: info@electrobeton.ru") info@electrobeton.ru
+							.contacts-map
+								// маркер на карте img/ico-marker.svg
+								.map 
+									img(src="img/photos/map.jpg", alt="")
+
+					
+
+		include inc/footer.pug
+		include inc/scripts.pug

@@ -1,0 +1,87 @@
+.mobile-filter
+	display: none
+
+.documents-filter
+	display: flex
+	flex-wrap: wrap
+
+	&-cont
+		margin-bottom: 60px
+
+	&__link
+		line-height: 1
+		padding: 13px 20px 13px
+		display: flex
+		margin-right: 20px
+		border: 1px solid #E0E0E2
+		border-radius: 30px
+		transition: background .5s ease
+
+		&:hover
+			background-color: var(--background-color)
+
+		&:before
+			content: ''
+			display: inline-block
+			background-image: url('../img/ico-download.svg')
+			background-repeat: no-repeat
+			background-position: center
+			margin-right: 15px
+			size: 13px 16px
+
+
+.documents
+	&__list
+		display: flex
+		flex-wrap: wrap
+		margin: 0 0 -40px -40px
+
+	&__item
+		width: calc((100% - 40px * 5) / 5)
+		margin: 0 0 40px 40px
+
+		figure
+			position: relative
+
+			&:before
+				content: ''
+				display: block
+				position: absolute
+				top: calc(50% - 33px)
+				left: calc(50% - 33px)
+				size: 66px
+				border-radius: 50%
+				background-color: var(--main-color)
+				background-image: url('../img/ico-zoom.svg')
+				background-repeat: no-repeat
+				background-position: center
+
+
+		img
+			display: block
+
+		&-title
+			margin-top: 25px
+			font-size: rem(16)
+
+
+.documents__item-row
+	display: flex
+	align-items: center
+	background: var(--background-color)
+	border-radius: 5px
+	padding: 30px 40px
+
+	&:not(:first-child)
+		margin-top: 20px
+
+
+	&:before
+		content: ''
+		display: inline-block
+		background-image: url('../img/ico-download.svg')
+		background-repeat: no-repeat
+		background-position: center
+		background-size: contain
+		margin-right: 15px
+		size: 22px 27px

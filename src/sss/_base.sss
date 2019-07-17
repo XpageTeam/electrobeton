@@ -112,6 +112,7 @@ a
 
 	&:not([class])
 		text-decoration: underline
+		color: var(--main-color)
 
 	&[href^="tel"], &[href^="mail"]
 		white-space: nowrap
@@ -121,7 +122,6 @@ a
 
 
 .wrapper
-	// width: var(--baseWidth)
 	max-width: var(--baseWidth)
 	width: 100%
 	padding: 0 2rem
@@ -186,14 +186,13 @@ li
 
 .text-page, .inner main
 
-	> *:not(:first-child)
-		margin-top: rem(24)
+	> *
+		p, h2, h3, h4, h5, h6
+			max-width: 880px
+			margin-bottom: rem(24)
 
 	strong
 		font-weight: bold
-
-	h2, h3, h4, h5, h6
-		font-weight: 600
 
 	h2
 		font-size: rem(24)
@@ -240,6 +239,9 @@ li
 		margin-bottom: rem(22)
 
 	table
+		thead
+			background: #F4F4F7
+
 
 		td, th
 			padding: 15px 23px
@@ -259,11 +261,11 @@ li
 	table
 
 		td, th
-			border: 1px solid var(--borderColor)
+			border: 1px solid #E0E0E2
 
 	ul, ol
 		list-style: none !important
-		max-width: 720px !important
+		max-width: 720px 
 
 	li
 		position: relative
@@ -327,8 +329,7 @@ li
 		width: 100%
 
 
-	a 
-		color: currentColor
+
 
 
 .soc

@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", e => {
 
 	require("./jquery.fancybox.js");
 
-	var galleryThumbs = new Swiper('.gallery-thumbs', {
+	var galleryThumbs = new Swiper('.gallery-thumbs .swiper-list', {
 		spaceBetween: 23,
 		slidesPerView: 5,
 		loop: true,
@@ -93,15 +93,25 @@ document.addEventListener("DOMContentLoaded", e => {
 		},
     });
 
+    var mainBanner = new Swiper('.inner .swiper-container', {
+		spaceBetween: 0,
+		slidesPerView: 1,
+		loop: true,
+		freeMode: true,
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+		effect: "fade",
+	    navigation: {
+			nextEl: '.main-banner__slider-arrow .swiper-button-next',
+			prevEl: '.main-banner__slider-arrow .swiper-button-prev',
+			},
+	    pagination: {
+	        el: '.swiper-pagination',
+	        clickable: true,
+	    	},
 
-	
-
-	
-
-
-
-	
-
+					
+	});
 
 
 
@@ -153,16 +163,6 @@ document.addEventListener("DOMContentLoaded", e => {
 
 
 $(window).on("load scroll resize touchmove", e => {
-
-	if($(window).scrollTop() > 100){
-
-		setTimeout(e => {
-			$('.history__intro').remove();
-			$('body').addClass('js__history-animate');
-		}, 200);
-
-
-	}
 
 	if ($(window).scrollTop() > 800){
 		$(".scroll-top").fadeIn(300);

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Новости
+		include inc/head.pug
+		include inc/css.pug
+	body.inner.loading
+		include inc/header.pug
+
+		.speed-btn-cont
+			.speed-btn
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-calc.svg", alt="")
+					.speed-btn__item-text Рассчитать цену
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-write.svg", alt="")
+					.speed-btn__item-text Написать нам написать нам
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-call.svg", alt="")
+					.speed-btn__item-text Позвонить
+
+
+		
+		main#content
+			.title-block__cont
+				.wrapper
+					.title-block
+						.title-block__title
+							h1 Новости
+						.title-block__crumbs
+							.bread-crumbs
+								a.bread-crumbs__link(href="/" title="Главная") 
+								span.bread-crumbs__this Новости
+
+			.content
+				.wrapper
+					section.news-cont
+						.news
+							.news__list
+								.news__item.animated
+									figure.news__item-img
+										img(src="img/no-photo.svg", alt="")
+									.news__item-info
+										.news__item-date 1 февраля 2019
+										.news__item-title КРН-10
+										.news__item-text По техническому заданию АО Михеевский ГОК изготовлена карьерная ячейка КРН-10
+										.circle-arrow
+								.news__item.animated
+									figure.news__item-img
+										img(src="img/photos/news-1.jpg", alt="")
+									.news__item-info
+										.news__item-date 1 февраля 2019
+										.news__item-title 2КТПНУ-630
+										.news__item-text По техническому заданию ОАО "ЮРЭСК" г. Ханты-Мансийск изготовлена 2КТПНУ-630 утеплённая блочная трансформаторная подстанция
+										.circle-arrow
+								.news__item.animated
+									figure.news__item-img
+										img(src="img/photos/news-2.jpg", alt="")
+									.news__item-info
+										.news__item-date 1 февраля 2019
+										.news__item-title ЯКНО-6
+										.news__item-text По заказу горнообаготительного комбината Красноярский край изготовлена карьерная ячейка ЯКНО-6
+										.circle-arrow
+								.news__item.animated
+									figure.news__item-img
+										img(src="img/photos/news-3.jpg", alt="")
+									.news__item-info
+										.news__item-date 1 февраля 2019
+										.news__item-title КРН-10
+										.news__item-text По заказу горнообаготительного комбината Красноярский край изготовлена карьерная ячейка ЯКНО-6
+										.circle-arrow
+								.news__item.animated
+									figure.news__item-img
+										img(src="img/photos/news-1.jpg", alt="")
+									.news__item-info
+										.news__item-date 1 февраля 2019
+										.news__item-title 2КТПНУ-630
+										.news__item-text По техническому заданию ОАО "ЮРЭСК" г. Ханты-Мансийск изготовлена 2КТПНУ-630 утеплённая блочная трансформаторная подстанция
+										.circle-arrow
+								.news__item.animated
+									figure.news__item-img
+										img(src="img/photos/news-2.jpg", alt="")
+									.news__item-info
+										.news__item-date 1 февраля 2019
+										.news__item-title ЯКНО-6
+										.news__item-text По заказу горнообаготительного комбината Красноярский край изготовлена карьерная ячейка ЯКНО-6
+										.circle-arrow
+								.news__item.animated
+									figure.news__item-img
+										img(src="img/photos/news-3.jpg", alt="")
+									.news__item-info
+										.news__item-date 1 февраля 2019
+										.news__item-title КРН-10
+										.news__item-text По заказу горнообаготительного комбината Красноярский край изготовлена карьерная ячейка ЯКНО-6
+										.circle-arrow
+
+							include inc/paginator.pug
+
+
+		include inc/footer.pug
+		include inc/scripts.pug

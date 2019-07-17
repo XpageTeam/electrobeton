@@ -8,10 +8,17 @@
 @import "_footer.sss"
 @import "_title-block.sss"
 @import "_standart-page.sss"
+@import "_paginator.sss"
 
 @import "_speed-btn.sss"
 @import "_main-page.sss"
+@import "_inner-page.sss"
 @import "_slider-gallery.sss"
+@import "_about-text.sss"
+@import "_contacts.sss"
+@import "_news.sss"
+@import "_documents.sss"
+@import "_catalog.sss"
 
 
 
@@ -36,9 +43,19 @@
 	background-repeat: no-repeat
 	background-position: top right
 
-.inner
-	.content
-		margin-top: 60px
+.scroll-top
+	display: none !important
+
+
+.inner 
+	.content 
+		> .wrapper
+			section
+				&:not(:first-child)
+					margin-top: 55px
+
+				&:last-child
+					margin-bottom: 0 !important
 
 
 

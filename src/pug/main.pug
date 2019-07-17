@@ -26,132 +26,133 @@ html(lang="ru")
 
 		
 		main#content
-			.content
+			.wrapper
 				section.main-banner-cont
-					.wrapper
-						.main-banner
-							h2.main-banner__subtitle Более 100 типоразмеров бетонныхкорпусов для БКТП
-							h1.main-banner__title Производство блочных комплектных<br> трансформаторных подстанций
-							.main-banner__img
-								figure
-									img(src="img/photos/main-banner.jpg", alt="")
+					.main-banner
+						h2.main-banner__subtitle Более 100 типоразмеров бетонныхкорпусов для БКТП
+						h1.main-banner__title Производство блочных комплектных<br> трансформаторных подстанций
+						.main-banner__slider
+							.main-banner__slider-list
+								.swiper-container
+									.main-banner__slider-arrow
+										.swiper-button.swiper-button-prev
+										.swiper-button.swiper-button-next
+									.swiper-wrapper
+										.main-banner__slider-item
+											figure
+												img(src="img/photos/main-banner.jpg", alt="")
 				section.main-catalog-cont
-					.wrapper
-						.main-catalog
-							.main-catalog__list
-								.main-catalog__item-cont.main-catalog__item-cont--big
-									.main-catalog__item
-										.main-catalog__item-label Каталог продукции
-										.main-catalog__item-title Наше предприятие ведет своё летоисчисление с 21 мая 2001 года
-										a(href="#").btn Перейти в каталог
-								a(href="#").main-catalog__item-cont
-									.main-catalog__item
-										figure.main-catalog__item-img
-											img(src="img/photos/cat-1.jpg", alt="")
-										.main-catalog__item-bot
-											.main-catalog__item-title Трансформаторные подстанции
-											.circle-arrow
-								a(href="#").main-catalog__item-cont
-									.main-catalog__item
-										figure.main-catalog__item-img
-											img(src="img/photos/cat-2.jpg", alt="")
-										.main-catalog__item-bot
-											.main-catalog__item-title Ячейки КРУ
-											.circle-arrow
-								a(href="#").main-catalog__item-cont
-									.main-catalog__item
-										figure.main-catalog__item-img
-											img(src="img/photos/cat-3.jpg", alt="")
-										.main-catalog__item-bot
-											.main-catalog__item-title Ячейки КСО
-											.circle-arrow
-								a(href="#").main-catalog__item-cont
-									.main-catalog__item
-										figure.main-catalog__item-img
-											img(src="img/photos/cat-4.jpg", alt="")
-										.main-catalog__item-bot
-											.main-catalog__item-title Реклоузер, пункт коммерческого учета
-											.circle-arrow
-								a(href="#").main-catalog__item-cont
-									.main-catalog__item
-										figure.main-catalog__item-img
-											img(src="img/photos/cat-5.jpg", alt="")
-										.main-catalog__item-bot
-											.main-catalog__item-title Ячейки ЯКНО, КРН
-											.circle-arrow
-								a(href="#").main-catalog__item-cont
-									.main-catalog__item
-										figure.main-catalog__item-img
-											img(src="img/photos/cat-6.jpg", alt="")
-										.main-catalog__item-bot
-											.main-catalog__item-title Выкатные элементы 
-											.circle-arrow
+					.main-catalog
+						.catalog__list
+							.catalog__item-cont.catalog__item-cont--big
+								.catalog__item
+									.catalog__item-label Каталог продукции
+									.catalog__item-title Наше предприятие ведет своё летоисчисление с 21 мая 2001 года
+									a(href="#").btn Перейти в каталог
+							a(href="#").catalog__item-cont
+								.catalog__item
+									figure.catalog__item-img
+										img(src="img/photos/cat-1.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Трансформаторные подстанции
+										.circle-arrow
+							a(href="#").catalog__item-cont
+								.catalog__item
+									figure.catalog__item-img
+										img(src="img/photos/cat-2.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Ячейки КРУ
+										.circle-arrow
+							a(href="#").catalog__item-cont
+								.catalog__item
+									figure.catalog__item-img
+										img(src="img/photos/cat-3.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Ячейки КСО
+										.circle-arrow
+							a(href="#").catalog__item-cont
+								.catalog__item
+									figure.catalog__item-img
+										img(src="img/photos/cat-4.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Реклоузер, пункт коммерческого учета
+										.circle-arrow
+							a(href="#").catalog__item-cont
+								.catalog__item
+									figure.catalog__item-img
+										img(src="img/photos/cat-5.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Ячейки ЯКНО, КРН
+										.circle-arrow
+							a(href="#").catalog__item-cont
+								.catalog__item
+									figure.catalog__item-img
+										img(src="img/photos/cat-6.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Выкатные элементы 
+										.circle-arrow
 				section.main-about-cont
-					.wrapper
-						.main-about
-							.main-about__info
-								.main-about__title О нас
-								.main-about__text
-									.text-page
-										p Наше предприятие ведет своё летоисчисление с 21 мая 2001 года. Изначально компания занималась несколькими направлениями:
-										p В июле 2003 года принято решение провести ребрендинг компании и целостное изменение идеологии бренда. Основным профилем предприятия стало производство и поставка электротехнического оборудования, классом напряжения 0,4-10-35 кВ. Удачный ребрендинг позволил нашей компании выйти на новый уровень развития, привлечь внимание новых партнёров и увеличить лояльность существующих.
-								a(href="").btn Узнать больше
-							.main-about__img
-								img(src="img/photos/about.jpg", alt="")
+					.main-about
+						.main-about__info
+							.main-about__title О нас
+							.main-about__text
+								.text-page
+									p Наше предприятие ведет своё летоисчисление с 21 мая 2001 года. Изначально компания занималась несколькими направлениями:
+									p В июле 2003 года принято решение провести ребрендинг компании и целостное изменение идеологии бренда. Основным профилем предприятия стало производство и поставка электротехнического оборудования, классом напряжения 0,4-10-35 кВ. Удачный ребрендинг позволил нашей компании выйти на новый уровень развития, привлечь внимание новых партнёров и увеличить лояльность существующих.
+							a(href="").btn Узнать больше
+						.main-about__img
+							img(src="img/photos/about.jpg", alt="")
 				section.main-advantages-cont
-					.wrapper
-						.main-advantages
-							.main-advantages__list
-								.main-advantages__item-cont
-									.main-advantages__item
-										figure.main-advantages__item-img
-											img(src="img/advantages-1.svg", alt="")
-										.main-advantages__item-info
-											.main-advantages__item-title ГОСТы по энергетике
-											.main-advantages__item-text Данный раздел содержит полный пакет ГОСТов по энергетике
-								.main-advantages__item-cont
-									.main-advantages__item
-										figure.main-advantages__item-img
-											img(src="img/advantages-2.svg", alt="")
-										.main-advantages__item-info
-											.main-advantages__item-title ПУЭ: Правила Электроустановок
-											.main-advantages__item-text Как не «сгореть» на работе. Жизненно важная информация
+					.main-advantages
+						.main-advantages__list
+							.main-advantages__item-cont
+								.main-advantages__item
+									figure.main-advantages__item-img
+										img(src="img/advantages-1.svg", alt="")
+									.main-advantages__item-info
+										.main-advantages__item-title ГОСТы по энергетике
+										.main-advantages__item-text Данный раздел содержит полный пакет ГОСТов по энергетике
+							.main-advantages__item-cont
+								.main-advantages__item
+									figure.main-advantages__item-img
+										img(src="img/advantages-2.svg", alt="")
+									.main-advantages__item-info
+										.main-advantages__item-title ПУЭ: Правила Электроустановок
+										.main-advantages__item-text Как не «сгореть» на работе. Жизненно важная информация
 				section.main-gallery-cont
-					.wrapper
-						.main-gallery
-							.main-gallery__top
-								.main-gallery__info
-									.main-gallery__title Фото производства
-									.main-gallery__text Мы поставляем интересующую Вас продукцию в Челябинске и в любом регионы России, СНГ и Ближнего Востока, обеспечив решение всех организационных вопросов, связанных с поставкой, погрузкой и транспортировкой продукции, таможенных вопросов, а также...
-								.main-gallery__btn
-									a(href="").btn Посмотреть все фото
-							.main-gallery__list
-								a(href="img/photos/gallery-1.jpg").main-gallery__item-cont.fancybox
-									.main-gallery__item
-										figure
-											img(src="img/photos/gallery-1.jpg", alt="")
-										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
-										.main-gallery__item-address Атырауской область, Казахстан
-								a(href="img/photos/gallery-2.jpg").main-gallery__item-cont.fancybox
-									.main-gallery__item
-										figure
-											img(src="img/photos/gallery-2.jpg", alt="")
-										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
-										.main-gallery__item-address Атырауской область, Казахстан
-								a(href="img/photos/gallery-3.jpg").main-gallery__item-cont.fancybox
-									.main-gallery__item
-										figure
-											img(src="img/photos/gallery-3.jpg", alt="")
-										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
-										.main-gallery__item-address Атырауской область, Казахстан
-								a(href="img/photos/gallery-4.jpg").main-gallery__item-cont.fancybox
-									.main-gallery__item
-										figure
-											img(src="img/photos/gallery-4.jpg", alt="")
-										.main-gallery__item-title Нефтегазовое месторождение Тенгиз
-										.main-gallery__item-address Атырауской область, Казахстан
+					.main-gallery
+						.main-gallery__top
+							.main-gallery__info
+								.main-gallery__title Фото производства
+								.main-gallery__text Мы поставляем интересующую Вас продукцию в Челябинске и в любом регионы России, СНГ и Ближнего Востока, обеспечив решение всех организационных вопросов, связанных с поставкой, погрузкой и транспортировкой продукции, таможенных вопросов, а также...
+							.main-gallery__btn
+								a(href="").btn Посмотреть все фото
+						.main-gallery__list
+							a(href="img/photos/gallery-1.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item
+									figure
+										img(src="img/photos/gallery-1.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
+							a(href="img/photos/gallery-2.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item
+									figure
+										img(src="img/photos/gallery-2.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
+							a(href="img/photos/gallery-3.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item
+									figure
+										img(src="img/photos/gallery-3.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
+							a(href="img/photos/gallery-4.jpg").main-gallery__item-cont.fancybox
+								.main-gallery__item
+									figure
+										img(src="img/photos/gallery-4.jpg", alt="")
+									.main-gallery__item-title Нефтегазовое месторождение Тенгиз
+									.main-gallery__item-address Атырауской область, Казахстан
 				section.main-gallery-cont
-				.wrapper
 					.main-gallery
 						.main-gallery__top
 							.main-gallery__info

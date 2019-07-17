@@ -9,11 +9,82 @@
 		font-size: rem(34)
 		line-height: 40px
 
-	&__img
-		margin-top: 110px
+	&__slider
 
 		img
+			display: block
 			border-radius: 5px
+
+	&__slider-arrow
+		position: absolute
+		bottom: 65px
+		left: 85px
+		display: flex
+		
+		.swiper-button
+			position: relative
+			top: auto
+			right: auto
+			bottom: auto
+			left: auto
+			margin: 0
+			size: 42px
+			border-radius: 50%
+			background-color: var(--main-color)
+			background-image: none
+
+
+			&:after
+				content: ''
+				position: absolute
+				top: calc(50% - 4px)
+				left: calc(50% - 4px)
+				size: 8px
+				border-top: 1px solid #fff
+				border-right: 1px solid #fff
+				transform: rotate(45deg)
+
+			&-prev
+				margin-right: 20px
+				transform: rotate(180deg)
+
+	.swiper-pagination-bullet
+		font-size: 8px
+		background-color: #fff
+		opacity: 1
+
+		&-active
+			position: relative
+			background: #fff
+			size: 20px
+
+			&:before
+				content: ''
+				size: 8px
+				border-radius: 50%
+				position: absolute
+				top: calc(50% - 4px)
+				left: calc(50% - 4px)
+				display: block
+				background: var(--main-color)
+
+
+	.swiper-pagination
+		left: auto
+		bottom: 58px
+		right: 70px
+		width: auto
+		display: flex
+		align-items: center
+
+.main
+	.main-banner
+		&__slider
+			margin-top: 110px
+
+
+
+
 
 
 .main-catalog
@@ -23,15 +94,20 @@
 	&-cont
 		margin-top: 90px
 
+.catalog
+
 	&__list
 		display: flex
 		flex-wrap: wrap
 		margin: 0 0 -40px -40px
 
 	&__item
+
+		.circle-arrow
+			margin-left: 20px
+			float: right
+
 		&-bot
-			display: flex
-			justify-content: space-between
 			margin-top: 30px
 			font-size: rem(16)
 
@@ -51,7 +127,7 @@
 					margin-top: 60px
 					color: #000
 
-				.main-catalog__item
+				.catalog__item
 					background: var(--main-color)
 					padding: 58px 85px
 					border-radius: 5px
@@ -71,7 +147,8 @@
 	size: 32px
 	border-radius: 50%
 	background: var(--main-color)
-	margin-left: 20px
+	flex: none
+	// margin-left: 20px
 
 	&:before
 		content: ''

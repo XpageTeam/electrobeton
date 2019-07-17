@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Каталог
+		include inc/head.pug
+		include inc/css.pug
+	body.inner.loading
+		include inc/header.pug
+
+		.speed-btn-cont
+			.speed-btn
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-calc.svg", alt="")
+					.speed-btn__item-text Рассчитать цену
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-write.svg", alt="")
+					.speed-btn__item-text Написать нам написать нам
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-call.svg", alt="")
+					.speed-btn__item-text Позвонить
+
+
+		
+		main#content
+			.title-block__cont
+				.wrapper
+					.title-block
+						.title-block__title
+							h1 Каталог
+						.title-block__crumbs
+							.bread-crumbs
+								a.bread-crumbs__link(href="/" title="Главная") 
+								span.bread-crumbs__this Каталог
+
+			.content
+				.wrapper
+					section.catalog-cont
+						.catalog
+							.catalog__list
+								a(href="#").catalog__item-cont
+									.catalog__item
+										figure.catalog__item-img
+											img(src="img/photos/cat-1.jpg", alt="")
+										.catalog__item-bot
+											.circle-arrow
+											.catalog__item-title Трансформаторные подстанции
+											.catalog__item-text Блочная комплектная трансформаторная подстанция
+							
+							
+
+
+								
+
+
+
+		include inc/footer.pug
+		include inc/scripts.pug

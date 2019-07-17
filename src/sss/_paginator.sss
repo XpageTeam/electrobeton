@@ -1,0 +1,54 @@
+.paginator
+	display: flex
+	justify-content: center
+	margin-top: 90px
+	align-items: center
+	max-width: 100% !important
+
+	li
+		list-style: none
+		padding: 0 !important
+
+		a
+			line-height: 1
+			width: 30px
+			text-align: center
+			display: block
+			color: rgba(0, 0, 0, 0.3)
+
+			&.active
+				color: #000
+
+			&:hover
+				color: var(--second-color)
+
+		&:before
+			display: none !important
+
+		&:first-child, &:last-child
+			a
+				size: 40px
+				border-radius: 50%
+				background-color: var(--background-color)
+				display: block
+
+				&:after
+					content: ''
+					position: absolute
+					top: calc(50% - 3px)
+					left: calc(50% - 3px)
+					display: block
+					size: 6px
+					border-top: 1px solid 
+					border-right: 1px solid
+					transform: rotate(45deg) 
+		&:first-child
+			margin-right: 30px
+			transform: rotate(180deg)
+
+
+		&:last-child
+			margin-left: 30px !important
+
+
+

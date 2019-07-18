@@ -12,14 +12,52 @@
 
 @import "_speed-btn.sss"
 @import "_main-page.sss"
-@import "_inner-page.sss"
+// @import "_inner-page.sss"
 @import "_slider-gallery.sss"
 @import "_about-text.sss"
 @import "_contacts.sss"
 @import "_news.sss"
 @import "_documents.sss"
 @import "_catalog.sss"
+@import "_cat-2.sss"
+@import "_card.sss"
 
+.page-error
+	display: flex
+	align-items: center
+	justify-content: center
+	height: calc(100vh - 52vh)
+
+	&__title
+		font-size: rem(250)
+		font-weight: 300
+		color: var(--main-color)
+		margin-right: 125px
+		line-height: 1
+
+	&__info
+		&-top
+			font-size: rem(24)
+			font-weight: 500
+			margin-bottom: 40px
+
+		&-bot
+			position: relative
+			font-size: rem(14)
+			text-decoration: none
+			display: flex
+			align-items: center
+
+			&:before
+				content: ''
+				display: inline-block
+				size: 50px
+				border-radius: 5px
+				background-color: var(--second-color)
+				background-image: url('../img/ico-home-w.svg')
+				background-position: center
+				background-repeat: no-repeat
+				margin-right: 25px
 
 
 .btn
@@ -37,11 +75,22 @@
 		background-color: #fff
 		color: #000
 
+	&--orange
+		background-color: var(--second-color)
+
+		&:hover
+			border-color: var(--second-color)
+
 .main
 	position: relative
 	background-image: url('../img/page-bg.svg')
 	background-repeat: no-repeat
 	background-position: top right
+
+	
+	.main-banner__slider-arrow
+		display: none
+
 
 .scroll-top
 	display: none !important
@@ -59,5 +108,66 @@
 
 
 
+// .content
+// 	.wrapper
+// 		display: flex
+// 		flex: 1 1 auto
+
+.aside
+	border: 1px solid rgba(0, 0, 0, 0.15)
+	border-radius: 5px 
+
+	&-cont
+		width: 315px
+		margin-right: 40px
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+		flex: none
+		float: left
+
+		+ *
+			margin-left: calc(315px + 40px)
+			width: calc(100% - 315px + 40px)
+			margin-top: 0 !important
 
 
+.links
+	&-cont
+		&:not(:last-child)
+			border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+
+		&.js__open
+			.links-top
+				&:after
+					transform: rotate(225deg)
+
+	&-bot
+		display: flex
+		flex-direction: column
+		padding: 0 40px 20px 40px
+
+		&-cont
+			display: none
+
+	&-top
+		position: relative
+		padding: 20px 40px
+		cursor: pointer
+
+		&:after
+			content: ''
+			position: absolute
+			right: 30px
+			top: calc(50% - 3px)
+			size: 6px
+			border-right: 1px solid #000
+			border-bottom: 1px solid #000
+			transform: rotate(45deg)
+			transition: transform .5s ease
+	&-link
+		font-size: rem(14)
+		color: var(--main-color)
+
+		&:not(:first-child)
+			margin-top: 10px

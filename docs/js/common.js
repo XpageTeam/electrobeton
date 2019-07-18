@@ -10544,10 +10544,6 @@ __webpack_require__(332);
 
 __webpack_require__(335);
 
-__webpack_require__(338);
-
-__webpack_require__(339);
-
 __webpack_require__(340);
 
 __webpack_require__(341);
@@ -10559,6 +10555,10 @@ var _xWidgets2 = _interopRequireDefault(_xWidgets);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 window.$ = _jquery2.default;
+
+// import "./tabs.js";
+// import "./accordion.js";
+
 window.jQuery = _jquery2.default;
 window.is = _is_js2.default;
 
@@ -10631,7 +10631,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		}
 	});
 
-	var mainBanner = new _swiper2.default('.inner .swiper-container', {
+	var mainBanner = new _swiper2.default('.main-banner .swiper-container', {
 		spaceBetween: 0,
 		slidesPerView: 1,
 		loop: true,
@@ -10681,6 +10681,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		$this.selectize({
 			create: true
 		});
+	});
+
+	(0, _jquery2.default)(".links-top").click(function () {
+		var $this = (0, _jquery2.default)(this);
+
+		$this.closest('.links-cont').toggleClass('js__open');
+		$this.nextAll('.links-bot-cont').slideToggle();
+	});
+
+	(0, _jquery2.default)(".card-characteristics__item-top").click(function () {
+		var $this = (0, _jquery2.default)(this);
+
+		$this.closest('.card-characteristics__item').toggleClass('js__open');
+		$this.nextAll('.card-characteristics__item-bot').slideToggle();
 	});
 });
 
@@ -29815,59 +29829,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 	return MicroPlugin;
 }));
-
-/***/ }),
-
-/***/ 338:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _jquery = __webpack_require__(29);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _jquery2.default)(function (_) {
-	(0, _jquery2.default)(".tabs-tab").click(function () {
-		var $this = (0, _jquery2.default)(this);
-
-		if ($this.hasClass("active")) return;
-
-		var id = $this.attr("data-id"),
-		    $parent = $this.closest(".tabs");
-
-		$parent.find(".tabs-tab.active, .tabs-content.active").removeClass("active");
-
-		$this.addClass("active");
-		$parent.find(".tabs-content[data-id='" + id + "']").addClass("active");
-	});
-});
-
-/***/ }),
-
-/***/ 339:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _jquery = __webpack_require__(29);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _jquery2.default)(function (_) {
-	(0, _jquery2.default)(".accordion__item-top").click(function () {
-		var $this = (0, _jquery2.default)(this);
-
-		$this.closest('.accordion__item').toggleClass('js__open');
-		$this.nextAll('.accordion__item-bot').slideToggle();
-	});
-});
 
 /***/ }),
 

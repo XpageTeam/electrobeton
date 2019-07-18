@@ -1,0 +1,181 @@
+.card
+	&-title
+		font-size: rem(24)
+		margin-bottom: 30px
+
+	&-info
+		display: flex
+
+	&-slider
+		width: 415px
+		margin-left: 50px
+		flex: none
+
+
+		&-arrow
+			position: absolute
+			bottom: 30px
+			right: 25px
+			display: flex
+
+	&-bot
+		display: flex
+		flex-wrap: wrap
+
+		.btn	
+			margin-right: 20px
+			line-height: 1
+
+.docs__links
+	display: flex
+	flex-wrap: wrap
+
+	a
+		display: flex
+		align-items: center
+		text-decoration: none
+		padding: 13px 23px
+		border-radius: 30px
+		background: #F2F2F2
+		line-height: 1
+		margin-right: 20px
+		color: rgba(0, 0, 0, 0.3)
+		font-size: rem(14)
+		border: 1px solid transparent
+		transition: border-color .5s ease
+
+		&:hover
+			border-color: var(--main-color)
+
+		&:before
+			content: ''
+			display: inline-block
+			size: 13px 16px
+			margin-right: 12px
+			background-image: url('../img/ico-download--gray.svg')
+			background-position: center
+			background-size: contain
+			background-repeat: no-repeat
+			transition: background .5s ease
+			
+
+.btn.ico-pen
+	position: relative
+	display: flex
+	align-items: center
+	line-height: 1
+	padding: 11px 23px
+
+	&:before
+		content: ''
+		display: inline-block
+		size: 16px
+		margin-right: 5px
+		background-image: url('../img/ico-write.svg')
+		background-position: center
+		background-size: contain
+		background-repeat: no-repeat
+		transition: background .5s ease
+
+	&:hover
+		&:before
+			background-image: url('../img/ico-write--orange.svg')
+
+
+.card-characteristics
+	margin-top: 65px
+
+	&__item
+
+		&-text
+			padding: 20px
+
+
+		&:not(:first-child)
+			margin-top: 25px
+
+		&.js__open
+			.card-characteristics__item-top
+				background-color: var(--main-color)
+				color: #fff
+
+				&:after
+					border-bottom: 1px solid #fff
+					border-right: 1px solid #fff
+					transform: rotate(225deg)
+		&-top
+			position: relative
+			background-color: var(--background-color)
+			padding: 20px 30px
+			font-size: rem(18)
+			border-radius: 5px
+			cursor: pointer
+			transition: background .5s ease
+
+			&:after
+				content: ''
+				display: block
+				position: absolute
+				right: 20px
+				top: calc(50% - 3px)
+				size: 6px
+				border-bottom: 1px solid #000
+				border-right: 1px solid #000
+				transform: rotate(45deg)
+				transition: transform .5s ease
+
+		&-bot
+			display: none
+
+.characteristics-table
+	margin-top: 25px
+	table-layout: fixed
+	width: 100%
+	// border: 0 !important
+
+	img
+		display: block
+
+	th
+		padding: 0 !important
+		text-align: left
+		background: #fff
+
+		img
+			width: 100%
+			margin-bottom: 20px
+
+		&:first-child
+			div
+				margin-right: 15px
+		&:last-child
+			div
+				margin-left: 15px
+
+	tr
+		&:first-child
+			div
+				padding: 15px 20px
+				background: var(--background-color)
+
+
+	td, th
+		border: 0 !important
+		// width: 50%
+
+	tbody
+		margin-top: 30px
+
+		td
+			vertical-align: top 
+			padding: 8px 20px !important
+
+		tr
+			&:nth-child(odd)
+				background-color: var(--background-color)
+
+
+
+
+
+

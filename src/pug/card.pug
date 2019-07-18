@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		title Карточка товара
+		include inc/head.pug
+		include inc/css.pug
+	body.inner.loading
+		include inc/header.pug
+
+		.speed-btn-cont
+			.speed-btn
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-calc.svg", alt="")
+					.speed-btn__item-text Рассчитать цену
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-write.svg", alt="")
+					.speed-btn__item-text Написать нам написать нам
+				a(href="").speed-btn__item
+					figure.speed-btn__item-img
+						img(src="img/ico-call.svg", alt="")
+					.speed-btn__item-text Позвонить
+
+
+		
+		main#content
+			.title-block__cont
+				.wrapper
+					.title-block
+						.title-block__title
+							h1 КРУ К-12
+						.title-block__crumbs
+							.bread-crumbs
+								a.bread-crumbs__link(href="/" title="Главная") 
+								span.bread-crumbs__this КРУ К-12
+
+			.content
+				.wrapper
+					aside.aside-cont
+						.aside
+							.links-cont
+								.links-top БКТП
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+										a(href="#").links-link БКТП-250
+										a(href="#").links-link БКТП-400
+										a(href="#").links-link БКТП-630
+										a(href="#").links-link БКТП-1000
+										a(href="#").links-link БКТП-1250
+										a(href="#").links-link БКТП-1600
+										a(href="#").links-link БКТП-2000
+										a(href="#").links-link БКТП-2500
+										a(href="#").links-link 2БКТП-25
+										a(href="#").links-link 2БКТП-60
+										a(href="#").links-link 2БКТП-100
+										a(href="#").links-link 2БКТП-160
+										a(href="#").links-link 2БКТП-250
+										a(href="#").links-link 2БКТП-400
+										a(href="#").links-link 2БКТП-630
+										a(href="#").links-link 2БКТП-1000
+										a(href="#").links-link 2БКТП-1250
+										a(href="#").links-link 2БКТП-1600
+										a(href="#").links-link 2БКТП-2000
+										a(href="#").links-link 2БКТП-2500
+							.links-cont
+								.links-top БКРП
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+										a(href="#").links-link БКТП-250
+										a(href="#").links-link БКТП-400
+										a(href="#").links-link БКТП-630
+										a(href="#").links-link БКТП-1000
+										a(href="#").links-link БКТП-1250
+										a(href="#").links-link БКТП-1600
+										a(href="#").links-link БКТП-2000
+										a(href="#").links-link БКТП-2500
+										a(href="#").links-link 2БКТП-25
+										a(href="#").links-link 2БКТП-60
+										a(href="#").links-link 2БКТП-100
+										a(href="#").links-link 2БКТП-160
+										a(href="#").links-link 2БКТП-250
+										a(href="#").links-link 2БКТП-400
+										a(href="#").links-link 2БКТП-630
+										a(href="#").links-link 2БКТП-1000
+										a(href="#").links-link 2БКТП-1250
+										a(href="#").links-link 2БКТП-1600
+										a(href="#").links-link 2БКТП-2000
+										a(href="#").links-link 2БКТП-2500
+							.links-cont
+								.links-top БРП
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+										a(href="#").links-link БКТП-250
+										a(href="#").links-link БКТП-400
+										a(href="#").links-link БКТП-630
+										a(href="#").links-link БКТП-1000
+										a(href="#").links-link БКТП-1250
+										a(href="#").links-link БКТП-1600
+										a(href="#").links-link БКТП-2000
+										a(href="#").links-link БКТП-2500
+										a(href="#").links-link 2БКТП-25
+										a(href="#").links-link 2БКТП-60
+										a(href="#").links-link 2БКТП-100
+										a(href="#").links-link 2БКТП-160
+										a(href="#").links-link 2БКТП-250
+										a(href="#").links-link 2БКТП-400
+										a(href="#").links-link 2БКТП-630
+										a(href="#").links-link 2БКТП-1000
+										a(href="#").links-link 2БКТП-1250
+										a(href="#").links-link 2БКТП-1600
+										a(href="#").links-link 2БКТП-2000
+										a(href="#").links-link 2БКТП-2500
+							.links-cont
+								.links-top НКУ
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+										a(href="#").links-link БКТП-250
+										a(href="#").links-link БКТП-400
+										a(href="#").links-link БКТП-630
+										a(href="#").links-link БКТП-1000
+										a(href="#").links-link БКТП-1250
+										a(href="#").links-link БКТП-1600
+										a(href="#").links-link БКТП-2000
+										a(href="#").links-link БКТП-2500
+										a(href="#").links-link 2БКТП-25
+										a(href="#").links-link 2БКТП-60
+										a(href="#").links-link 2БКТП-100
+										a(href="#").links-link 2БКТП-160
+										a(href="#").links-link 2БКТП-250
+										a(href="#").links-link 2БКТП-400
+										a(href="#").links-link 2БКТП-630
+										a(href="#").links-link 2БКТП-1000
+										a(href="#").links-link 2БКТП-1250
+										a(href="#").links-link 2БКТП-1600
+										a(href="#").links-link 2БКТП-2000
+										a(href="#").links-link 2БКТП-2500
+							.links-cont
+								.links-top КСО
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+							.links-cont
+								.links-top КРУ
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+							.links-cont
+								.links-top Камень бордюрный
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+							.links-cont
+								.links-top Тротуарная плитка
+								.links-bot-cont
+									.links-bot
+										a(href="#").links-link БКТП-25
+										a(href="#").links-link БКТП-60
+										a(href="#").links-link БКТП-100
+										a(href="#").links-link БКТП-160
+
+					section.card-cont
+						.card
+							.card-title КРН-10
+							.card-info
+								.card-text
+									.text-page
+										p КРУ К-12 предназначена для приема и распределения электрической энергии трехфазного переменного тока частоты 50 Гц, номинального напряжения до 10 кВ включительно и используются для общего назначения в распределительных устройствах, тепловых и атомных электростанциях, распределительных подстанций и в электроустановках промышленных предприятий всех отраслей народного хозяйства.
+										p В части воздействия климатических факторов внешней среды, ячейка КРУ К-12 соответствует исполнению V категории 3 ГОСТ 15150-69 и ГОСТ 15543-70, но для работы при температуре от минус 25°С.
+										p Окружающая среда: не взрывоопасная и не пожароопасная, не содержащая агрессивных газов и паров в концепциях, разрушающих металлы и изоляцию, не насыщенная токопроводящей пылью.
+
+
+								.card-slider
+									.card-slider__list
+										.swiper-container
+											.card-slider-arrow
+												.swiper-button.swiper-button-prev
+												.swiper-button.swiper-button-next
+											.swiper-wrapper
+												.swiper-slide
+													.card-slider__item
+														img(src="img/no-photo.svg", alt="")
+												.swiper-slide
+													.card-slider__item
+														img(src="img/no-photo.svg", alt="")
+							.card-bot
+								a(href="").btn.btn--orange.ico-pen Оставить заявку
+								.docs
+									.docs__links
+										a(href="") pdf
+										a(href="") docs
+										a(href="") autocad
+										a(href="") excel
+
+							.card-characteristics
+								.card-characteristics__list
+									.card-characteristics__item-cont
+										.card-characteristics__item
+											.card-characteristics__item-top
+												span Технические характеристики
+											.card-characteristics__item-bot
+												table.characteristics-table
+													thead
+														tr
+															th
+																div Характеристика
+															th
+																div КРУ серии К-12
+														tr
+															th
+																div
+																	img(src="img/photos/characteristics-1.jpg", alt="")
+															th
+																div
+																	img(src="img/photos/characteristics-1.jpg", alt="")
+													tbody
+														tr
+															td Номинальное напряжение (линейное), кВ	
+															td 6; 10
+														tr
+															td Наибольшее рабочее напряжение (линейное), кВ
+															td 7,2; 12,0																	
+														tr
+															td Номинальный ток главных цепей, А	
+															td 630; 1000; 1600
+														tr
+															td Номинальный ток сборных шин, А	
+															td 1000; 1600; 2000; 3150
+														tr
+															td Номинальный ток отключения выключателя, встроенного в шкаф
+															td 20; 31,5
+														tr
+															td КРУ, кА	
+															td 20; 31,5
+														tr
+															td Ток термической стойкости -3с, кА	
+															td 51; 81
+														tr
+															td Номинальный ток электродинамической стойкости главных цепей шкафов кру, кА	
+															td 110; 220 - для постоянного тока;<br> 220 - для переменного тока
+														tr
+															td Номинальное напряжение вспомогательных цепей, В
+															td IP00 при открытых дверях. IP-20 при закрытых дверях шкафах, IP21 – по спецзаказам.
+														tr
+															td Степень защиты по ГОСТ 14254-96	
+															td Воздушная
+														tr
+															td Вид изоляции	
+															td Нормальная изоляция
+														tr
+															td Уровень изоляции по ГОСТ 1516.3-96	
+															td Местное, дистанционное
+														tr
+															td Вид управления	
+															td Двухстороннее с выкатными элементами
+
+														tr
+															td Условие обслуживания	
+															td
+														tr
+															td Наличие в шкафах выкатных элементов	
+															td
+														tr
+															td Габаритные размеры, мм:
+															td 900
+														tr
+															td ширина	
+															td 1490
+														tr
+															td глубина	
+															td 2370
+														tr
+															td высота	
+															td 400-1250 (в зависимости от исполнения)
+														tr
+															td Масса, кг	
+															td с не разделенными фазами	
+														tr
+															td Информация
+															td 	
+																ul
+																	li с выключателями;
+																	li с разъединяющими контактами главной цепи;
+																	li с разрядниками;
+																	li с трансформаторами напряжения;
+																	li с кабельными сборками;
+																	li с шинными вводами;
+																	li с силовыми трансформаторами напряжения;
+																	li с трансформаторами напряжения и разрядниками;
+																	li с силовыми предохранителями.
+																	li с выкатными элементами
+																	li без выкатных элементов
+										.card-characteristics__item
+											.card-characteristics__item-top
+												span Состав изделия
+											.card-characteristics__item-bot
+												table.characteristics-table
+													thead
+														tr
+															th
+																div Характеристика
+															th
+																div КРУ серии К-12
+														tr
+															th
+																div
+																	img(src="img/photos/characteristics-1.jpg", alt="")
+															th
+																div
+																	img(src="img/photos/characteristics-1.jpg", alt="")
+													tbody
+														tr
+															td Номинальное напряжение (линейное), кВ	
+															td 6; 10
+														tr
+															td Наибольшее рабочее напряжение (линейное), кВ
+															td 7,2; 12,0																	
+														tr
+															td Номинальный ток главных цепей, А	
+															td 630; 1000; 1600
+														tr
+															td Номинальный ток сборных шин, А	
+															td 1000; 1600; 2000; 3150
+														tr
+															td Номинальный ток отключения выключателя, встроенного в шкаф
+															td 20; 31,5
+														tr
+															td КРУ, кА	
+															td 20; 31,5
+														tr
+															td Ток термической стойкости -3с, кА	
+															td 51; 81
+														tr
+															td Номинальный ток электродинамической стойкости главных цепей шкафов кру, кА	
+															td 110; 220 - для постоянного тока;<br> 220 - для переменного тока
+														tr
+															td Номинальное напряжение вспомогательных цепей, В
+															td IP00 при открытых дверях. IP-20 при закрытых дверях шкафах, IP21 – по спецзаказам.
+														tr
+															td Степень защиты по ГОСТ 14254-96	
+															td Воздушная
+														tr
+															td Вид изоляции	
+															td Нормальная изоляция
+														tr
+															td Уровень изоляции по ГОСТ 1516.3-96	
+															td Местное, дистанционное
+														tr
+															td Вид управления	
+															td Двухстороннее с выкатными элементами
+
+														tr
+															td Условие обслуживания	
+															td
+														tr
+															td Наличие в шкафах выкатных элементов	
+															td
+														tr
+															td Габаритные размеры, мм:
+															td 900
+														tr
+															td ширина	
+															td 1490
+														tr
+															td глубина	
+															td 2370
+														tr
+															td высота	
+															td 400-1250 (в зависимости от исполнения)
+														tr
+															td Масса, кг	
+															td с не разделенными фазами	
+														tr
+															td Информация
+															td 	
+																ul
+																	li с выключателями;
+																	li с разъединяющими контактами главной цепи;
+																	li с разрядниками;
+																	li с трансформаторами напряжения;
+																	li с кабельными сборками;
+																	li с шинными вводами;
+																	li с силовыми трансформаторами напряжения;
+																	li с трансформаторами напряжения и разрядниками;
+																	li с силовыми предохранителями.
+																	li с выкатными элементами
+																	li без выкатных элементов
+										.card-characteristics__item
+											.card-characteristics__item-top
+												span Устройство и работа КРУ К-12
+											.card-characteristics__item-bot
+												.card-characteristics__item-text
+													ul
+														li с выключателями;
+														li с разъединяющими контактами главной цепи;
+														li с разрядниками;
+														li с трансформаторами напряжения;
+														li с кабельными сборками;
+														li с шинными вводами;
+														li с силовыми трансформаторами напряжения;
+														li с трансформаторами напряжения и разрядниками;
+														li с силовыми предохранителями.
+														li с выкатными элементами
+														li без выкатных элементов
+
+
+
+
+
+
+
+
+
+		include inc/footer.pug
+		include inc/scripts.pug

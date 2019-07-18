@@ -4,8 +4,8 @@ import Swiper from "swiper/dist/js/swiper.js";
 import "./stock-sliders.js";
 import "selectize/dist/js/selectize.min.js";
 
-import "./tabs.js";
-import "./accordion.js";
+// import "./tabs.js";
+// import "./accordion.js";
 import "./mobile-menu.js";
 import "./standart-page.js"
 import Sticky from "./x-widgets.js";
@@ -55,6 +55,8 @@ require("../css/jquery.fancybox.css");
 document.addEventListener("DOMContentLoaded", e => {
 
 
+
+
 	if (is.ie())
 		$('body').addClass('ie-fix');
 	
@@ -93,7 +95,7 @@ document.addEventListener("DOMContentLoaded", e => {
 		},
     });
 
-    var mainBanner = new Swiper('.inner .swiper-container', {
+    var mainBanner = new Swiper('.main-banner .swiper-container', {
 		spaceBetween: 0,
 		slidesPerView: 1,
 		loop: true,
@@ -139,8 +141,6 @@ document.addEventListener("DOMContentLoaded", e => {
 	});
 
 
-
-
 	$("body").on("click", ".scroll-top", function(){
         var scrollTop = $(window).scrollTop();
         $("html, body").animate({"scrollTop": 0}, "slow")
@@ -155,6 +155,20 @@ document.addEventListener("DOMContentLoaded", e => {
 			});
 
 		})
+
+	$(".links-top").click(function(){
+		let $this = $(this);
+
+		$this.closest('.links-cont').toggleClass('js__open');
+		$this.nextAll('.links-bot-cont').slideToggle();
+	});
+
+	$(".card-characteristics__item-top").click(function(){
+		let $this = $(this);
+
+		$this.closest('.card-characteristics__item').toggleClass('js__open');
+		$this.nextAll('.card-characteristics__item-bot').slideToggle();
+	});
 
 
 

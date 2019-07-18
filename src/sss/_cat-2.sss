@@ -1,0 +1,41 @@
+.cat-2
+	&__text
+		background-color: var(--background-color)
+		padding: 50px 55px
+		border-radius: 5px
+		margin-bottom: 45px
+
+.cat-links
+	&__list
+		column-count: 3
+		column-gap: 40px
+
+	&__item
+		position: relative
+		padding: 10px 25px 10px 15px
+
+		&:after
+			content: ''
+			position: absolute
+			right: 15px
+			top: calc(50% - 3px)
+			display: block
+			size: 6px
+			border-top: 1px solid #000
+			border-right: 1px solid #000
+			transform: rotate(45deg)
+			transition: box-shadow .5s ease
+
+		// &:hover
+		// 	box-shadow: var(--box-shadow)
+
+		&:nth-child(odd)
+			background-color: var(--background-color)
+
+	&__link
+		color: var(--main-color)
+		font-size: rem(14)
+		// display: block
+
+
+

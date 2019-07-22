@@ -60,12 +60,126 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 350);
+/******/ 	return __webpack_require__(__webpack_require__.s = 348);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 29:
+/***/ 348:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(42);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.$ = _jquery2.default;
+window.jQuery = _jquery2.default;
+
+document.addEventListener("DOMContentLoaded", function (e) {
+
+	(0, _jquery2.default)('.submenu').each(function (i, el) {
+		var $this = (0, _jquery2.default)(el);
+
+		console.log($this);
+		$this.closest('.head-menu__item').addClass('js__has-submenu');
+	});
+
+	(0, _jquery2.default)(".a-fontsize a").click(function () {
+		var $this = (0, _jquery2.default)(this);
+		switch ($this.attr("class")) {
+			case "a-fontsize-small":
+				Cookies.set("fontsize", "fontsize-small");
+				(0, _jquery2.default)("html").removeClass("fontsize-big");
+				(0, _jquery2.default)("html").removeClass("fontsize-normal");
+				(0, _jquery2.default)("html").addClass("fontsize-small");
+
+				break;
+			case "a-fontsize-normal":
+				Cookies.set("fontsize", "fontsize-normal");
+				(0, _jquery2.default)("html").removeClass("fontsize-small");
+				(0, _jquery2.default)("html").removeClass("fontsize-big");
+				(0, _jquery2.default)("html").addClass("fontsize-normal");
+				break;
+			case "a-fontsize-big":
+				Cookies.set("fontsize", "fontsize-big");
+				(0, _jquery2.default)("html").removeClass("fontsize-small");
+				(0, _jquery2.default)("html").removeClass("fontsize-normal");
+				(0, _jquery2.default)("html").addClass("fontsize-big");
+		}
+		return false;
+	});
+
+	(0, _jquery2.default)(".a-colors a").click(function () {
+		var $this = (0, _jquery2.default)(this);
+		switch ($this.attr("class")) {
+			case "a-color1":
+				Cookies.set("color", "color1");
+				(0, _jquery2.default)("body").removeClass("color2");
+				(0, _jquery2.default)("body").removeClass("color3");
+				(0, _jquery2.default)("body").addClass("color1");
+
+				break;
+			case "a-color2":
+				Cookies.set("color", "color2");
+				(0, _jquery2.default)("body").removeClass("color1");
+				(0, _jquery2.default)("body").removeClass("color3");
+				(0, _jquery2.default)("body").addClass("color2");
+
+				break;
+			case "a-color3":
+				Cookies.set("color", "color3");
+				(0, _jquery2.default)("body").removeClass("color1");
+				(0, _jquery2.default)("body").removeClass("color2");
+				(0, _jquery2.default)("body").addClass("color3");
+		}
+		return false;
+	});
+
+	(0, _jquery2.default)(".access .special").click(function () {
+		console.log(1);
+		Cookies.remove("special", 1, { expires: -1 });
+		location.reload();
+	});
+
+	(0, _jquery2.default)('.head-top .head-top__menu-item').each(function (i, el) {
+		var $this = (0, _jquery2.default)(el);
+
+		$this.addClass('main-nav__item');
+	});
+
+	var menuItemLink = (0, _jquery2.default)('.head-top .head-top__menu-item').clone();
+
+	(0, _jquery2.default)('.head-bot .head-top__menu-list').append('<div class="one-links"></div>');
+
+	(0, _jquery2.default)('.head-bot .head-top__menu-list').append(menuItemLink);
+
+	(0, _jquery2.default)('.head-top__menu-list .main-nav__item').each(function (i, el) {
+		var $this = (0, _jquery2.default)(el);
+
+		var text = 'Галерея';
+
+		if ($this.find('.head-top__menu-link').text() == text) {
+			$this.remove();
+		}
+
+		$this.find('.sub-menu--wrap').closest('.main-nav__item').addClass('js__has-submenu');
+
+		if (!$this.hasClass('js__has-submenu')) {
+			var link = $this.clone();
+
+			(0, _jquery2.default)('.one-links').append(link);
+		}
+	});
+});
+
+/***/ }),
+
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10434,120 +10548,6 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-
-/***/ }),
-
-/***/ 350:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _jquery = __webpack_require__(29);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.$ = _jquery2.default;
-window.jQuery = _jquery2.default;
-
-document.addEventListener("DOMContentLoaded", function (e) {
-
-	(0, _jquery2.default)('.submenu').each(function (i, el) {
-		var $this = (0, _jquery2.default)(el);
-
-		console.log($this);
-		$this.closest('.head-menu__item').addClass('js__has-submenu');
-	});
-
-	(0, _jquery2.default)(".a-fontsize a").click(function () {
-		var $this = (0, _jquery2.default)(this);
-		switch ($this.attr("class")) {
-			case "a-fontsize-small":
-				Cookies.set("fontsize", "fontsize-small");
-				(0, _jquery2.default)("html").removeClass("fontsize-big");
-				(0, _jquery2.default)("html").removeClass("fontsize-normal");
-				(0, _jquery2.default)("html").addClass("fontsize-small");
-
-				break;
-			case "a-fontsize-normal":
-				Cookies.set("fontsize", "fontsize-normal");
-				(0, _jquery2.default)("html").removeClass("fontsize-small");
-				(0, _jquery2.default)("html").removeClass("fontsize-big");
-				(0, _jquery2.default)("html").addClass("fontsize-normal");
-				break;
-			case "a-fontsize-big":
-				Cookies.set("fontsize", "fontsize-big");
-				(0, _jquery2.default)("html").removeClass("fontsize-small");
-				(0, _jquery2.default)("html").removeClass("fontsize-normal");
-				(0, _jquery2.default)("html").addClass("fontsize-big");
-		}
-		return false;
-	});
-
-	(0, _jquery2.default)(".a-colors a").click(function () {
-		var $this = (0, _jquery2.default)(this);
-		switch ($this.attr("class")) {
-			case "a-color1":
-				Cookies.set("color", "color1");
-				(0, _jquery2.default)("body").removeClass("color2");
-				(0, _jquery2.default)("body").removeClass("color3");
-				(0, _jquery2.default)("body").addClass("color1");
-
-				break;
-			case "a-color2":
-				Cookies.set("color", "color2");
-				(0, _jquery2.default)("body").removeClass("color1");
-				(0, _jquery2.default)("body").removeClass("color3");
-				(0, _jquery2.default)("body").addClass("color2");
-
-				break;
-			case "a-color3":
-				Cookies.set("color", "color3");
-				(0, _jquery2.default)("body").removeClass("color1");
-				(0, _jquery2.default)("body").removeClass("color2");
-				(0, _jquery2.default)("body").addClass("color3");
-		}
-		return false;
-	});
-
-	(0, _jquery2.default)(".access .special").click(function () {
-		console.log(1);
-		Cookies.remove("special", 1, { expires: -1 });
-		location.reload();
-	});
-
-	(0, _jquery2.default)('.head-top .head-top__menu-item').each(function (i, el) {
-		var $this = (0, _jquery2.default)(el);
-
-		$this.addClass('main-nav__item');
-	});
-
-	var menuItemLink = (0, _jquery2.default)('.head-top .head-top__menu-item').clone();
-
-	(0, _jquery2.default)('.head-bot .head-top__menu-list').append('<div class="one-links"></div>');
-
-	(0, _jquery2.default)('.head-bot .head-top__menu-list').append(menuItemLink);
-
-	(0, _jquery2.default)('.head-top__menu-list .main-nav__item').each(function (i, el) {
-		var $this = (0, _jquery2.default)(el);
-
-		var text = 'Галерея';
-
-		if ($this.find('.head-top__menu-link').text() == text) {
-			$this.remove();
-		}
-
-		$this.find('.sub-menu--wrap').closest('.main-nav__item').addClass('js__has-submenu');
-
-		if (!$this.hasClass('js__has-submenu')) {
-			var link = $this.clone();
-
-			(0, _jquery2.default)('.one-links').append(link);
-		}
-	});
-});
 
 /***/ })
 

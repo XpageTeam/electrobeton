@@ -7,6 +7,9 @@
 	justify-content: space-between
 	padding: 40px 0
 
+	&-logo
+		max-width: 250px
+
 	&-cont
 		margin-bottom: 80px
 
@@ -24,7 +27,7 @@
 			position: relative
 
 			&:not(:last-child)
-				margin-right: 60px
+				margin-right: 50px
 
 			&:before
 				content: ''
@@ -73,6 +76,24 @@
 
 
 
+@media screen and (max-width: 1400px)
+	
+	.head-cont
+		margin-bottom: 55px
+
+	.head-menu__item
+		&:not(:last-child)
+			margin-right: 30px
+
+	.head-menu, .head-contact, .head-soc
+		display: none
 
 
+@media screen and (max-width: 1000px)
+	
+	.head
+		padding: 25px 0
+
+		&-cont
+			margin-bottom: 30px
 

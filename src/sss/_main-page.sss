@@ -86,9 +86,6 @@
 
 
 
-
-
-
 .main-catalog
 	border-bottom: 1px solid #EBEBEB
 	padding-bottom: 90px
@@ -301,5 +298,162 @@
 					background-image: url('../img/ico-treangle.svg')
 					background-position: center
 					background-repeat: no-repeat
+
+
+@media screen and (max-width: 1500px)
+	
+	.main 
+		.main-banner__slider
+			margin-top: 60px
+
+	.main-catalog
+		padding-bottom: 60px
+
+		&-cont
+			margin-top: 50px
+
+	.main-about
+		&-cont
+			margin-top: 50px
+
+		&__info .btn 
+			margin-top: 45px
+
+		&__title
+			margin-bottom: 20px
+
+
+	.main-advantages
+		&-cont
+			margin-top: 80px
+
+		&__item-cont
+			padding: 35px
+
+		&__item-img
+			margin-right: 30px
+
+	.main-gallery
+		&-cont
+			margin: 50px 0
+
+		&__top
+			margin-bottom: 40px
+
+		&__text
+			margin-top: 15px
+
+		&__item-address
+			margin-top: 15px
+
+
+@media screen and (max-width: 1400px)
+	
+	.main-about__img
+		max-width: 50%
+		margin-left: 20px
+
+
+@media screen and (max-width: 1000px)
+	
+	.main-banner__title
+		font-size: 1.6rem
+		line-height: 34px
+
+	.main .main-banner__slider
+		margin-top: 35px
+
+	.catalog
+
+		&__list
+			margin: 0 0 -20px -20px
+
+		&__item
+
+			&-cont
+				width: calc((100% - 20px * 3) / 3)
+				margin: 0 0 20px 20px
+
+			&-bot
+				margin-top: 15px
+
+
+	.main-about
+		flex-direction: column-reverse
+		align-items: flex-start
+
+		&__img 
+			max-width: 100%
+			margin: 0 0 20px 0
+			width: 100%
+
+			img
+				width: 100%
+
+	.main-advantages__item-cont
+		width: 100%
+		margin: 0 0 40px 40px
+
+	.main-gallery__info
+		max-width: 430px
+
+
+	.main-gallery
+
+		&__list
+			flex-wrap: wrap
+
+		&__item
+
+			img
+				width: 100%
+
+			&-cont
+				width: calc((100% - 40px * 2) / 2)
+				margin: 0 0 40px 40px
+
+
+@media screen and (max-width: 667px)
+	
+	.catalog
+		&__list
+			flex-wrap: nowrap !important
+			overflow: auto
+			margin: 0
+			
+
+			&::-webkit-scrollbar 
+				height: 10px
+				border-top: 20px solid transparent
+
+
+			&::-webkit-scrollbar-track
+				border-radius: 0
+				background: var(--background-color)
+
+
+			&::-webkit-scrollbar-thumb 
+				border-radius: 0
+				background: var(--main-color)
+				
+
+
+
+
+		&__item
+			img
+				width: 100%
+
+			&-cont
+				min-width: 100%
+				margin: 0 20px 0 0
+
+	.main-catalog
+		padding-bottom: 0
+		border: 0
+
+
+
+
 
 

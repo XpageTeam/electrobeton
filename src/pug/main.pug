@@ -44,11 +44,25 @@ html(lang="ru")
 				section.main-catalog-cont
 					.main-catalog
 						.catalog__list
-							.catalog__item-cont.catalog__item-cont--big
+							a(href="#").catalog__item-cont
 								.catalog__item
-									.catalog__item-label Каталог продукции
-									.catalog__item-title Наше предприятие ведет своё летоисчисление с 21 мая 2001 года
-									a(href="#").btn Перейти в каталог
+									figure.catalog__item-img
+										img(src="img/photos/cat-1.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Трансформаторные подстанции
+										.circle-arrow
+							a(href="#").catalog__item-cont
+								.catalog__item
+									figure.catalog__item-img
+										img(src="img/photos/cat-2.jpg", alt="")
+									.catalog__item-bot
+										.catalog__item-title Ячейки КРУ
+										.circle-arrow
+							//- .catalog__item-cont.catalog__item-cont--big
+							//- 	.catalog__item
+							//- 		.catalog__item-label Каталог продукции
+							//- 		.catalog__item-title Наше предприятие ведет своё летоисчисление с 21 мая 2001 года
+							//- 		a(href="#").btn Перейти в каталог
 							a(href="#").catalog__item-cont
 								.catalog__item
 									figure.catalog__item-img

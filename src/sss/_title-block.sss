@@ -56,6 +56,9 @@
 	.title-block
 		padding: 25px 0
 
+		&__cont
+			margin-bottom: 20px
+
 @media screen and (max-width: 1000px)
 
 	.title-block h1
@@ -65,6 +68,14 @@
 		padding-right: 36px
 
 @media screen and (max-width: 667px)
+
+	.title-block
+		flex-direction: column-reverse
+		align-items: flex-start
+
+		&__title
+			margin-top: 20px
+
 
 	.bread-crumbs
 		&__this
@@ -91,6 +102,11 @@
 				transform: rotate(-45deg)
 				border-top: 1px solid #C39367
 				border-left: 1px solid #C39367
+
+			&:first-child
+				&:before
+					border: 0
+					transform: rotate(0deg)
 
 	.title-block
 		padding: 15px 0

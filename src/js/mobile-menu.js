@@ -4,7 +4,6 @@ $(_ => {
 
 	$('.burger').click(function(){
 		$('body').toggleClass("js__menu--open");
-		$('body').removeClass("js__submenu--open");
 	});
 
 	$("body").click(function(e){
@@ -19,8 +18,12 @@ $(_ => {
 
 	var menuClone = $('.head-menu__list').clone();
 	var socClone = $('header .soc').clone();
+	var fastBtn = $('.speed-btn').clone();
+	var contacts = $('.head-contact').clone();
 
 	$('.mobile-menu').append(menuClone);
+	$('.mobile-menu').append(fastBtn);
+	$('.mobile-menu').append(contacts);
 	$('.mobile-menu').append(socClone);
 
 	// $('.head-menu__item').find('ul').closest('li').addClass('js__has-submenu');

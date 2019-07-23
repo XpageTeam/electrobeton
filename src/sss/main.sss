@@ -26,7 +26,7 @@
 	display: flex
 	align-items: center
 	justify-content: center
-	height: calc(100vh - 52vh)
+	height: calc(100vh - 660px)
 
 	&__title
 		font-size: rem(250)
@@ -171,3 +171,117 @@
 
 		&:not(:first-child)
 			margin-top: 10px
+
+.js__open-filter
+	.aside
+		&-cont
+			transform: translate3d(0,0,0)
+
+
+@media screen and (max-width: 1600px)
+
+	.aside-cont + *
+		margin-left: 355px
+		width: calc(100% - 355px)
+
+@media screen and (max-width: 1500px)
+	
+	.aside-cont
+		width: 265px
+		margin-right: 20px
+
+	.aside-cont+*
+		margin-left: 285px
+		width: calc(100% - 285px)
+
+	.links-top
+		padding: 15px 30px 15px 20px
+
+		&:after
+			right: 20px
+
+@media screen and (max-width: 1400px)
+
+	.page-error
+		height: calc(100vh - 510px)
+		margin-bottom: -60px
+
+@media screen and (max-width: 1200px)
+	
+	.page-error__title
+		font-size: 10.625rem
+		margin-right: 80px
+
+	.page-error__info-top
+		margin-bottom: 20px
+
+@media screen and (max-width: 1000px)
+	
+	.inner .content>.wrapper section:not(:first-child)
+		margin-top: 40px
+
+	.aside
+		border: 0
+
+
+		&-cont
+			position: fixed
+			left: 0
+			top: 0
+			bottom: 0
+			background: #fff
+			z-index: 10
+			overflow-y: auto
+			transform: translate3d(-100%,0,0)
+			transition: transform .5s ease
+			margin: 0
+
+
+
+	.aside-cont+*
+		margin-left: 0
+		width: 100%
+
+	.links-cont
+		border-bottom: 1px solid rgba(0,0,0,.15)
+
+	.page-error
+		height: auto
+		margin-bottom: 0
+		flex-direction: column
+		align-items: center
+
+		&__title
+			margin-right: 0
+			font-size: 8.625rem
+
+		&__info
+			text-align: center
+
+			&-top
+				font-size: 1.3rem
+
+			&-bot
+				justify-content: center
+
+
+@media screen and (max-width: 667px)
+	
+	.page-error
+
+		&__title
+			font-size: 5rem
+
+		&__info
+			text-align: center
+
+			&-top
+				font-size: 1rem
+
+			&-bot
+				justify-content: center
+
+		&__info-bot:before
+			width: 40px
+			height: 40px
+

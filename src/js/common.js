@@ -54,8 +54,22 @@ require("../css/jquery.fancybox.css");
 
 document.addEventListener("DOMContentLoaded", e => {
 
+	$("body").click(function(e){
+		if (!$(e.target).is($("aside"))
+		&& !$("aside").has(e.target).length
+		&& $("body").hasClass("js__open-filter")
+		&& !$(e.target).is($(".ico-filter"))
+		&& !$(".ico-filter").has(e.target).length){
+			$("body").removeClass("js__open-filter")
+		}
+	});
 
 
+	$('.cat-2').prepend('<div class="cat-2-filter"><div class="ico-filter"></div></div>');
+
+	$('.ico-filter').click(function(){
+		$('body').toggleClass('js__open-filter');
+	});
 
 	if (is.ie())
 		$('body').addClass('ie-fix');
@@ -79,6 +93,11 @@ document.addEventListener("DOMContentLoaded", e => {
 		// loopedSlides: 5, //looped slides should be the same
 		watchSlidesVisibility: true,
 		watchSlidesProgress: true,
+		breakpoints: {
+			670: {
+				slidesPerView: 3,
+				}
+		}
     });
 
     var galleryTop = new Swiper('.gallery-top', {
@@ -111,6 +130,7 @@ document.addEventListener("DOMContentLoaded", e => {
 	        el: '.swiper-pagination',
 	        clickable: true,
 	    	},
+
 
 					
 	});

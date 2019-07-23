@@ -90,3 +90,66 @@
 					font-size: rem(14)
 
 
+@media screen and (max-width: 1500px)
+	
+	.contacts__item
+		padding: 30px
+		width: calc((100% - 30px * 2) / 2)
+		margin: 0 0 30px 30px
+
+		&--big
+			width: 100%
+			flex-wrap: wrap
+
+			.contacts__el
+				width: 50%
+				margin-bottom: 20px
+
+				&:nth-last-child(2), &:last-child
+					margin-bottom: 0
+
+		&-top
+			margin-bottom: 20px
+
+	.contacts-map
+		margin-top: 60px
+
+	.contacts__el
+		&-text
+			font-size: 1rem
+
+		&-item
+			margin-right: 20px
+
+		&-label
+			margin-bottom: 5px
+
+		&-info
+			line-height: 1
+
+
+@media screen and (max-width: 1000px)
+	
+	.contacts__item
+		padding: 20px
+		width: 100%
+
+		&--big
+			width: 100%
+			flex-wrap: wrap
+
+			.contacts__el
+				width: 100%
+
+				&:nth-last-child(2)
+					margin-bottom: 20px
+
+
+@media screen and (max-width: 667px)
+	
+	.contacts__el-item
+		&:not(:last-child)
+			margin-bottom: 20px
+
+	.contacts__item-bot
+		flex-direction: column

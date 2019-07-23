@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", e => {
 
 	if($(window).width() < 1000){
-		$(".text-page table").wrap('<div class="table-wrap"><div class="table-wrap__track"></div></div>')
+		$(".inner main table").wrap('<div class="table-wrap"><div class="table-wrap__track"></div></div>')
 
 		$(".table-wrap")
 			.prepend('<div class="table-wrap__shadow table-wrap__shadow--left"></div>')

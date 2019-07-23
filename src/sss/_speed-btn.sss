@@ -4,11 +4,13 @@
 	align-items: flex-start
 	transform: translate3d(100%,0,0)
 
+
 	&-cont
 		position: fixed
 		right: 0
 		top: 152px
 		z-index: 10
+		pointer-events: auto
 
 	&__item
 		position: relative
@@ -24,6 +26,7 @@
 		&:hover
 			transform: translate3d(-100%,0,0)
 			color: #fff
+			pointer-events: all
 
 
 
@@ -38,3 +41,13 @@
 			transform: translate3d(-48px,0,0)
 			padding: 16px 18px
 			margin-bottom: 10px
+
+
+@media screen and (max-width: 1400px)
+	
+	.speed-btn-cont
+		display: none
+		
+@media screen and (max-width: 667px)
+	.speed-btn-cont
+		display: none

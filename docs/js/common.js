@@ -222,6 +222,18 @@ __webpack_require__(342);
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
+	(0, _jquery2.default)("body").click(function (e) {
+		if (!(0, _jquery2.default)(e.target).is((0, _jquery2.default)("aside")) && !(0, _jquery2.default)("aside").has(e.target).length && (0, _jquery2.default)("body").hasClass("js__open-filter") && !(0, _jquery2.default)(e.target).is((0, _jquery2.default)(".ico-filter")) && !(0, _jquery2.default)(".ico-filter").has(e.target).length) {
+			(0, _jquery2.default)("body").removeClass("js__open-filter");
+		}
+	});
+
+	(0, _jquery2.default)('.cat-2').prepend('<div class="cat-2-filter"><div class="ico-filter"></div></div>');
+
+	(0, _jquery2.default)('.ico-filter').click(function () {
+		(0, _jquery2.default)('body').toggleClass('js__open-filter');
+	});
+
 	if (_is_js2.default.ie()) (0, _jquery2.default)('body').addClass('ie-fix');
 
 	(0, _jquery2.default)("picture").each(function () {
@@ -242,7 +254,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		freeMode: true,
 		// loopedSlides: 5, //looped slides should be the same
 		watchSlidesVisibility: true,
-		watchSlidesProgress: true
+		watchSlidesProgress: true,
+		breakpoints: {
+			670: {
+				slidesPerView: 3
+			}
+		}
 	});
 
 	var galleryTop = new _swiper2.default('.gallery-top', {
@@ -19476,7 +19493,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 	(0, _jquery2.default)('.burger').click(function () {
 		(0, _jquery2.default)('body').toggleClass("js__menu--open");
-		(0, _jquery2.default)('body').removeClass("js__submenu--open");
 	});
 
 	(0, _jquery2.default)("body").click(function (e) {
@@ -19487,8 +19503,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 	var menuClone = (0, _jquery2.default)('.head-menu__list').clone();
 	var socClone = (0, _jquery2.default)('header .soc').clone();
+	var fastBtn = (0, _jquery2.default)('.speed-btn').clone();
+	var contacts = (0, _jquery2.default)('.head-contact').clone();
 
 	(0, _jquery2.default)('.mobile-menu').append(menuClone);
+	(0, _jquery2.default)('.mobile-menu').append(fastBtn);
+	(0, _jquery2.default)('.mobile-menu').append(contacts);
 	(0, _jquery2.default)('.mobile-menu').append(socClone);
 
 	// $('.head-menu__item').find('ul').closest('li').addClass('js__has-submenu');
@@ -19536,7 +19556,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 document.addEventListener("DOMContentLoaded", function (e) {
 
 	if ($(window).width() < 1000) {
-		$(".text-page table").wrap('<div class="table-wrap"><div class="table-wrap__track"></div></div>');
+		$(".inner main table").wrap('<div class="table-wrap"><div class="table-wrap__track"></div></div>');
 
 		$(".table-wrap").prepend('<div class="table-wrap__shadow table-wrap__shadow--left"></div>').append('<div class="table-wrap__shadow table-wrap__shadow--right"></div>');
 

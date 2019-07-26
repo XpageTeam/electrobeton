@@ -13,8 +13,22 @@
 		&.forms__input-cont--textarea
 			width: 100%
 
+.popup
+	&-price
+		.forms__input-cont
+			width: calc((100% - 40px * 2) / 2)
+			margin: 0 0 20px 40px
+
+			&--textarea
+				width: 100%
+
+	&-call
+		.forms__input-cont
+			width: 100%
+			margin: 0 0 20px 40px
 
 .popup-form
+	display: none
 
 	&.fancybox-content
 		padding: rem(38) rem(47) rem(44)
@@ -45,6 +59,8 @@
 
 	.forms-submit-cont
 		margin-top: 40px
+
+	
 
 
 
@@ -196,10 +212,10 @@
 		min-height: 55px
 		border: 1px solid transparent
 		transition: border-color .3s ease
-		background: var(--backgroundColor)
+		background: var(--background-color)
 		font-size: rem(16)
 		color: #000
-		border-radius: 28px !important
+		border-radius: 5px !important
 
 		&_error
 			border: 1px solid var(--mainColor)

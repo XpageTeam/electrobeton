@@ -12,7 +12,8 @@
 
 	&__item
 		position: relative
-		padding: 10px 25px 10px 15px
+		break-inside: avoid
+		transition: background .5s ease
 
 		&:after
 			content: ''
@@ -26,8 +27,8 @@
 			transform: rotate(45deg)
 			transition: box-shadow .5s ease
 
-		// &:hover
-		// 	box-shadow: var(--box-shadow)
+		&:hover
+			background: #e2e2e2 !important
 
 		&:nth-child(odd)
 			background-color: var(--background-color)
@@ -35,6 +36,8 @@
 	&__link
 		color: var(--main-color)
 		font-size: rem(14)
+		display: block
+		padding: 10px 25px 10px 15px
 		// display: block
 
 .cat-2-filter

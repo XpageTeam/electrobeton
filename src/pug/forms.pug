@@ -22,19 +22,48 @@ html(lang="ru")
 						.content-main
 							ul
 								li
-									a(href="#convert").fancybox Преобразовать в компанию
+									a(href="#1").fancybox Расчитать цену
+								li
+									a(href="#2").fancybox Заказать звонок
 
 
-					#convert.popup-form.convert
-						.popup-form__title Преобразовать в компанию
-						.popup-form__text  Введите ИНН юридического лица (10 цифр) или ИНН индивидуального предпринимателя (12 цифр)
+					#1.popup-form.popup-price
+						.popup-form__title Расчитать цену
 						form(action="")
 							.forms-wrap
 								.forms__input-cont
 									input(placeholder="" type="text").forms__input
-									label.forms__label Введите ИНН
+									label.forms__label Имя
 									.forms__error-message
 										i.forms__error-message-icon
+								.forms__input-cont
+									input(placeholder="" type="text").forms__input
+									label.forms__label Телефон
+									.forms__error-message
+										i.forms__error-message-icon
+								.forms__input-cont.forms__input-cont--textarea
+									textarea(placeholder="" type="text").forms__input
+									label.forms__label Комментарий
+									.forms__error-message
+										i.forms__error-message-icon
+							.forms-submit-cont
+								input(type="submit" value="Преобразовать").forms__submit.btn
+
+					#2.popup-form.popup-call
+						.popup-form__title Заказать звонок
+						form(action="")
+							.forms-wrap
+								.forms__input-cont
+									input(placeholder="" type="text").forms__input
+									label.forms__label Имя
+									.forms__error-message
+										i.forms__error-message-icon
+								.forms__input-cont
+									input(placeholder="" type="text").forms__input
+									label.forms__label Телефон
+									.forms__error-message
+										i.forms__error-message-icon
+								
 							.forms-submit-cont
 								input(type="submit" value="Преобразовать").forms__submit.btn
 

@@ -29,7 +29,7 @@ const server_conn = ftp.create({
 	host:      connectionSettings.server.host,
 	user:      connectionSettings.server.user,
 	password:  connectionSettings.server.password,
-	parallel: 2,
+	parallel: 1,
 	log: gutil.log
 });
 

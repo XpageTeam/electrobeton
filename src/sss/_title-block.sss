@@ -22,12 +22,22 @@
 		font-size: rem(14)
 		font-weight: 300
 
+	&__link
+		&:first-child
+			&:after
+				display: none
+
+	&__link
+		&:not(:first-child)
+			border-bottom: 1px solid var(--main-color)
+
 	&__this
 		color: var(--main-color)
+		border-bottom: 1px solid var(--main-color)
 
 	&__link
 		position: relative
-		padding-right: 35px
+		margin-right: 35px
 		line-height: 1
 		text-decoration: underline
 		text-decoration-color: transparent
@@ -42,13 +52,15 @@
 
 
 		&:after
-			content: '-'
+			content: ''
 			position: absolute
-			right: 16px
-			top: calc(50% - 7px)
+			right: -19px
+			top: 9px
 			size: 5px 14px
 			display: block
-			color: #CCCEDA
+			width: 5px
+			height: 1px
+			background: #000
 
 
 @media screen and (max-width: 1500px)

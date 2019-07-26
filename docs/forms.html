@@ -50,16 +50,36 @@
 				<div class="content-main-cont">
 					<div class="content-main">
 						<ul>
-							<li><a class="fancybox" href="#convert">Преобразовать в компанию</a></li>
+							<li><a class="fancybox" href="#1">Расчитать цену</a></li>
+							<li><a class="fancybox" href="#2">Заказать звонок</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="popup-form convert" id="convert">
-					<div class="popup-form__title">Преобразовать в компанию</div>
-					<div class="popup-form__text"> Введите ИНН юридического лица (10 цифр) или ИНН индивидуального предпринимателя (12 цифр)</div>
+				<div class="popup-form popup-price" id="1">
+					<div class="popup-form__title">Расчитать цену</div>
 					<form action="">
 						<div class="forms-wrap">
-							<div class="forms__input-cont"><input class="forms__input" placeholder="" type="text" /><label class="forms__label">Введите ИНН</label>
+							<div class="forms__input-cont"><input class="forms__input" placeholder="" type="text" /><label class="forms__label">Имя</label>
+								<div class="forms__error-message"><i class="forms__error-message-icon"></i></div>
+							</div>
+							<div class="forms__input-cont"><input class="forms__input" placeholder="" type="text" /><label class="forms__label">Телефон</label>
+								<div class="forms__error-message"><i class="forms__error-message-icon"></i></div>
+							</div>
+							<div class="forms__input-cont forms__input-cont--textarea"><textarea class="forms__input" placeholder="" type="text"></textarea><label class="forms__label">Комментарий</label>
+								<div class="forms__error-message"><i class="forms__error-message-icon"></i></div>
+							</div>
+						</div>
+						<div class="forms-submit-cont"><input class="forms__submit btn" type="submit" value="Преобразовать" /></div>
+					</form>
+				</div>
+				<div class="popup-form popup-call" id="2">
+					<div class="popup-form__title">Заказать звонок</div>
+					<form action="">
+						<div class="forms-wrap">
+							<div class="forms__input-cont"><input class="forms__input" placeholder="" type="text" /><label class="forms__label">Имя</label>
+								<div class="forms__error-message"><i class="forms__error-message-icon"></i></div>
+							</div>
+							<div class="forms__input-cont"><input class="forms__input" placeholder="" type="text" /><label class="forms__label">Телефон</label>
 								<div class="forms__error-message"><i class="forms__error-message-icon"></i></div>
 							</div>
 						</div>

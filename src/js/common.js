@@ -54,6 +54,13 @@ require("../css/jquery.fancybox.css");
 
 document.addEventListener("DOMContentLoaded", e => {
 
+	$(".main-gallery__item figure").height(Math.max(...$(".main-gallery__item img").map(function(){
+		return $(this).height();
+	})));
+
+
+
+
 	$("body").click(function(e){
 		if (!$(e.target).is($("aside"))
 		&& !$("aside").has(e.target).length

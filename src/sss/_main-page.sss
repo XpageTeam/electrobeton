@@ -1,8 +1,8 @@
 .main-banner
 	&__subtitle
-		font-size: 12px
+		font-size: rem(18)
 		text-transform: uppercase
-		color: rgba(0, 0, 0, 0.3)
+		color: #000
 		margin-bottom: 20px
 
 	&__title
@@ -93,6 +93,11 @@
 	&-cont
 		margin-top: 90px
 
+.main
+	.catalog__item-cont
+		width: calc((100% - 40px * 3) / 3)
+
+
 .catalog
 
 	&__list
@@ -110,12 +115,25 @@
 			margin-top: 30px
 			font-size: rem(16)
 
+		&-img
+			overflow: hidden
+
 		&-cont
 			width: calc((100% - 40px * 4) / 4)
 			margin: 0 0 40px 40px
 
+			&:hover
+				img
+					transform: scale(1.1)
+
+
 			img
 				display: block
+				width: 100%
+				object-fit: cover
+				object-position: center
+				transition: transform 1s ease
+				border-radius: 5px
 
 			&--big
 				width: calc((100% - 40px * 2) / 2)

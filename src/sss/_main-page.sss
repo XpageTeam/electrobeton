@@ -310,9 +310,9 @@
 				&:before
 					content: ''
 					position: absolute
-					top: calc(50% - 40px)
-					left: calc(50% - 40px)
-					size: 80px
+					top: calc(50% - 20px)
+					left: calc(50% - 20px)
+					size: 40px
 					border-radius: 50%
 					background-color: var(--main-color)
 					z-index: 10
@@ -444,6 +444,8 @@
 
 
 @media screen and (max-width: 667px)
+
+
 	
 	.catalog
 
@@ -506,6 +508,23 @@
 	.main-catalog
 		padding-bottom: 0
 		border: 0
+
+
+	.main 
+		.catalog
+			&__list
+				flex-direction: column
+				padding: 0
+				margin: 0
+
+			&__item-cont
+				width: 100%
+				margin: 0 0 20px 0
+				padding: 0
+
+			&__item-bot
+				display: flex
+				justify-content: space-between
 
 	.main-gallery
 		&__top
@@ -572,6 +591,8 @@
 
 			&-img
 				display: none
+
+
 
 
 

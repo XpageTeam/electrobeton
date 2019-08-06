@@ -55,7 +55,28 @@
 
 	&-btn
 		.btn
+			position: relative
 			background-color: var(--second-color)
+			display: flex
+			align-items: center
+
+
+			
+			&:before
+				content: ''
+				display: inline-block
+				size: 15px
+				background-image: url('../img//ico-calc.svg')
+				background-repeat: no-repeat
+				background-position: center
+				margin-right: 20px
+				background-size: contain
+
+			&:hover
+				background-color: var(--main-color)
+				color: #fff
+
+
 
 
 	.soc__link

@@ -299,6 +299,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 	});
 
+	var cardSlider = new _swiper2.default('.card-slider__list .swiper-container', {
+		spaceBetween: 0,
+		slidesPerView: 1,
+		loop: true,
+		freeMode: true,
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+		autoHeight: true,
+		effect: "fade",
+		navigation: {
+			nextEl: '.card-slider-arrow .swiper-button-next',
+			prevEl: '.card-slider-arrow .swiper-button-prev'
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		}
+
+	});
+
 	(0, _jquery2.default)('.submenu').each(function (i, el) {
 		var $this = (0, _jquery2.default)(el);
 

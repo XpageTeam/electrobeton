@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-$(_ => {
+document.addEventListener("DOMContentLoaded", e => {
 
 	$('.burger').click(function(){
 		$('body').toggleClass("js__menu--open");

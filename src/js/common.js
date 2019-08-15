@@ -180,15 +180,7 @@ document.addEventListener("DOMContentLoaded", e => {
 	});
 
 
-	$(".fancybox").fancybox({
-		trapFocus: false,
-		touch: false,
-		buttons: ["fullscreen", "slideShow", "close"],
-		image: {
-			preload: true,
-		},
-		transitionEffect: "slide",
-	});
+
 
 
 	$("body").on("click", ".scroll-top", function(){
@@ -218,6 +210,17 @@ document.addEventListener("DOMContentLoaded", e => {
 
 		$this.closest('.card-characteristics__item').toggleClass('js__open');
 		$this.nextAll('.card-characteristics__item-bot').slideToggle();
+	});
+
+
+	$(".fancybox").fancybox({
+		trapFocus: false,
+		touch: false,
+		buttons: ["fullscreen", "slideShow", "close"],
+		image: {
+			preload: true,
+		},
+		transitionEffect: "slide",
 	});
 
 

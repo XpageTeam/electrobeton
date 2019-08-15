@@ -329,16 +329,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		(0, _jquery2.default)(this).prevAll('input[type="text"]').val("");
 	});
 
-	(0, _jquery2.default)(".fancybox").fancybox({
-		trapFocus: false,
-		touch: false,
-		buttons: ["fullscreen", "slideShow", "close"],
-		image: {
-			preload: true
-		},
-		transitionEffect: "slide"
-	});
-
 	(0, _jquery2.default)("body").on("click", ".scroll-top", function () {
 		var scrollTop = (0, _jquery2.default)(window).scrollTop();
 		(0, _jquery2.default)("html, body").animate({ "scrollTop": 0 }, "slow");
@@ -364,6 +354,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 		$this.closest('.card-characteristics__item').toggleClass('js__open');
 		$this.nextAll('.card-characteristics__item-bot').slideToggle();
+	});
+
+	(0, _jquery2.default)(".fancybox").fancybox({
+		trapFocus: false,
+		touch: false,
+		buttons: ["fullscreen", "slideShow", "close"],
+		image: {
+			preload: true
+		},
+		transitionEffect: "slide"
 	});
 });
 
@@ -19513,7 +19513,7 @@ var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _jquery2.default)(function (_) {
+document.addEventListener("DOMContentLoaded", function (e) {
 
 	(0, _jquery2.default)('.burger').click(function () {
 		(0, _jquery2.default)('body').toggleClass("js__menu--open");

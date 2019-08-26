@@ -269,13 +269,23 @@
 		margin: 0 0 -40px -40px
 
 	&__item
+		display: flex
+		flex-direction: column
+
+		&-cont
+			display: flex
+
 
 		img
 			display: block
 
 
 		&-title
-			font-size: rem(16)
+			font-size: rem(14)
+			margin-bottom: auto
+
+		&-date
+			margin-top: 5px
 
 		&-address
 			position: relative
@@ -283,6 +293,7 @@
 			color: rgba(0, 0, 0, 0.5)
 			font-size: rem(12)
 			padding-left: 20px
+
 
 			&:before
 				content: ''

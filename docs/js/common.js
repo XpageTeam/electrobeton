@@ -222,9 +222,10 @@ __webpack_require__(342);
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
-	(0, _jquery2.default)(".main-gallery__item figure").height(Math.max.apply(Math, (0, _jquery2.default)(".main-gallery__item img").map(function () {
-		return (0, _jquery2.default)(this).height();
-	})));
+	// $(".main-gallery__item figure").height(Math.max(...$(".main-gallery__item img").map(function(){
+	// 	return $(this).height();
+	// })));
+
 
 	(0, _jquery2.default)("body").click(function (e) {
 		if (!(0, _jquery2.default)(e.target).is((0, _jquery2.default)("aside")) && !(0, _jquery2.default)("aside").has(e.target).length && (0, _jquery2.default)("body").hasClass("js__open-filter") && !(0, _jquery2.default)(e.target).is((0, _jquery2.default)(".ico-filter")) && !(0, _jquery2.default)(".ico-filter").has(e.target).length) {

@@ -226,6 +226,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	// 	return $(this).height();
 	// })));
 
+	(0, _jquery2.default)('input[type="file"]').change(function () {
+		var value = (0, _jquery2.default)(this)[0].files[0].name;
+		(0, _jquery2.default)(this).closest('.multifile-container').find('.forms__input--file-support[type="text"]').val(value);
+	});
 
 	(0, _jquery2.default)("body").click(function (e) {
 		if (!(0, _jquery2.default)(e.target).is((0, _jquery2.default)("aside")) && !(0, _jquery2.default)("aside").has(e.target).length && (0, _jquery2.default)("body").hasClass("js__open-filter") && !(0, _jquery2.default)(e.target).is((0, _jquery2.default)(".ico-filter")) && !(0, _jquery2.default)(".ico-filter").has(e.target).length) {

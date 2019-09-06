@@ -58,7 +58,11 @@ document.addEventListener("DOMContentLoaded", e => {
 	// 	return $(this).height();
 	// })));
 
-
+	$('input[type="file"]').change(function(){
+		var value = $(this)[0].files[0].name;
+		$(this).closest('.multifile-container').find('.forms__input--file-support[type="text"]').val(value);
+	});
+	
 
 
 	$("body").click(function(e){

@@ -71,6 +71,19 @@
 	justify-content: space-between
 	padding: 40px 0
 
+	&-top
+		display: flex
+		padding-top: 25px
+
+		.head-soc
+			margin-left: auto
+
+		.soc
+
+			&__link
+				border-color: #E2E2E2
+
+
 	&-logo
 		// max-width: 250px
 
@@ -129,8 +142,7 @@
 				font-size: rem(14)
 
 
-	.soc__link
-		border-color: #E2E2E2
+	
 
 
 .inner
@@ -233,6 +245,9 @@
 
 @media screen and (max-width: 1400px)
 
+	.head-top
+		display: none
+
 	.head-menu__item
 		&:not(:last-child)
 			margin-right: 30px
@@ -265,7 +280,7 @@
 @media screen and (max-width: 667px)
 	
 	.head-logo
-		max-width: 130px
+		max-width: 200px
 
 	.head-contact
 		display: none

@@ -20,7 +20,7 @@ const xpager_conn = ftp.create({
 	host:      connectionSettings.xpager.host,
 	user:      connectionSettings.xpager.user,
 	password:  connectionSettings.xpager.password,
-	parallel: 4,
+	parallel: 1,
 	log: gutil.log
 });
 

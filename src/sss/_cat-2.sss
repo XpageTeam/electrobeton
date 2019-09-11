@@ -7,13 +7,18 @@
 
 .cat-links
 	&__list
-		column-count: 2
-		column-gap: 40px
+		// column-count: 2
+		// column-gap: 40px
+		display: flex
+		flex-wrap: wrap
+		margin: 0 0 0 -40px
 
 	&__item
 		position: relative
 		break-inside: avoid
 		transition: background .5s ease
+		width: calc((100% - 40px * 2) / 2)
+		margin: 0 0 0 40px
 
 		&:after
 			content: ''
@@ -30,7 +35,10 @@
 		&:hover
 			background: #e2e2e2 !important
 
-		&:nth-child(odd)
+		&:nth-child(4n - 3)
+			background-color: var(--background-color)
+
+		&:nth-child(4n - 2)
 			background-color: var(--background-color)
 
 	&__link
@@ -72,6 +80,14 @@
 	
 	.cat-links__list
 		column-count: 1
+
+	.cat-links
+		&__list
+			margin: 0 0 0 -15px
+
+		&__item
+			width: calc((100% - 15px * 2) / 2)
+			margin: 0 0 0 15px
 
 
 

@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", e => {
 	// 	return $(this).height();
 	// })));
 
-	$('input[type="file"]').change(function(){
+	$('body').on("change", "input[type='file']", function(){
 		var value = $(this)[0].files[0].name;
 		$(this).closest('.multifile-container').find('.forms__input--file-support[type="text"]').val(value);
 	});
@@ -187,10 +187,10 @@ document.addEventListener("DOMContentLoaded", e => {
 
 
 
-	$("body").on("click", ".scroll-top", function(){
-        var scrollTop = $(window).scrollTop();
-        $("html, body").animate({"scrollTop": 0}, "slow")
-    });
+	// $("body").on("click", ".scroll-top", function(){
+ //        var scrollTop = $(window).scrollTop();
+ //        $("html, body").animate({"scrollTop": 0}, "slow")
+ //    });
 
 	if (!is.touchDevice())
 		$('select:not(.no-selectize)').each(function(i,el){
@@ -233,18 +233,18 @@ document.addEventListener("DOMContentLoaded", e => {
 
 
 
-$(window).on("load scroll resize touchmove", e => {
+// $(window).on("load scroll resize touchmove", e => {
 
-	if ($(window).scrollTop() > 800){
-		$(".scroll-top").fadeIn(300);
-		$(".scroll-top").css({
-			'display': 'flex',
-		})
+// 	if ($(window).scrollTop() > 800){
+// 		$(".scroll-top").fadeIn(300);
+// 		$(".scroll-top").css({
+// 			'display': 'flex',
+// 		})
 
-	}else{
-		$(".scroll-top").fadeOut(300);
-		$(".scroll-top").removeClass('js__scrolled');
-	};
+// 	}else{
+// 		$(".scroll-top").fadeOut(300);
+// 		$(".scroll-top").removeClass('js__scrolled');
+// 	};
 
 	
-});
+// });

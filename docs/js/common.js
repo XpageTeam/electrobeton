@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	// 	return $(this).height();
 	// })));
 
-	(0, _jquery2.default)('input[type="file"]').change(function () {
+	(0, _jquery2.default)('body').on("change", "input[type='file']", function () {
 		var value = (0, _jquery2.default)(this)[0].files[0].name;
 		(0, _jquery2.default)(this).closest('.multifile-container').find('.forms__input--file-support[type="text"]').val(value);
 	});
@@ -334,10 +334,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		(0, _jquery2.default)(this).prevAll('input[type="text"]').val("");
 	});
 
-	(0, _jquery2.default)("body").on("click", ".scroll-top", function () {
-		var scrollTop = (0, _jquery2.default)(window).scrollTop();
-		(0, _jquery2.default)("html, body").animate({ "scrollTop": 0 }, "slow");
-	});
+	// $("body").on("click", ".scroll-top", function(){
+	//        var scrollTop = $(window).scrollTop();
+	//        $("html, body").animate({"scrollTop": 0}, "slow")
+	//    });
 
 	if (!_is_js2.default.touchDevice()) (0, _jquery2.default)('select:not(.no-selectize)').each(function (i, el) {
 		var $this = (0, _jquery2.default)(el);
@@ -372,18 +372,21 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	});
 });
 
-(0, _jquery2.default)(window).on("load scroll resize touchmove", function (e) {
+// $(window).on("load scroll resize touchmove", e => {
 
-	if ((0, _jquery2.default)(window).scrollTop() > 800) {
-		(0, _jquery2.default)(".scroll-top").fadeIn(300);
-		(0, _jquery2.default)(".scroll-top").css({
-			'display': 'flex'
-		});
-	} else {
-		(0, _jquery2.default)(".scroll-top").fadeOut(300);
-		(0, _jquery2.default)(".scroll-top").removeClass('js__scrolled');
-	};
-});
+// 	if ($(window).scrollTop() > 800){
+// 		$(".scroll-top").fadeIn(300);
+// 		$(".scroll-top").css({
+// 			'display': 'flex',
+// 		})
+
+// 	}else{
+// 		$(".scroll-top").fadeOut(300);
+// 		$(".scroll-top").removeClass('js__scrolled');
+// 	};
+
+
+// });
 
 /***/ }),
 

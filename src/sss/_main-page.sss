@@ -284,6 +284,8 @@
 
 	&__title
 		font-size: rem(24)
+	
+
 
 	&__text
 		font-size: rem(14)
@@ -296,9 +298,16 @@
 	&__item
 		display: flex
 		flex-direction: column
+		align-items: flex-start
+
+
 
 		&-cont
 			display: flex
+
+			&:hover
+				.main-gallery__item-title
+					color: var(--main-color)
 
 
 		img
@@ -308,9 +317,15 @@
 		&-title
 			font-size: rem(14)
 			margin-bottom: 15px
+			display: inline-block
+			color: #059
+			border-bottom: 1px solid #bedaf8
+			transition: color .3s ease
+
 
 		p
 			margin-bottom: 30px
+			color: #000 !important
 
 		&-date
 			margin-top: 5px

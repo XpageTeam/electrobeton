@@ -41,12 +41,41 @@
 			border-right: 1px solid #fff
 			transform: rotate(45deg)
 
+
+	&__arrow
+		display: flex
+		justify-content: space-between
+		position: absolute
+		top: calc(50% - 21px)
+		left: 0
+		right: 0
+
+.gallery-top
+	.swiper-button
+		position: absolute
+		top: 0
+		bottom: 0
+		width: 50%
+		height: 100%
+		background-color: transparent
+
+		&:after
+			display: none
+
+		&-prev
+			left: 0
+
+		&-next
+			right: 0
 .gallery-thumbs
 	position: relative
 	margin: 20px -5px 0
 
 	.swiper-list
 		padding: 5px
+
+	img
+		display: block
 
 
 

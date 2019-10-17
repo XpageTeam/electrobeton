@@ -259,11 +259,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	var galleryThumbs = new _swiper2.default('.gallery-thumbs .swiper-list', {
 		spaceBetween: 23,
 		slidesPerView: 5,
-		loop: true,
+		loop: false,
 		freeMode: true,
-		// loopedSlides: 5, //looped slides should be the same
 		watchSlidesVisibility: true,
 		watchSlidesProgress: true,
+		navigation: {
+			nextEl: '.gallery-thumbs .swiper-button-next',
+			prevEl: '.gallery-thumbs .swiper-button-prev'
+		},
 		breakpoints: {
 			670: {
 				slidesPerView: 3
@@ -274,11 +277,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	var galleryTop = new _swiper2.default('.gallery-top', {
 		spaceBetween: 10,
 		effect: "fade",
-		loop: true,
+		loop: false,
 		// loopedSlides: 5, //looped slides should be the same
 		navigation: {
-			nextEl: '.gallery-thumbs .swiper-button-next',
-			prevEl: '.gallery-thumbs .swiper-button-prev'
+			nextEl: '.gallery-top .swiper-button-next',
+			prevEl: '.gallery-top .swiper-button-prev'
 		},
 		thumbs: {
 			swiper: galleryThumbs
@@ -351,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		var $this = (0, _jquery2.default)(this);
 
 		$this.closest('.links-cont').toggleClass('js__open');
-		$this.nextAll('.links-bot-cont').slideToggle();
+		// $this.nextAll('.links-bot-cont').slideToggle();
 	});
 
 	(0, _jquery2.default)(".card-characteristics__item-top").click(function () {

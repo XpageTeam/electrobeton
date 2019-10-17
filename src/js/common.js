@@ -99,28 +99,31 @@ document.addEventListener("DOMContentLoaded", e => {
 	var galleryThumbs = new Swiper('.gallery-thumbs .swiper-list', {
 		spaceBetween: 23,
 		slidesPerView: 5,
-		loop: true,
+		loop: false,
 		freeMode: true,
-		// loopedSlides: 5, //looped slides should be the same
 		watchSlidesVisibility: true,
 		watchSlidesProgress: true,
+		navigation: {
+			nextEl: '.gallery-thumbs .swiper-button-next',
+			prevEl: '.gallery-thumbs .swiper-button-prev',
+		},
 		breakpoints: {
 			670: {
 				slidesPerView: 3,
-				}
+			}
 		}
     });
 
     var galleryTop = new Swiper('.gallery-top', {
 		spaceBetween: 10,
 		effect: "fade",
-		loop: true,
+		loop: false,
 		// loopedSlides: 5, //looped slides should be the same
 		navigation: {
-			nextEl: '.gallery-thumbs .swiper-button-next',
-			prevEl: '.gallery-thumbs .swiper-button-prev',
-			},
-			thumbs: {
+			nextEl: '.gallery-top .swiper-button-next',
+			prevEl: '.gallery-top .swiper-button-prev',
+		},
+		thumbs: {
 			swiper: galleryThumbs,
 		},
     });
@@ -136,11 +139,11 @@ document.addEventListener("DOMContentLoaded", e => {
 	    navigation: {
 			nextEl: '.main-banner__slider-arrow .swiper-button-next',
 			prevEl: '.main-banner__slider-arrow .swiper-button-prev',
-			},
+		},
 	    pagination: {
 	        el: '.swiper-pagination',
 	        clickable: true,
-	    	},
+	    },
 
 
 					
@@ -206,7 +209,7 @@ document.addEventListener("DOMContentLoaded", e => {
 		let $this = $(this);
 
 		$this.closest('.links-cont').toggleClass('js__open');
-		$this.nextAll('.links-bot-cont').slideToggle();
+		// $this.nextAll('.links-bot-cont').slideToggle();
 	});
 
 	$(".card-characteristics__item-top").click(function(){

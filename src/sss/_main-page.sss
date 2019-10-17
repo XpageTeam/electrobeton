@@ -107,17 +107,34 @@
 
 	&__item
 
+
+
+		&-cont
+
+			> p
+				color: #000 !important
+
 		.circle-arrow
 			margin-left: 20px
 			float: right
+			display: none
 
 		&-bot
 			margin-top: 30px
 			font-size: rem(16)
+			margin-bottom: 5px
 
 		&-img
 			overflow: hidden
 			border-radius: 5px
+
+		&-title
+			display: inline-block
+			color: #059
+			border-bottom: 1px solid #bedaf8
+			transition: color .3s ease
+
+
 
 		&-cont
 			width: calc((100% - 40px * 4) / 4)
@@ -126,6 +143,13 @@
 			&:hover
 				img
 					transform: scale(1.1)
+
+
+				.catalog__item-title
+					color: var(--main-color)
+
+				// > p
+				// 	color: #000 !important
 
 
 			img
@@ -283,17 +307,20 @@
 
 		&-title
 			font-size: rem(14)
-			margin-bottom: auto
+			margin-bottom: 15px
+
+		p
+			margin-bottom: 30px
 
 		&-date
 			margin-top: 5px
 
 		&-address
 			position: relative
-			margin-top: 30px
 			color: rgba(0, 0, 0, 0.5)
 			font-size: rem(12)
 			padding-left: 20px
+			margin-top: auto
 
 
 			&:before

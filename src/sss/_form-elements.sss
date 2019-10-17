@@ -29,8 +29,20 @@
 
 
 .multifile-container
+	position: relative
+	display: flex
+	flex-direction: column
+	width: 100%
+	margin-left: 40px
+
 	+ .multifile-container
-		margin-top: 20px
+		margin-top: 57px
+
+		.forms__label
+			font-size: 0
+			margin: 0
+			padding: 0
+
 		
 .popup-form
 	display: none
@@ -276,7 +288,7 @@
 				line-height: 49px
 				box-sizing: border-box
 				padding-right: 0.83333vw
-
+				font-size: 14px
 	&__error-message
 		position: absolute
 		top: 0

@@ -3,6 +3,10 @@
 		display: flex
 		align-items: center
 
+		&:hover
+			.news__item-title
+				color: var(--main-color)
+
 		&:not(:first-child)
 			margin-top: 100px
 
@@ -21,17 +25,70 @@
 
 		&-title
 			font-size: rem(20)
+			display: inline-block
+			color: #059
+			border-bottom: 1px solid #bedaf8
+			transition: color .3s ease
+
 
 		&-text
 			margin-top: 15px
+			color: #000
 
 
 		.circle-arrow
 			margin-top: 55px
+			display: none
 
 	.slider-gallery-cont
 		margin-top: 30px
 
+.page_video
+
+	.news__item-img
+		position: relative
+
+		&:before
+			content: ""
+			position: absolute
+			top: calc(50% - 20px)
+			left: calc(50% - 20px)
+			width: 40px
+			height: 40px
+			border-radius: 50%
+			background-color: #2397d6
+			background-color: var(--main-color)
+			z-index: 10
+			display: block
+			background-image: url('../img/ico-treangle.svg')
+			background-position: 50%
+			background-repeat: no-repeat
+
+body[class*="page_video_"]
+	.news
+		a
+			&[href^="https://www.youtube.com"]
+				display: block
+				position: relative
+
+				img
+					display: block
+
+				&:before
+					content: ""
+					position: absolute
+					top: calc(50% - 40px)
+					left: calc(50% - 40px)
+					width: 80px
+					height: 80px
+					border-radius: 50%
+					background-color: #2397d6
+					background-color: var(--main-color)
+					z-index: 10
+					display: block
+					background-image: url('../img/ico-treangle.svg')
+					background-position: 50%
+					background-repeat: no-repeat
 
 @media screen and (max-width: 1500px)
 	

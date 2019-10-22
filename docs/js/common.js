@@ -258,15 +258,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 	var galleryThumbs = new _swiper2.default('.gallery-thumbs .swiper-list', {
 		spaceBetween: 23,
-		slidesPerView: 5,
+		slidesPerView: 7,
 		loop: false,
 		freeMode: true,
 		watchSlidesVisibility: true,
 		watchSlidesProgress: true,
-		navigation: {
-			nextEl: '.gallery-thumbs .swiper-button-next',
-			prevEl: '.gallery-thumbs .swiper-button-prev'
-		},
+		// navigation: {
+		// 	nextEl: '.gallery-thumbs .swiper-button-next',
+		// 	prevEl: '.gallery-thumbs .swiper-button-prev',
+		// },
 		breakpoints: {
 			670: {
 				slidesPerView: 3
@@ -278,6 +278,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		spaceBetween: 10,
 		effect: "fade",
 		loop: false,
+		autoHeight: true,
+		fadeEffect: {
+			crossFade: true
+		},
 		// loopedSlides: 5, //looped slides should be the same
 		navigation: {
 			nextEl: '.gallery-top .swiper-button-next',

@@ -1,6 +1,6 @@
 .paginator
 	display: flex
-	justify-content: center
+	flex-wrap: wrap
 	margin-top: 90px
 	align-items: center
 	max-width: 100% !important
@@ -8,13 +8,18 @@
 	li
 		list-style: none
 		padding: 0 !important
+		border: 1px solid #f2f2f2
+		margin: 0 !important
 
 		a
 			line-height: 1
-			width: 30px
+			size: 40px
 			text-align: center
 			display: block
 			color: rgba(0, 0, 0, 0.3)
+			display: flex
+			justify-content: center
+			align-items: center
 
 			&.active
 				color: #000
@@ -28,7 +33,6 @@
 		&:first-child, &:last-child
 			a
 				size: 40px
-				border-radius: 50%
 				background-color: var(--background-color)
 				display: block
 
@@ -43,12 +47,7 @@
 					border-right: 1px solid
 					transform: rotate(45deg) 
 		&:first-child
-			margin-right: 30px
 			transform: rotate(180deg)
-
-
-		&:last-child
-			margin-left: 30px !important
 
 
 

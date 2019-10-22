@@ -150,27 +150,27 @@ document.addEventListener("DOMContentLoaded", e => {
 	});
 
 
-	var cardSlider = new Swiper('.card-slider__list .swiper-container', {
-		spaceBetween: 0,
-		slidesPerView: 1,
-		loop: true,
-		freeMode: true,
-		watchSlidesVisibility: true,
-		watchSlidesProgress: true,
-		autoHeight: true,
-		effect: "fade",
-	    navigation: {
-			nextEl: '.card-slider-arrow .swiper-button-next',
-			prevEl: '.card-slider-arrow .swiper-button-prev',
-			},
-	    pagination: {
-	        el: '.swiper-pagination',
-	        clickable: true,
-	    	},
+	// var cardSlider = new Swiper('.card-slider__list .swiper-container', {
+	// 	spaceBetween: 0,
+	// 	slidesPerView: 1,
+	// 	loop: true,
+	// 	freeMode: true,
+	// 	watchSlidesVisibility: true,
+	// 	watchSlidesProgress: true,
+	// 	autoHeight: true,
+	// 	effect: "fade",
+	//     navigation: {
+	// 		nextEl: '.card-slider-arrow .swiper-button-next',
+	// 		prevEl: '.card-slider-arrow .swiper-button-prev',
+	// 		},
+	//     pagination: {
+	//         el: '.swiper-pagination',
+	//         clickable: true,
+	//     	},
 
 
 					
-	});
+	// });
 
 
 

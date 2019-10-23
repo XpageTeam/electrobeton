@@ -22,6 +22,7 @@
 @import "_cat-2.sss"
 @import "_card.sss"
 @import "about.sss"
+@import "404.sss"
 
 .delInput
 	position: absolute
@@ -251,6 +252,16 @@ img
 		margin-bottom: 20px
 
 @media screen and (max-width: 1000px)
+
+	.aside
+		// overflow-y: auto
+		// -webkit-overflow-scrolling: touch
+
+	.aside-cont
+		width: 190px
+
+	.links-bot
+		padding: 0 20px 20px
 	
 	.inner .content>.wrapper section:not(:first-child)
 		margin-top: 40px
@@ -267,6 +278,7 @@ img
 			background: #fff
 			z-index: 10
 			overflow-y: auto
+			-webkit-overflow-scrolling: touch
 			transform: translate3d(-100%,0,0)
 			transition: transform .5s ease
 			margin: 0

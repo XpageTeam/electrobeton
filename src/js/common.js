@@ -4,6 +4,11 @@ import Swiper from "swiper/dist/js/swiper.js";
 import "./stock-sliders.js";
 import "selectize/dist/js/selectize.min.js";
 
+// import App from "./core.js"
+// import Element from "./Element.js"
+// import EventListener from "./EventListener.js"
+import mobileMenu from "./mobileMenu.js"
+
 // import "./tabs.js";
 // import "./accordion.js";
 import "./mobile-menu.js";
@@ -65,22 +70,36 @@ document.addEventListener("DOMContentLoaded", e => {
 	
 
 
-	$("body").click(function(e){
-		if (!$(e.target).is($("aside"))
-		&& !$("aside").has(e.target).length
-		&& $("body").hasClass("js__open-filter")
-		&& !$(e.target).is($(".ico-filter"))
-		&& !$(".ico-filter").has(e.target).length){
-			$("body").removeClass("js__open-filter")
-		}
-	});
+	// $("body").on("click", function(e){
+	// 	if (!$(e.target).is($("aside"))
+	// 	&& !$("aside").has(e.target).length
+	// 	&& $("body").hasClass("js__open-filter")
+	// 	&& !$(e.target).is($(".ico-filter"))
+	// 	&& !$(".ico-filter").has(e.target).length){
+	// 		$("body").removeClass("js__open-filter")
+	// 	}
+	// });
 
-
+	// $("body").click(function(){
+	// 	alert(1);
+	// })
 	$('.cat-2').prepend('<div class="cat-2-filter"><div class="ico-filter"></div></div>');
 
-	$('.ico-filter').click(function(){
-		$('body').toggleClass('js__open-filter');
-	});
+	const menu = new mobileMenu({
+		burger: ".ico-filter",
+		menu: ".aside-cont",
+		menuActiveClass: "js__opened",
+		bodyActiveClass: "js__open-filter",
+		ignoreWarnings: true,
+		fixBody: true,
+		media: "(max-width: 1000px)"
+	})
+
+
+
+	// $('.ico-filter').click(function(){
+	// 	$('body').toggleClass('js__open-filter');
+	// });
 
 	if (is.ie())
 		$('body').addClass('ie-fix');
@@ -228,6 +247,7 @@ document.addEventListener("DOMContentLoaded", e => {
 		trapFocus: false,
 		touch: false,
 		buttons: ["fullscreen", "slideShow", "close"],
+		clickContent: false,
 		image: {
 			preload: true,
 		},

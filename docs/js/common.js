@@ -172,6 +172,10 @@ __webpack_require__(332);
 
 __webpack_require__(335);
 
+var _mobileMenu = __webpack_require__(352);
+
+var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
+
 __webpack_require__(338);
 
 __webpack_require__(339);
@@ -182,6 +186,9 @@ var _xWidgets2 = _interopRequireDefault(_xWidgets);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import App from "./core.js"
+// import Element from "./Element.js"
+// import EventListener from "./EventListener.js"
 window.$ = _jquery2.default;
 
 // import "./tabs.js";
@@ -231,17 +238,34 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		(0, _jquery2.default)(this).closest('.multifile-container').find('.forms__input--file-support[type="text"]').val(value);
 	});
 
-	(0, _jquery2.default)("body").click(function (e) {
-		if (!(0, _jquery2.default)(e.target).is((0, _jquery2.default)("aside")) && !(0, _jquery2.default)("aside").has(e.target).length && (0, _jquery2.default)("body").hasClass("js__open-filter") && !(0, _jquery2.default)(e.target).is((0, _jquery2.default)(".ico-filter")) && !(0, _jquery2.default)(".ico-filter").has(e.target).length) {
-			(0, _jquery2.default)("body").removeClass("js__open-filter");
-		}
-	});
+	// $("body").on("click", function(e){
+	// 	if (!$(e.target).is($("aside"))
+	// 	&& !$("aside").has(e.target).length
+	// 	&& $("body").hasClass("js__open-filter")
+	// 	&& !$(e.target).is($(".ico-filter"))
+	// 	&& !$(".ico-filter").has(e.target).length){
+	// 		$("body").removeClass("js__open-filter")
+	// 	}
+	// });
 
+	// $("body").click(function(){
+	// 	alert(1);
+	// })
 	(0, _jquery2.default)('.cat-2').prepend('<div class="cat-2-filter"><div class="ico-filter"></div></div>');
 
-	(0, _jquery2.default)('.ico-filter').click(function () {
-		(0, _jquery2.default)('body').toggleClass('js__open-filter');
+	var menu = new _mobileMenu2.default({
+		burger: ".ico-filter",
+		menu: ".aside-cont",
+		menuActiveClass: "js__opened",
+		bodyActiveClass: "js__open-filter",
+		ignoreWarnings: true,
+		fixBody: true,
+		media: "(max-width: 1000px)"
 	});
+
+	// $('.ico-filter').click(function(){
+	// 	$('body').toggleClass('js__open-filter');
+	// });
 
 	if (_is_js2.default.ie()) (0, _jquery2.default)('body').addClass('ie-fix');
 
@@ -374,6 +398,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		trapFocus: false,
 		touch: false,
 		buttons: ["fullscreen", "slideShow", "close"],
+		clickContent: false,
 		image: {
 			preload: true
 		},
@@ -25230,6 +25255,457 @@ module.exports = function (css) {
     }
   });
 })(document, window.jQuery || jQuery);
+
+/***/ }),
+
+/***/ 349:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var App = /** @class */function () {
+    function App() {}
+    App.getElements = function (selector) {
+        var elements = document.querySelectorAll(selector);
+        return elements.length ? elements : [];
+        // return this.elementsGetter(sele ctor)
+    };
+    /**
+    * Метод получения одного объекта по селектору
+    * @param selector: string
+    * @return HTMLElement
+    */
+    App.getElement = function (selector) {
+        var element = document.querySelector(selector);
+        return element;
+    };
+    App.elementsGetter = function (selector) {
+        return App.transformNodeListToArray(document.querySelectorAll(selector));
+    };
+    App.transformNodeListToArray = function (list) {
+        try {
+            return Array.prototype.slice.call(list);
+        } catch (e) {
+            throw Error(e);
+            return [];
+        }
+    };
+    App.wrap = function (selector, wrapper) {
+        var localWrapper;
+        if (typeof wrapper == "string") localWrapper = document.createElement(wrapper);else if (wrapper instanceof HTMLElement) localWrapper = wrapper;
+        // console.log(selector, [localWrapper])
+        App.each(selector, function (el, i) {
+            localWrapper.innerHTML = el.outerHTML;
+            el.parentNode.replaceChild(localWrapper, el);
+        });
+    };
+    App.each = function (elements, callback) {
+        if (!callback) {
+            console.error("Callback does not exists in yours 'each'");
+            return;
+        }
+        if (typeof elements == "string") elements = App.transformNodeListToArray(App.getElements(elements));
+        var i = 0;
+        for (var _i = 0, elements_1 = elements; _i < elements_1.length; _i++) {
+            var el = elements_1[_i];
+            callback(el, i);
+            i++;
+        }
+    };
+    return App;
+}();
+exports["default"] = App;
+
+/***/ }),
+
+/***/ 350:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var core_1 = __webpack_require__(349);
+var Element = /** @class */function () {
+    function Element(selector) {
+        this._length = 0;
+        if (!selector) this.els = [];else if (typeof selector == "string") this.els = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) this.els = [selector];else if (selector instanceof NodeList) this.els = core_1["default"].transformNodeListToArray(selector);else if (selector instanceof Array && (selector[0] instanceof HTMLElement || !selector.length)) this.els = selector;else if (selector instanceof Element) this.els = selector.els;else throw Error("Invalid selector: " + selector);
+    }
+    Object.defineProperty(Element.prototype, "els", {
+        get: function get() {
+            return this._els;
+        },
+        set: function set(elements) {
+            this._els = elements;
+            this._length = elements.length || 0;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Element.prototype, "length", {
+        get: function get() {
+            return this._length;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Element.prototype.addElement = function (element) {
+        if (typeof element == "string") this.els = this.els.concat(core_1["default"].elementsGetter(element));else if (element instanceof Element) this.els = this.els.concat(element.els);else if (element instanceof HTMLElement) this.els = this.els.concat(element);else if (element instanceof NodeList) this.els = this.els.concat(core_1["default"].transformNodeListToArray(element));else if (element instanceof Array && (element[0] instanceof HTMLElement || !element.length)) this.els = this.els.concat(element);else throw Error("Invalid selector: " + element);
+        return this;
+    };
+    Element.prototype.is = function (selector) {
+        var element;
+        if (typeof selector == "string") element = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) element = [selector];
+        return this.els[0] == element[0];
+    };
+    Element.prototype.has = function (selector) {
+        var searchElements;
+        if (typeof selector == "string") searchElements = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) searchElements = [selector];else if (selector instanceof Element) searchElements = selector._els;else if (selector instanceof NodeList) searchElements = core_1["default"].transformNodeListToArray(selector);else if (selector instanceof Array && (selector[0] instanceof HTMLElement || !selector.length)) searchElements = selector;else throw Error("Invalid selector: " + selector);
+        var isFinded = false;
+        for (var _i = 0, _a = this.els; _i < _a.length; _i++) {
+            var el = _a[_i];
+            for (var _b = 0, searchElements_1 = searchElements; _b < searchElements_1.length; _b++) {
+                var target = searchElements_1[_b];
+                if (el.contains(target)) {
+                    isFinded = true;
+                    break;
+                }
+            }
+            if (isFinded) return true;
+        }
+        return false;
+    };
+    /**
+    * Назначить класс всем текущим элементам
+    * @param className: string
+    * @return Element
+    */
+    Element.prototype.addClass = function (className) {
+        core_1["default"].each(this.els, function (el) {
+            el.classList.add(className);
+        });
+        return this;
+    };
+    /**
+    * Удалить класс у всех текущих элементов
+    * @param className: string
+    * @return Element
+    */
+    Element.prototype.removeClass = function (className) {
+        core_1["default"].each(this.els, function (el) {
+            el.classList.remove(className);
+        });
+        return this;
+    };
+    /**
+    * Переключения класса у всех текущих элементов
+    * @param className: string
+    * @return Element
+    */
+    Element.prototype.toggleClass = function (className, callback) {
+        core_1["default"].each(this.els, function (el) {
+            if (el.classList.contains(className)) {
+                el.classList.remove(className);
+                if (callback) callback(false);
+            } else {
+                el.classList.add(className);
+                if (callback) callback(true);
+            }
+        });
+        return this;
+    };
+    Element.prototype.hasClass = function (targetClass) {
+        for (var _i = 0, _a = this.els; _i < _a.length; _i++) {
+            var el = _a[_i];
+            if (el.classList.contains(targetClass)) return true;
+        }
+        return false;
+    };
+    /** Метод поиска потомков элемента по селектору
+    * @param selector: string - селектор искомого
+    * @return Element
+    * */
+    Element.prototype.find = function (selector) {
+        var searchingElements = new Array();
+        core_1["default"].each(this.els, function (el) {
+            var findedElements = el.querySelectorAll(selector);
+            if (!findedElements.length) return;
+            for (var _i = 0, _a = core_1["default"].transformNodeListToArray(findedElements); _i < _a.length; _i++) {
+                var el_1 = _a[_i];
+                searchingElements.push(el_1);
+            }
+            // searchingElements.concat(App.transformNodeListToArray(findedElements))
+            // console.log(searchingElements instanceof Array, App.transformNodeListToArray(findedElements) instanceof Array)
+        });
+        return new Element(searchingElements);
+    };
+    /** Метод поиска родителей по селектору
+    * @param selector: string
+    * @return Element
+    */
+    Element.prototype.closest = function (selector) {
+        var searchingElements = new Element();
+        core_1["default"].each(this.els, function (el) {
+            var findedElements = el.closest(selector);
+            if (!findedElements) return;
+            searchingElements.addElement(findedElements);
+        });
+        return searchingElements;
+    };
+    Element.prototype.text = function (text) {
+        if (text) {
+            core_1["default"].each(this.els, function (el) {
+                el.innerText = text;
+            });
+            return this;
+        } else if (this.length > 1) {
+            var textArray_1 = [];
+            core_1["default"].each(this.els, function (el) {
+                textArray_1.push(el.innerText);
+            });
+            return textArray_1;
+        } else return this.els[0].innerText;
+    };
+    /** Метод для получения конкретного элемента по индексу
+    * @param index: number
+    * @return Element*/
+    Element.prototype.get = function (index) {
+        if (this.els[index]) return new Element(this.els[index]);else return new Element();
+    };
+    /** Функция, возвращающая HTMLElement по индексу в коллеции элементов
+    * @param index: nuber
+    * @return HTMLElement
+    */
+    Element.prototype.getHTMLElement = function (index) {
+        return this.els[index];
+    };
+    Element.prototype.height = function (height) {
+        if (!height) return parseInt(getComputedStyle(this.els[0]).height);
+        core_1["default"].each(this.els, function (el) {
+            if (isNaN(height)) el.style.height = height;else el.style.height = height + "px";
+        });
+        return this;
+    };
+    /** Map
+    * @param callback: Function
+    * @return any[] */
+    Element.prototype.map = function (callback) {
+        return this.els.map(callback);
+    };
+    Element.prototype.attr = function (attrName, value) {
+        if (value) {
+            core_1["default"].each(this.els, function (el) {
+                el.setAttribute(attrName, value);
+            });
+            return this;
+        }
+        return this.els[0].getAttribute(attrName);
+    };
+    /** Метод в разработке */
+    Element.prototype.prev = function (selector) {
+        var searchingElements = new Element();
+        core_1["default"].each(this.els, function (el) {
+            var findedElements = el.previousElementSibling;
+            if (!findedElements) return;
+            if (selector) {
+                if (findedElements.classList.contains(selector.replace(".", ""))) searchingElements.addElement(findedElements);
+            } else searchingElements.addElement(findedElements);
+        });
+        return searchingElements;
+    };
+    return Element;
+}();
+exports["default"] = Element;
+
+/***/ }),
+
+/***/ 351:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = undefined && undefined.__extends || function () {
+    var _extendStatics = function extendStatics(d, b) {
+        _extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) {
+                if (b.hasOwnProperty(p)) d[p] = b[p];
+            }
+        };
+        return _extendStatics(d, b);
+    };
+    return function (d, b) {
+        _extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+exports.__esModule = true;
+var core_1 = __webpack_require__(349);
+var Element_1 = __webpack_require__(350);
+var EventListener = /** @class */function (_super) {
+    __extends(EventListener, _super);
+    function EventListener() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+    * Метод для подписки на событие
+    * @param event: string - название js события
+    * @param callback: function
+    * @param options: object
+    * @retrun EventListener
+    */
+    EventListener.prototype.add = function (event, callback, options) {
+        core_1["default"].each(this.els, function (el, i) {
+            document.body.addEventListener(event, function (e) {
+                var target = e.target;
+                if (el.contains(target) || el == target) callback(el, e, i);
+            }, options);
+        });
+        return this;
+    };
+    /**
+    * Метод для вызова события
+    * @param event: string - название js события
+    * @retrun EventListener
+    */
+    EventListener.prototype.trigger = function (event) {
+        core_1["default"].each(this.els, function (el) {
+            var evt = document.createEvent("HTMLEvents");
+            evt.initEvent(event, false, true);
+            el.dispatchEvent(evt);
+        });
+        return this;
+    };
+    return EventListener;
+}(Element_1["default"]);
+exports["default"] = EventListener;
+
+/***/ }),
+
+/***/ 352:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var core_1 = __webpack_require__(349);
+var Element_1 = __webpack_require__(350);
+var EventListener_1 = __webpack_require__(351);
+var MobileMenu = /** @class */function () {
+    function MobileMenu(settings) {
+        this._state = false;
+        this._error = false;
+        this.menuActiveClass = "js__opened";
+        this.bodyActiveClass = "js__menu-opened";
+        this.body = core_1["default"].getElement("body");
+        this.ignoreWarnings = false;
+        this._settings = settings;
+        this.ignoreWarnings = settings.ignoreWarnings;
+        this.burger = core_1["default"].getElement(settings.burger);
+        this.menuActiveClass = settings.menuActiveClass;
+        this.bodyActiveClass = settings.bodyActiveClass;
+        this.menu = core_1["default"].getElement(settings.menu);
+        this.bindEvents();
+    }
+    Object.defineProperty(MobileMenu.prototype, "error", {
+        set: function set(text) {
+            this._error = true;
+            console.error(text + ". \u041C\u0435\u043D\u044E \u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442");
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "state", {
+        get: function get() {
+            return this._state;
+        },
+        set: function set(newState) {
+            this._state = newState;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "menu", {
+        get: function get() {
+            return this._menu;
+        },
+        set: function set(el) {
+            if (!(el instanceof HTMLElement) && !this.ignoreWarnings) this.error = "Меню не найдено";else this._menu = el;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "burger", {
+        get: function get() {
+            return this._burger;
+        },
+        set: function set(el) {
+            if (!(el instanceof HTMLElement) && !this.ignoreWarnings) this.error = "Бургер не найден";else this._burger = el;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "settings", {
+        get: function get() {
+            return this._settings;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MobileMenu.prototype.openMenu = function () {
+        if (!window.matchMedia(this.settings.media).matches) return;
+        console.log(this.settings.fixBody);
+        if (this.settings.fixBody) {
+            this.body.style.top = -window.pageYOffset + "px";
+            this.body.style.position = "fixed";
+        }
+        this.burger.classList.add("js__active");
+        this.menu.classList.add(this.menuActiveClass);
+        this.body.classList.add(this.bodyActiveClass);
+        this.state = true;
+        return this;
+    };
+    MobileMenu.prototype.closeMenu = function () {
+        if (!window.matchMedia(this.settings.media).matches || !this.state) return;
+        var top = 0;
+        if (this.settings.fixBody) {
+            top = Math.abs(parseInt(this.body.style.top));
+            this.body.style.top = "";
+            this.body.style.position = "";
+        }
+        this.burger.classList.remove("js__active");
+        this.menu.classList.remove(this.menuActiveClass);
+        this.body.classList.remove(this.bodyActiveClass);
+        if (this.settings.fixBody) window.scrollTo(0, top);
+        this.state = false;
+        return this;
+    };
+    MobileMenu.prototype.toggleMenu = function () {
+        if (!window.matchMedia(this.settings.media).matches) return;
+        if (this.state) this.closeMenu();else this.openMenu();
+        return this;
+    };
+    MobileMenu.prototype.bindEvents = function () {
+        var _this = this;
+        document.addEventListener("click", function (event) {
+            var target = new Element_1["default"](event.target);
+            if (!target.is(_this.burger) && !new Element_1["default"](_this.burger).has(target) && !target.is(_this.menu) && !new Element_1["default"](_this.menu).has(target)) _this.closeMenu();
+        });
+        new EventListener_1["default"](this.burger).add("click", function (el) {
+            _this.toggleMenu();
+        });
+    };
+    return MobileMenu;
+}();
+exports["default"] = MobileMenu;
 
 /***/ }),
 

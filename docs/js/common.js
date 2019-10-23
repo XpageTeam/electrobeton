@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 329);
+/******/ 	return __webpack_require__(__webpack_require__.s = 331);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 126:
+/***/ 127:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -150,7 +150,208 @@ exports.document = doc;
 
 /***/ }),
 
-/***/ 329:
+/***/ 128:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var core_1 = __webpack_require__(92);
+var Element = /** @class */function () {
+    function Element(selector) {
+        this._length = 0;
+        if (!selector) this.els = [];else if (typeof selector == "string") this.els = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) this.els = [selector];else if (selector instanceof NodeList) this.els = core_1["default"].transformNodeListToArray(selector);else if (selector instanceof Array && (selector[0] instanceof HTMLElement || !selector.length)) this.els = selector;else if (selector instanceof Element) this.els = selector.els;else throw Error("Invalid selector: " + selector);
+    }
+    Object.defineProperty(Element.prototype, "els", {
+        get: function get() {
+            return this._els;
+        },
+        set: function set(elements) {
+            this._els = elements;
+            this._length = elements.length || 0;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Element.prototype, "length", {
+        get: function get() {
+            return this._length;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Element.prototype.addElement = function (element) {
+        if (typeof element == "string") this.els = this.els.concat(core_1["default"].elementsGetter(element));else if (element instanceof Element) this.els = this.els.concat(element.els);else if (element instanceof HTMLElement) this.els = this.els.concat(element);else if (element instanceof NodeList) this.els = this.els.concat(core_1["default"].transformNodeListToArray(element));else if (element instanceof Array && (element[0] instanceof HTMLElement || !element.length)) this.els = this.els.concat(element);else throw Error("Invalid selector: " + element);
+        return this;
+    };
+    Element.prototype.is = function (selector) {
+        var element;
+        if (typeof selector == "string") element = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) element = [selector];
+        return this.els[0] == element[0];
+    };
+    Element.prototype.has = function (selector) {
+        var searchElements;
+        if (typeof selector == "string") searchElements = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) searchElements = [selector];else if (selector instanceof Element) searchElements = selector._els;else if (selector instanceof NodeList) searchElements = core_1["default"].transformNodeListToArray(selector);else if (selector instanceof Array && (selector[0] instanceof HTMLElement || !selector.length)) searchElements = selector;else throw Error("Invalid selector: " + selector);
+        var isFinded = false;
+        for (var _i = 0, _a = this.els; _i < _a.length; _i++) {
+            var el = _a[_i];
+            for (var _b = 0, searchElements_1 = searchElements; _b < searchElements_1.length; _b++) {
+                var target = searchElements_1[_b];
+                if (el.contains(target)) {
+                    isFinded = true;
+                    break;
+                }
+            }
+            if (isFinded) return true;
+        }
+        return false;
+    };
+    /**
+    * Назначить класс всем текущим элементам
+    * @param className: string
+    * @return Element
+    */
+    Element.prototype.addClass = function (className) {
+        core_1["default"].each(this.els, function (el) {
+            el.classList.add(className);
+        });
+        return this;
+    };
+    /**
+    * Удалить класс у всех текущих элементов
+    * @param className: string
+    * @return Element
+    */
+    Element.prototype.removeClass = function (className) {
+        core_1["default"].each(this.els, function (el) {
+            el.classList.remove(className);
+        });
+        return this;
+    };
+    /**
+    * Переключения класса у всех текущих элементов
+    * @param className: string
+    * @return Element
+    */
+    Element.prototype.toggleClass = function (className, callback) {
+        core_1["default"].each(this.els, function (el) {
+            if (el.classList.contains(className)) {
+                el.classList.remove(className);
+                if (callback) callback(false);
+            } else {
+                el.classList.add(className);
+                if (callback) callback(true);
+            }
+        });
+        return this;
+    };
+    Element.prototype.hasClass = function (targetClass) {
+        for (var _i = 0, _a = this.els; _i < _a.length; _i++) {
+            var el = _a[_i];
+            if (el.classList.contains(targetClass)) return true;
+        }
+        return false;
+    };
+    /** Метод поиска потомков элемента по селектору
+    * @param selector: string - селектор искомого
+    * @return Element
+    * */
+    Element.prototype.find = function (selector) {
+        var searchingElements = new Array();
+        core_1["default"].each(this.els, function (el) {
+            var findedElements = el.querySelectorAll(selector);
+            if (!findedElements.length) return;
+            for (var _i = 0, _a = core_1["default"].transformNodeListToArray(findedElements); _i < _a.length; _i++) {
+                var el_1 = _a[_i];
+                searchingElements.push(el_1);
+            }
+            // searchingElements.concat(App.transformNodeListToArray(findedElements))
+            // console.log(searchingElements instanceof Array, App.transformNodeListToArray(findedElements) instanceof Array)
+        });
+        return new Element(searchingElements);
+    };
+    /** Метод поиска родителей по селектору
+    * @param selector: string
+    * @return Element
+    */
+    Element.prototype.closest = function (selector) {
+        var searchingElements = new Element();
+        core_1["default"].each(this.els, function (el) {
+            var findedElements = el.closest(selector);
+            if (!findedElements) return;
+            searchingElements.addElement(findedElements);
+        });
+        return searchingElements;
+    };
+    Element.prototype.text = function (text) {
+        if (text) {
+            core_1["default"].each(this.els, function (el) {
+                el.innerText = text;
+            });
+            return this;
+        } else if (this.length > 1) {
+            var textArray_1 = [];
+            core_1["default"].each(this.els, function (el) {
+                textArray_1.push(el.innerText);
+            });
+            return textArray_1;
+        } else return this.els[0].innerText;
+    };
+    /** Метод для получения конкретного элемента по индексу
+    * @param index: number
+    * @return Element*/
+    Element.prototype.get = function (index) {
+        if (this.els[index]) return new Element(this.els[index]);else return new Element();
+    };
+    /** Функция, возвращающая HTMLElement по индексу в коллеции элементов
+    * @param index: nuber
+    * @return HTMLElement
+    */
+    Element.prototype.getHTMLElement = function (index) {
+        return this.els[index];
+    };
+    Element.prototype.height = function (height) {
+        if (!height) return parseInt(getComputedStyle(this.els[0]).height);
+        core_1["default"].each(this.els, function (el) {
+            if (isNaN(height)) el.style.height = height;else el.style.height = height + "px";
+        });
+        return this;
+    };
+    /** Map
+    * @param callback: Function
+    * @return any[] */
+    Element.prototype.map = function (callback) {
+        return this.els.map(callback);
+    };
+    Element.prototype.attr = function (attrName, value) {
+        if (value) {
+            core_1["default"].each(this.els, function (el) {
+                el.setAttribute(attrName, value);
+            });
+            return this;
+        }
+        return this.els[0].getAttribute(attrName);
+    };
+    /** Метод в разработке */
+    Element.prototype.prev = function (selector) {
+        var searchingElements = new Element();
+        core_1["default"].each(this.els, function (el) {
+            var findedElements = el.previousElementSibling;
+            if (!findedElements) return;
+            if (selector) {
+                if (findedElements.classList.contains(selector.replace(".", ""))) searchingElements.addElement(findedElements);
+            } else searchingElements.addElement(findedElements);
+        });
+        return searchingElements;
+    };
+    return Element;
+}();
+exports["default"] = Element;
+
+/***/ }),
+
+/***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -160,27 +361,27 @@ var _jquery = __webpack_require__(42);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _is_js = __webpack_require__(330);
+var _is_js = __webpack_require__(332);
 
 var _is_js2 = _interopRequireDefault(_is_js);
 
-var _swiper = __webpack_require__(331);
+var _swiper = __webpack_require__(333);
 
 var _swiper2 = _interopRequireDefault(_swiper);
 
-__webpack_require__(332);
+__webpack_require__(334);
 
-__webpack_require__(335);
+__webpack_require__(337);
 
-var _mobileMenu = __webpack_require__(352);
+var _mobileMenu = __webpack_require__(340);
 
 var _mobileMenu2 = _interopRequireDefault(_mobileMenu);
 
-__webpack_require__(338);
+__webpack_require__(342);
 
-__webpack_require__(339);
+__webpack_require__(343);
 
-var _xWidgets = __webpack_require__(340);
+var _xWidgets = __webpack_require__(344);
 
 var _xWidgets2 = _interopRequireDefault(_xWidgets);
 
@@ -197,8 +398,8 @@ window.$ = _jquery2.default;
 window.jQuery = _jquery2.default;
 window.is = _is_js2.default;
 
-__webpack_require__(341);
-__webpack_require__(342);
+__webpack_require__(345);
+__webpack_require__(346);
 
 ;(function () {
 
@@ -278,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		location.reload();
 	});
 
-	__webpack_require__(347);
+	__webpack_require__(351);
 
 	var galleryThumbs = new _swiper2.default('.gallery-thumbs .swiper-list', {
 		spaceBetween: 23,
@@ -424,7 +625,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 /***/ }),
 
-/***/ 330:
+/***/ 332:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -1339,7 +1540,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 /***/ }),
 
-/***/ 331:
+/***/ 333:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9895,7 +10096,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ 332:
+/***/ 334:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9905,7 +10106,7 @@ var _jquery = __webpack_require__(42);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _swiperEsm = __webpack_require__(333);
+var _swiperEsm = __webpack_require__(335);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10111,7 +10312,7 @@ var autoplayToggle = function autoplayToggle(_) {
 
 /***/ }),
 
-/***/ 333:
+/***/ 335:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10134,9 +10335,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                                                                                                                                                                                                                                                                                * Released on: December 19, 2018
                                                                                                                                                                                                                                                                                */
 
-var _dom = __webpack_require__(334);
+var _dom = __webpack_require__(336);
 
-var _ssrWindow = __webpack_require__(126);
+var _ssrWindow = __webpack_require__(127);
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -17262,7 +17463,7 @@ exports.Thumbs = thumbs;
 
 /***/ }),
 
-/***/ 334:
+/***/ 336:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17271,7 +17472,7 @@ exports.Thumbs = thumbs;
 exports.__esModule = true;
 exports.scroll = exports.resize = exports.touchmove = exports.touchend = exports.touchstart = exports.mouseover = exports.mouseout = exports.mouseleave = exports.mouseenter = exports.mouseup = exports.mousemove = exports.mousedown = exports.change = exports.submit = exports.keypress = exports.keydown = exports.keyup = exports.focusout = exports.focusin = exports.focus = exports.blur = exports.click = exports.stop = exports.animate = exports.scrollLeft = exports.scrollTop = exports.scrollTo = exports.empty = exports.add = exports.detach = exports.remove = exports.children = exports.find = exports.closest = exports.parents = exports.parent = exports.siblings = exports.prevAll = exports.prev = exports.nextAll = exports.next = exports.insertAfter = exports.insertBefore = exports.prependTo = exports.prepend = exports.appendTo = exports.append = exports.eq = exports.index = exports.indexOf = exports.is = exports.text = exports.html = exports.map = exports.filter = exports.forEach = exports.each = exports.toArray = exports.css = exports.styles = exports.show = exports.hide = exports.offset = exports.outerHeight = exports.height = exports.outerWidth = exports.width = exports.animationEnd = exports.transitionEnd = exports.trigger = exports.once = exports.off = exports.on = exports.transition = exports.transform = exports.val = exports.dataset = exports.removeData = exports.data = exports.prop = exports.removeAttr = exports.attr = exports.toggleClass = exports.hasClass = exports.removeClass = exports.addClass = exports.$ = undefined;
 
-var _ssrWindow = __webpack_require__(126);
+var _ssrWindow = __webpack_require__(127);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
                                                                                                                                                            * Dom7 2.1.2
@@ -18876,12 +19077,12 @@ exports.scroll = scroll;
 
 /***/ }),
 
-/***/ 335:
+/***/ 337:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! selectize.js - v0.12.6 | https://github.com/selectize/selectize.js | Apache License (v2) */
 
-!function(a,b){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(42),__webpack_require__(336),__webpack_require__(337)], __WEBPACK_AMD_DEFINE_FACTORY__ = (b),
+!function(a,b){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(42),__webpack_require__(338),__webpack_require__(339)], __WEBPACK_AMD_DEFINE_FACTORY__ = (b),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"object"==typeof exports?module.exports=b(require("jquery"),require("sifter"),require("microplugin")):a.Selectize=b(a.jQuery,a.Sifter,a.MicroPlugin)}(this,function(a,b,c){"use strict";var d=function(a,b){if("string"!=typeof b||b.length){var c="string"==typeof b?new RegExp(b,"i"):b,d=function(a){var b=0;if(3===a.nodeType){var e=a.data.search(c);if(e>=0&&a.data.length>0){var f=a.data.match(c),g=document.createElement("span");g.className="highlight";var h=a.splitText(e),i=(h.splitText(f[0].length),h.cloneNode(!0));g.appendChild(i),h.parentNode.replaceChild(g,h),b=1}}else if(1===a.nodeType&&a.childNodes&&!/(script|style)/i.test(a.tagName)&&("highlight"!==a.className||"SPAN"!==a.tagName))for(var j=0;j<a.childNodes.length;++j)j+=d(a.childNodes[j]);return b};return a.each(function(){d(this)})}};a.fn.removeHighlight=function(){return this.find("span.highlight").each(function(){this.parentNode.firstChild.nodeName;var a=this.parentNode;a.replaceChild(this.firstChild,this),a.normalize()}).end()};var e=function(){};e.prototype={on:function(a,b){this._events=this._events||{},this._events[a]=this._events[a]||[],this._events[a].push(b)},off:function(a,b){var c=arguments.length;return 0===c?delete this._events:1===c?delete this._events[a]:(this._events=this._events||{},void(a in this._events!=!1&&this._events[a].splice(this._events[a].indexOf(b),1)))},trigger:function(a){if(this._events=this._events||{},a in this._events!=!1)for(var b=0;b<this._events[a].length;b++)this._events[a][b].apply(this,Array.prototype.slice.call(arguments,1))}},e.mixin=function(a){for(var b=["on","off","trigger"],c=0;c<b.length;c++)a.prototype[b[c]]=e.prototype[b[c]]};var f=/Mac/.test(navigator.userAgent),g=f?91:17,h=f?18:17,i=!/android/i.test(window.navigator.userAgent)&&!!document.createElement("input").validity,j=function(a){return void 0!==a},k=function(a){return void 0===a||null===a?null:"boolean"==typeof a?a?"1":"0":a+""},l=function(a){return(a+"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")},m={};m.before=function(a,b,c){var d=a[b];a[b]=function(){return c.apply(a,arguments),d.apply(a,arguments)}},m.after=function(a,b,c){var d=a[b];a[b]=function(){var b=d.apply(a,arguments);return c.apply(a,arguments),b}};var n=function(a){var b=!1;return function(){b||(b=!0,a.apply(this,arguments))}},o=function(a,b){var c;return function(){var d=this,e=arguments;window.clearTimeout(c),c=window.setTimeout(function(){a.apply(d,e)},b)}},p=function(a,b,c){var d,e=a.trigger,f={};a.trigger=function(){var c=arguments[0];if(-1===b.indexOf(c))return e.apply(a,arguments);f[c]=arguments},c.apply(a,[]),a.trigger=e;for(d in f)f.hasOwnProperty(d)&&e.apply(a,f[d])},q=function(a,b,c,d){a.on(b,c,function(b){for(var c=b.target;c&&c.parentNode!==a[0];)c=c.parentNode;return b.currentTarget=c,d.apply(this,[b])})},r=function(a){var b={};if("selectionStart"in a)b.start=a.selectionStart,b.length=a.selectionEnd-b.start;else if(document.selection){a.focus();var c=document.selection.createRange(),d=document.selection.createRange().text.length;c.moveStart("character",-a.value.length),b.start=c.text.length-d,b.length=d}return b},s=function(a,b,c){var d,e,f={};if(c)for(d=0,e=c.length;d<e;d++)f[c[d]]=a.css(c[d]);else f=a.css();b.css(f)},t=function(b,c){return b?(w.$testInput||(w.$testInput=a("<span />").css({position:"absolute",top:-99999,left:-99999,width:"auto",padding:0,whiteSpace:"pre"}).appendTo("body")),w.$testInput.text(b),s(c,w.$testInput,["letterSpacing","fontSize","fontFamily","fontWeight","textTransform"]),w.$testInput.width()):0},u=function(a){var b=null,c=function(c,d){var e,f,g,h,i,j,k,l;c=c||window.event||{},d=d||{},c.metaKey||c.altKey||(d.force||!1!==a.data("grow"))&&(e=a.val(),c.type&&"keydown"===c.type.toLowerCase()&&(f=c.keyCode,g=f>=48&&f<=57||f>=65&&f<=90||f>=96&&f<=111||f>=186&&f<=222||32===f,46===f||8===f?(l=r(a[0]),l.length?e=e.substring(0,l.start)+e.substring(l.start+l.length):8===f&&l.start?e=e.substring(0,l.start-1)+e.substring(l.start+1):46===f&&void 0!==l.start&&(e=e.substring(0,l.start)+e.substring(l.start+1))):g&&(j=c.shiftKey,k=String.fromCharCode(c.keyCode),k=j?k.toUpperCase():k.toLowerCase(),e+=k)),h=a.attr("placeholder"),!e&&h&&(e=h),(i=t(e,a)+4)!==b&&(b=i,a.width(i),a.triggerHandler("resize")))};a.on("keydown keyup update blur",c),c()},v=function(a){var b=document.createElement("div");return b.appendChild(a.cloneNode(!0)),b.innerHTML},w=function(c,d){var e,f,g,h,i=this;h=c[0],h.selectize=i;var j=window.getComputedStyle&&window.getComputedStyle(h,null);if(g=j?j.getPropertyValue("direction"):h.currentStyle&&h.currentStyle.direction,g=g||c.parents("[dir]:first").attr("dir")||"",a.extend(i,{order:0,settings:d,$input:c,tabIndex:c.attr("tabindex")||"",tagType:"select"===h.tagName.toLowerCase()?1:2,rtl:/rtl/i.test(g),eventNS:".selectize"+ ++w.count,highlightedValue:null,isBlurring:!1,isOpen:!1,isDisabled:!1,isRequired:c.is("[required]"),isInvalid:!1,isLocked:!1,isFocused:!1,isInputHidden:!1,isSetup:!1,isShiftDown:!1,isCmdDown:!1,isCtrlDown:!1,ignoreFocus:!1,ignoreBlur:!1,ignoreHover:!1,hasOptions:!1,currentResults:null,lastValue:"",caretPos:0,loading:0,loadedSearches:{},$activeOption:null,$activeItems:[],optgroups:{},options:{},userOptions:{},items:[],renderCache:{},onSearchChange:null===d.loadThrottle?i.onSearchChange:o(i.onSearchChange,d.loadThrottle)}),i.sifter=new b(this.options,{diacritics:d.diacritics}),i.settings.options){for(e=0,f=i.settings.options.length;e<f;e++)i.registerOption(i.settings.options[e]);delete i.settings.options}if(i.settings.optgroups){for(e=0,f=i.settings.optgroups.length;e<f;e++)i.registerOptionGroup(i.settings.optgroups[e]);delete i.settings.optgroups}i.settings.mode=i.settings.mode||(1===i.settings.maxItems?"single":"multi"),"boolean"!=typeof i.settings.hideSelected&&(i.settings.hideSelected="multi"===i.settings.mode),i.initializePlugins(i.settings.plugins),i.setupCallbacks(),i.setupTemplates(),i.setup()};return e.mixin(w),void 0!==c?c.mixin(w):function(a,b){b||(b={});console.error("Selectize: "+a),b.explanation&&(console.group&&console.group(),console.error(b.explanation),console.group&&console.groupEnd())}("Dependency MicroPlugin is missing",{explanation:'Make sure you either: (1) are using the "standalone" version of Selectize, or (2) require MicroPlugin before you load Selectize.'}),a.extend(w.prototype,{setup:function(){var b,c,d,e,j,k,l,m,n,o,p=this,r=p.settings,s=p.eventNS,t=a(window),v=a(document),w=p.$input;if(l=p.settings.mode,m=w.attr("class")||"",b=a("<div>").addClass(r.wrapperClass).addClass(m).addClass(l),c=a("<div>").addClass(r.inputClass).addClass("items").appendTo(b),d=a('<input type="text" autocomplete="off" />').appendTo(c).attr("tabindex",w.is(":disabled")?"-1":p.tabIndex),k=a(r.dropdownParent||b),e=a("<div>").addClass(r.dropdownClass).addClass(l).hide().appendTo(k),j=a("<div>").addClass(r.dropdownContentClass).appendTo(e),(o=w.attr("id"))&&(d.attr("id",o+"-selectized"),a("label[for='"+o+"']").attr("for",o+"-selectized")),p.settings.copyClassesToDropdown&&e.addClass(m),b.css({width:w[0].style.width}),p.plugins.names.length&&(n="plugin-"+p.plugins.names.join(" plugin-"),b.addClass(n),e.addClass(n)),(null===r.maxItems||r.maxItems>1)&&1===p.tagType&&w.attr("multiple","multiple"),p.settings.placeholder&&d.attr("placeholder",r.placeholder),!p.settings.splitOn&&p.settings.delimiter){var x=p.settings.delimiter.replace(/[-\/\\^$*+?.()|[\]{}]/g,"\\$&");p.settings.splitOn=new RegExp("\\s*"+x+"+\\s*")}w.attr("autocorrect")&&d.attr("autocorrect",w.attr("autocorrect")),w.attr("autocapitalize")&&d.attr("autocapitalize",w.attr("autocapitalize")),d[0].type=w[0].type,p.$wrapper=b,p.$control=c,p.$control_input=d,p.$dropdown=e,p.$dropdown_content=j,e.on("mouseenter mousedown click","[data-disabled]>[data-selectable]",function(a){a.stopImmediatePropagation()}),e.on("mouseenter","[data-selectable]",function(){return p.onOptionHover.apply(p,arguments)}),e.on("mousedown click","[data-selectable]",function(){return p.onOptionSelect.apply(p,arguments)}),q(c,"mousedown","*:not(input)",function(){return p.onItemSelect.apply(p,arguments)}),u(d),c.on({mousedown:function(){return p.onMouseDown.apply(p,arguments)},click:function(){return p.onClick.apply(p,arguments)}}),d.on({mousedown:function(a){a.stopPropagation()},keydown:function(){return p.onKeyDown.apply(p,arguments)},keyup:function(){return p.onKeyUp.apply(p,arguments)},keypress:function(){return p.onKeyPress.apply(p,arguments)},resize:function(){p.positionDropdown.apply(p,[])},blur:function(){return p.onBlur.apply(p,arguments)},focus:function(){return p.ignoreBlur=!1,p.onFocus.apply(p,arguments)},paste:function(){return p.onPaste.apply(p,arguments)}}),v.on("keydown"+s,function(a){p.isCmdDown=a[f?"metaKey":"ctrlKey"],p.isCtrlDown=a[f?"altKey":"ctrlKey"],p.isShiftDown=a.shiftKey}),v.on("keyup"+s,function(a){a.keyCode===h&&(p.isCtrlDown=!1),16===a.keyCode&&(p.isShiftDown=!1),a.keyCode===g&&(p.isCmdDown=!1)}),v.on("mousedown"+s,function(a){if(p.isFocused){if(a.target===p.$dropdown[0]||a.target.parentNode===p.$dropdown[0])return!1;p.$control.has(a.target).length||a.target===p.$control[0]||p.blur(a.target)}}),t.on(["scroll"+s,"resize"+s].join(" "),function(){p.isOpen&&p.positionDropdown.apply(p,arguments)}),t.on("mousemove"+s,function(){p.ignoreHover=!1}),this.revertSettings={$children:w.children().detach(),tabindex:w.attr("tabindex")},w.attr("tabindex",-1).hide().after(p.$wrapper),a.isArray(r.items)&&(p.setValue(r.items),delete r.items),i&&w.on("invalid"+s,function(a){a.preventDefault(),p.isInvalid=!0,p.refreshState()}),p.updateOriginalInput(),p.refreshItems(),p.refreshState(),p.updatePlaceholder(),p.isSetup=!0,w.is(":disabled")&&p.disable(),p.on("change",this.onChange),w.data("selectize",p),w.addClass("selectized"),p.trigger("initialize"),!0===r.preload&&p.onSearchChange("")},setupTemplates:function(){var b=this,c=b.settings.labelField,d=b.settings.optgroupLabelField,e={optgroup:function(a){return'<div class="optgroup">'+a.html+"</div>"},optgroup_header:function(a,b){return'<div class="optgroup-header">'+b(a[d])+"</div>"},option:function(a,b){return'<div class="option">'+b(a[c])+"</div>"},item:function(a,b){return'<div class="item">'+b(a[c])+"</div>"},option_create:function(a,b){return'<div class="create">Add <strong>'+b(a.input)+"</strong>&hellip;</div>"}};b.settings.render=a.extend({},e,b.settings.render)},setupCallbacks:function(){var a,b,c={initialize:"onInitialize",change:"onChange",item_add:"onItemAdd",item_remove:"onItemRemove",clear:"onClear",option_add:"onOptionAdd",option_remove:"onOptionRemove",option_clear:"onOptionClear",optgroup_add:"onOptionGroupAdd",optgroup_remove:"onOptionGroupRemove",optgroup_clear:"onOptionGroupClear",dropdown_open:"onDropdownOpen",dropdown_close:"onDropdownClose",type:"onType",load:"onLoad",focus:"onFocus",blur:"onBlur"};for(a in c)c.hasOwnProperty(a)&&(b=this.settings[c[a]])&&this.on(a,b)},onClick:function(a){var b=this;b.isFocused&&b.isOpen||(b.focus(),a.preventDefault())},onMouseDown:function(b){var c=this,d=b.isDefaultPrevented();a(b.target);if(c.isFocused){if(b.target!==c.$control_input[0])return"single"===c.settings.mode?c.isOpen?c.close():c.open():d||c.setActiveItem(null),!1}else d||window.setTimeout(function(){c.focus()},0)},onChange:function(){this.$input.trigger("change")},onPaste:function(b){var c=this;if(c.isFull()||c.isInputHidden||c.isLocked)return void b.preventDefault();c.settings.splitOn&&setTimeout(function(){var b=c.$control_input.val();if(b.match(c.settings.splitOn))for(var d=a.trim(b).split(c.settings.splitOn),e=0,f=d.length;e<f;e++)c.createItem(d[e])},0)},onKeyPress:function(a){if(this.isLocked)return a&&a.preventDefault();var b=String.fromCharCode(a.keyCode||a.which);return this.settings.create&&"multi"===this.settings.mode&&b===this.settings.delimiter?(this.createItem(),a.preventDefault(),!1):void 0},onKeyDown:function(a){var b=(a.target,this.$control_input[0],this);if(b.isLocked)return void(9!==a.keyCode&&a.preventDefault());switch(a.keyCode){case 65:if(b.isCmdDown)return void b.selectAll();break;case 27:return void(b.isOpen&&(a.preventDefault(),a.stopPropagation(),b.close()));case 78:if(!a.ctrlKey||a.altKey)break;case 40:if(!b.isOpen&&b.hasOptions)b.open();else if(b.$activeOption){b.ignoreHover=!0;var c=b.getAdjacentOption(b.$activeOption,1);c.length&&b.setActiveOption(c,!0,!0)}return void a.preventDefault();case 80:if(!a.ctrlKey||a.altKey)break;case 38:if(b.$activeOption){b.ignoreHover=!0;var d=b.getAdjacentOption(b.$activeOption,-1);d.length&&b.setActiveOption(d,!0,!0)}return void a.preventDefault();case 13:return void(b.isOpen&&b.$activeOption&&(b.onOptionSelect({currentTarget:b.$activeOption}),a.preventDefault()));case 37:return void b.advanceSelection(-1,a);case 39:return void b.advanceSelection(1,a);case 9:return b.settings.selectOnTab&&b.isOpen&&b.$activeOption&&(b.onOptionSelect({currentTarget:b.$activeOption}),b.isFull()||a.preventDefault()),void(b.settings.create&&b.createItem()&&a.preventDefault());case 8:case 46:return void b.deleteSelection(a)}return!b.isFull()&&!b.isInputHidden||(f?a.metaKey:a.ctrlKey)?void 0:void a.preventDefault()},onKeyUp:function(a){var b=this;if(b.isLocked)return a&&a.preventDefault();var c=b.$control_input.val()||"";b.lastValue!==c&&(b.lastValue=c,b.onSearchChange(c),b.refreshOptions(),b.trigger("type",c))},onSearchChange:function(a){var b=this,c=b.settings.load;c&&(b.loadedSearches.hasOwnProperty(a)||(b.loadedSearches[a]=!0,b.load(function(d){c.apply(b,[a,d])})))},onFocus:function(a){var b=this,c=b.isFocused;if(b.isDisabled)return b.blur(),a&&a.preventDefault(),!1;b.ignoreFocus||(b.isFocused=!0,"focus"===b.settings.preload&&b.onSearchChange(""),c||b.trigger("focus"),b.$activeItems.length||(b.showInput(),b.setActiveItem(null),b.refreshOptions(!!b.settings.openOnFocus)),b.refreshState())},onBlur:function(a,b){var c=this;if(c.isFocused&&(c.isFocused=!1,!c.ignoreFocus)){if(!c.ignoreBlur&&document.activeElement===c.$dropdown_content[0])return c.ignoreBlur=!0,void c.onFocus(a);var d=function(){c.close(),c.setTextboxValue(""),c.setActiveItem(null),c.setActiveOption(null),c.setCaret(c.items.length),c.refreshState(),b&&b.focus&&b.focus(),c.isBlurring=!1,c.ignoreFocus=!1,c.trigger("blur")};c.isBlurring=!0,c.ignoreFocus=!0,c.settings.create&&c.settings.createOnBlur?c.createItem(null,!1,d):d()}},onOptionHover:function(a){this.ignoreHover||this.setActiveOption(a.currentTarget,!1)},onOptionSelect:function(b){var c,d,e=this;b.preventDefault&&(b.preventDefault(),b.stopPropagation()),d=a(b.currentTarget),d.hasClass("create")?e.createItem(null,function(){e.settings.closeAfterSelect&&e.close()}):void 0!==(c=d.attr("data-value"))&&(e.lastQuery=null,e.setTextboxValue(""),e.addItem(c),e.settings.closeAfterSelect?e.close():!e.settings.hideSelected&&b.type&&/mouse/.test(b.type)&&e.setActiveOption(e.getOption(c)))},onItemSelect:function(a){var b=this;b.isLocked||"multi"===b.settings.mode&&(a.preventDefault(),b.setActiveItem(a.currentTarget,a))},load:function(a){var b=this,c=b.$wrapper.addClass(b.settings.loadingClass);b.loading++,a.apply(b,[function(a){b.loading=Math.max(b.loading-1,0),a&&a.length&&(b.addOption(a),b.refreshOptions(b.isFocused&&!b.isInputHidden)),b.loading||c.removeClass(b.settings.loadingClass),b.trigger("load",a)}])},setTextboxValue:function(a){var b=this.$control_input;b.val()!==a&&(b.val(a).triggerHandler("update"),this.lastValue=a)},getValue:function(){return 1===this.tagType&&this.$input.attr("multiple")?this.items:this.items.join(this.settings.delimiter)},setValue:function(a,b){p(this,b?[]:["change"],function(){this.clear(b),this.addItems(a,b)})},setActiveItem:function(b,c){var d,e,f,g,h,i,j,k,l=this;if("single"!==l.settings.mode){if(b=a(b),!b.length)return a(l.$activeItems).removeClass("active"),l.$activeItems=[],void(l.isFocused&&l.showInput());if("mousedown"===(d=c&&c.type.toLowerCase())&&l.isShiftDown&&l.$activeItems.length){for(k=l.$control.children(".active:last"),g=Array.prototype.indexOf.apply(l.$control[0].childNodes,[k[0]]),h=Array.prototype.indexOf.apply(l.$control[0].childNodes,[b[0]]),g>h&&(j=g,g=h,h=j),e=g;e<=h;e++)i=l.$control[0].childNodes[e],-1===l.$activeItems.indexOf(i)&&(a(i).addClass("active"),l.$activeItems.push(i));c.preventDefault()}else"mousedown"===d&&l.isCtrlDown||"keydown"===d&&this.isShiftDown?b.hasClass("active")?(f=l.$activeItems.indexOf(b[0]),l.$activeItems.splice(f,1),b.removeClass("active")):l.$activeItems.push(b.addClass("active")[0]):(a(l.$activeItems).removeClass("active"),l.$activeItems=[b.addClass("active")[0]]);l.hideInput(),this.isFocused||l.focus()}},setActiveOption:function(b,c,d){var e,f,g,h,i,k=this;k.$activeOption&&k.$activeOption.removeClass("active"),k.$activeOption=null,b=a(b),b.length&&(k.$activeOption=b.addClass("active"),!c&&j(c)||(e=k.$dropdown_content.height(),f=k.$activeOption.outerHeight(!0),c=k.$dropdown_content.scrollTop()||0,g=k.$activeOption.offset().top-k.$dropdown_content.offset().top+c,h=g,i=g-e+f,g+f>e+c?k.$dropdown_content.stop().animate({scrollTop:i},d?k.settings.scrollDuration:0):g<c&&k.$dropdown_content.stop().animate({scrollTop:h},d?k.settings.scrollDuration:0)))},selectAll:function(){var a=this;"single"!==a.settings.mode&&(a.$activeItems=Array.prototype.slice.apply(a.$control.children(":not(input)").addClass("active")),a.$activeItems.length&&(a.hideInput(),a.close()),a.focus())},hideInput:function(){var a=this;a.setTextboxValue(""),a.$control_input.css({opacity:0,position:"absolute",left:a.rtl?1e4:-1e4}),a.isInputHidden=!0},showInput:function(){this.$control_input.css({opacity:1,position:"relative",left:0}),this.isInputHidden=!1},focus:function(){var a=this;a.isDisabled||(a.ignoreFocus=!0,a.$control_input[0].focus(),window.setTimeout(function(){a.ignoreFocus=!1,a.onFocus()},0))},blur:function(a){this.$control_input[0].blur(),this.onBlur(null,a)},getScoreFunction:function(a){return this.sifter.getScoreFunction(a,this.getSearchOptions())},getSearchOptions:function(){var a=this.settings,b=a.sortField;return"string"==typeof b&&(b=[{field:b}]),{fields:a.searchField,conjunction:a.searchConjunction,sort:b,nesting:a.nesting}},search:function(b){var c,d,e,f=this,g=f.settings,h=this.getSearchOptions();if(g.score&&"function"!=typeof(e=f.settings.score.apply(this,[b])))throw new Error('Selectize "score" setting must be a function that returns a function');if(b!==f.lastQuery?(f.lastQuery=b,d=f.sifter.search(b,a.extend(h,{score:e})),f.currentResults=d):d=a.extend(!0,{},f.currentResults),g.hideSelected)for(c=d.items.length-1;c>=0;c--)-1!==f.items.indexOf(k(d.items[c].id))&&d.items.splice(c,1);return d},refreshOptions:function(b){var c,e,f,g,h,i,j,l,m,n,o,p,q,r,s,t;void 0===b&&(b=!0);var u=this,w=a.trim(u.$control_input.val()),x=u.search(w),y=u.$dropdown_content,z=u.$activeOption&&k(u.$activeOption.attr("data-value"));for(g=x.items.length,"number"==typeof u.settings.maxOptions&&(g=Math.min(g,u.settings.maxOptions)),h={},i=[],c=0;c<g;c++)for(j=u.options[x.items[c].id],l=u.render("option",j),m=j[u.settings.optgroupField]||"",n=a.isArray(m)?m:[m],e=0,f=n&&n.length;e<f;e++)m=n[e],u.optgroups.hasOwnProperty(m)||(m=""),h.hasOwnProperty(m)||(h[m]=document.createDocumentFragment(),i.push(m)),h[m].appendChild(l);for(this.settings.lockOptgroupOrder&&i.sort(function(a,b){return(u.optgroups[a].$order||0)-(u.optgroups[b].$order||0)}),o=document.createDocumentFragment(),c=0,g=i.length;c<g;c++)m=i[c],u.optgroups.hasOwnProperty(m)&&h[m].childNodes.length?(p=document.createDocumentFragment(),p.appendChild(u.render("optgroup_header",u.optgroups[m])),p.appendChild(h[m]),o.appendChild(u.render("optgroup",a.extend({},u.optgroups[m],{html:v(p),dom:p})))):o.appendChild(h[m]);if(y.html(o),u.settings.highlight&&(y.removeHighlight(),x.query.length&&x.tokens.length))for(c=0,g=x.tokens.length;c<g;c++)d(y,x.tokens[c].regex);if(!u.settings.hideSelected)for(c=0,g=u.items.length;c<g;c++)u.getOption(u.items[c]).addClass("selected");q=u.canCreate(w),q&&(y.prepend(u.render("option_create",{input:w})),t=a(y[0].childNodes[0])),u.hasOptions=x.items.length>0||q,u.hasOptions?(x.items.length>0?(s=z&&u.getOption(z),s&&s.length?r=s:"single"===u.settings.mode&&u.items.length&&(r=u.getOption(u.items[0])),r&&r.length||(r=t&&!u.settings.addPrecedence?u.getAdjacentOption(t,1):y.find("[data-selectable]:first"))):r=t,u.setActiveOption(r),b&&!u.isOpen&&u.open()):(u.setActiveOption(null),b&&u.isOpen&&u.close())},addOption:function(b){var c,d,e,f=this;if(a.isArray(b))for(c=0,d=b.length;c<d;c++)f.addOption(b[c]);else(e=f.registerOption(b))&&(f.userOptions[e]=!0,f.lastQuery=null,f.trigger("option_add",e,b))},registerOption:function(a){var b=k(a[this.settings.valueField]);return void 0!==b&&null!==b&&!this.options.hasOwnProperty(b)&&(a.$order=a.$order||++this.order,this.options[b]=a,b)},registerOptionGroup:function(a){var b=k(a[this.settings.optgroupValueField]);return!!b&&(a.$order=a.$order||++this.order,this.optgroups[b]=a,b)},addOptionGroup:function(a,b){b[this.settings.optgroupValueField]=a,(a=this.registerOptionGroup(b))&&this.trigger("optgroup_add",a,b)},removeOptionGroup:function(a){this.optgroups.hasOwnProperty(a)&&(delete this.optgroups[a],this.renderCache={},this.trigger("optgroup_remove",a))},clearOptionGroups:function(){this.optgroups={},this.renderCache={},this.trigger("optgroup_clear")},updateOption:function(b,c){var d,e,f,g,h,i,j,l=this;if(b=k(b),f=k(c[l.settings.valueField]),null!==b&&l.options.hasOwnProperty(b)){if("string"!=typeof f)throw new Error("Value must be set in option data");j=l.options[b].$order,f!==b&&(delete l.options[b],-1!==(g=l.items.indexOf(b))&&l.items.splice(g,1,f)),c.$order=c.$order||j,l.options[f]=c,h=l.renderCache.item,i=l.renderCache.option,h&&(delete h[b],delete h[f]),i&&(delete i[b],delete i[f]),-1!==l.items.indexOf(f)&&(d=l.getItem(b),e=a(l.render("item",c)),d.hasClass("active")&&e.addClass("active"),d.replaceWith(e)),l.lastQuery=null,l.isOpen&&l.refreshOptions(!1)}},removeOption:function(a,b){var c=this;a=k(a);var d=c.renderCache.item,e=c.renderCache.option;d&&delete d[a],e&&delete e[a],delete c.userOptions[a],delete c.options[a],c.lastQuery=null,c.trigger("option_remove",a),c.removeItem(a,b)},clearOptions:function(){var b=this;b.loadedSearches={},b.userOptions={},b.renderCache={};var c=b.options;a.each(b.options,function(a,d){-1==b.items.indexOf(a)&&delete c[a]}),b.options=b.sifter.items=c,b.lastQuery=null,b.trigger("option_clear")},getOption:function(a){return this.getElementWithValue(a,this.$dropdown_content.find("[data-selectable]"))},getAdjacentOption:function(b,c){var d=this.$dropdown.find("[data-selectable]"),e=d.index(b)+c;return e>=0&&e<d.length?d.eq(e):a()},getElementWithValue:function(b,c){if(void 0!==(b=k(b))&&null!==b)for(var d=0,e=c.length;d<e;d++)if(c[d].getAttribute("data-value")===b)return a(c[d]);return a()},getItem:function(a){return this.getElementWithValue(a,this.$control.children())},addItems:function(b,c){this.buffer=document.createDocumentFragment();for(var d=this.$control[0].childNodes,e=0;e<d.length;e++)this.buffer.appendChild(d[e]);for(var f=a.isArray(b)?b:[b],e=0,g=f.length;e<g;e++)this.isPending=e<g-1,this.addItem(f[e],c);var h=this.$control[0];h.insertBefore(this.buffer,h.firstChild),this.buffer=null},addItem:function(b,c){p(this,c?[]:["change"],function(){var d,e,f,g,h,i=this,j=i.settings.mode;if(b=k(b),-1!==i.items.indexOf(b))return void("single"===j&&i.close());i.options.hasOwnProperty(b)&&("single"===j&&i.clear(c),"multi"===j&&i.isFull()||(d=a(i.render("item",i.options[b])),h=i.isFull(),i.items.splice(i.caretPos,0,b),i.insertAtCaret(d),(!i.isPending||!h&&i.isFull())&&i.refreshState(),i.isSetup&&(f=i.$dropdown_content.find("[data-selectable]"),i.isPending||(e=i.getOption(b),g=i.getAdjacentOption(e,1).attr("data-value"),i.refreshOptions(i.isFocused&&"single"!==j),g&&i.setActiveOption(i.getOption(g))),!f.length||i.isFull()?i.close():i.isPending||i.positionDropdown(),i.updatePlaceholder(),i.trigger("item_add",b,d),i.isPending||i.updateOriginalInput({silent:c}))))})},removeItem:function(b,c){var d,e,f,g=this;d=b instanceof a?b:g.getItem(b),b=k(d.attr("data-value")),-1!==(e=g.items.indexOf(b))&&(d.remove(),d.hasClass("active")&&(f=g.$activeItems.indexOf(d[0]),g.$activeItems.splice(f,1)),g.items.splice(e,1),g.lastQuery=null,!g.settings.persist&&g.userOptions.hasOwnProperty(b)&&g.removeOption(b,c),e<g.caretPos&&g.setCaret(g.caretPos-1),g.refreshState(),g.updatePlaceholder(),g.updateOriginalInput({silent:c}),g.positionDropdown(),g.trigger("item_remove",b,d))},createItem:function(b,c){var d=this,e=d.caretPos;b=b||a.trim(d.$control_input.val()||"");var f=arguments[arguments.length-1];if("function"!=typeof f&&(f=function(){}),"boolean"!=typeof c&&(c=!0),!d.canCreate(b))return f(),!1;d.lock();var g="function"==typeof d.settings.create?this.settings.create:function(a){var b={};return b[d.settings.labelField]=a,b[d.settings.valueField]=a,b},h=n(function(a){if(d.unlock(),!a||"object"!=typeof a)return f();var b=k(a[d.settings.valueField]);if("string"!=typeof b)return f();d.setTextboxValue(""),d.addOption(a),d.setCaret(e),d.addItem(b),d.refreshOptions(c&&"single"!==d.settings.mode),f(a)}),i=g.apply(this,[b,h]);return void 0!==i&&h(i),!0},refreshItems:function(){this.lastQuery=null,this.isSetup&&this.addItem(this.items),this.refreshState(),this.updateOriginalInput()},refreshState:function(){this.refreshValidityState(),this.refreshClasses()},refreshValidityState:function(){if(!this.isRequired)return!1;var a=!this.items.length;this.isInvalid=a,this.$control_input.prop("required",a),this.$input.prop("required",!a)},refreshClasses:function(){var b=this,c=b.isFull(),d=b.isLocked;b.$wrapper.toggleClass("rtl",b.rtl),b.$control.toggleClass("focus",b.isFocused).toggleClass("disabled",b.isDisabled).toggleClass("required",b.isRequired).toggleClass("invalid",b.isInvalid).toggleClass("locked",d).toggleClass("full",c).toggleClass("not-full",!c).toggleClass("input-active",b.isFocused&&!b.isInputHidden).toggleClass("dropdown-active",b.isOpen).toggleClass("has-options",!a.isEmptyObject(b.options)).toggleClass("has-items",b.items.length>0),b.$control_input.data("grow",!c&&!d)},isFull:function(){return null!==this.settings.maxItems&&this.items.length>=this.settings.maxItems},updateOriginalInput:function(a){var b,c,d,e,f=this;if(a=a||{},1===f.tagType){for(d=[],b=0,c=f.items.length;b<c;b++)e=f.options[f.items[b]][f.settings.labelField]||"",d.push('<option value="'+l(f.items[b])+'" selected="selected">'+l(e)+"</option>");d.length||this.$input.attr("multiple")||d.push('<option value="" selected="selected"></option>'),f.$input.html(d.join(""))}else f.$input.val(f.getValue()),f.$input.attr("value",f.$input.val());f.isSetup&&(a.silent||f.trigger("change",f.$input.val()))},updatePlaceholder:function(){if(this.settings.placeholder){var a=this.$control_input;this.items.length?a.removeAttr("placeholder"):a.attr("placeholder",this.settings.placeholder),a.triggerHandler("update",{force:!0})}},open:function(){var a=this;a.isLocked||a.isOpen||"multi"===a.settings.mode&&a.isFull()||(a.focus(),a.isOpen=!0,a.refreshState(),a.$dropdown.css({visibility:"hidden",display:"block"}),a.positionDropdown(),a.$dropdown.css({visibility:"visible"}),a.trigger("dropdown_open",a.$dropdown))},close:function(){var a=this,b=a.isOpen;"single"===a.settings.mode&&a.items.length&&(a.hideInput(),a.isBlurring||a.$control_input.blur()),a.isOpen=!1,a.$dropdown.hide(),a.setActiveOption(null),a.refreshState(),b&&a.trigger("dropdown_close",a.$dropdown)},positionDropdown:function(){var a=this.$control,b="body"===this.settings.dropdownParent?a.offset():a.position();b.top+=a.outerHeight(!0),this.$dropdown.css({width:a[0].getBoundingClientRect().width,top:b.top,left:b.left})},clear:function(a){var b=this;b.items.length&&(b.$control.children(":not(input)").remove(),b.items=[],b.lastQuery=null,b.setCaret(0),b.setActiveItem(null),b.updatePlaceholder(),b.updateOriginalInput({silent:a}),b.refreshState(),b.showInput(),b.trigger("clear"))},insertAtCaret:function(a){var b=Math.min(this.caretPos,this.items.length),c=a[0],d=this.buffer||this.$control[0];0===b?d.insertBefore(c,d.firstChild):d.insertBefore(c,d.childNodes[b]),this.setCaret(b+1)},deleteSelection:function(b){var c,d,e,f,g,h,i,j,k,l=this;if(e=b&&8===b.keyCode?-1:1,f=r(l.$control_input[0]),l.$activeOption&&!l.settings.hideSelected&&(i=l.getAdjacentOption(l.$activeOption,-1).attr("data-value")),g=[],l.$activeItems.length){for(k=l.$control.children(".active:"+(e>0?"last":"first")),h=l.$control.children(":not(input)").index(k),e>0&&h++,c=0,d=l.$activeItems.length;c<d;c++)g.push(a(l.$activeItems[c]).attr("data-value"));b&&(b.preventDefault(),b.stopPropagation())}else(l.isFocused||"single"===l.settings.mode)&&l.items.length&&(e<0&&0===f.start&&0===f.length?g.push(l.items[l.caretPos-1]):e>0&&f.start===l.$control_input.val().length&&g.push(l.items[l.caretPos]));if(!g.length||"function"==typeof l.settings.onDelete&&!1===l.settings.onDelete.apply(l,[g]))return!1;for(void 0!==h&&l.setCaret(h);g.length;)l.removeItem(g.pop());return l.showInput(),l.positionDropdown(),l.refreshOptions(!0),i&&(j=l.getOption(i),j.length&&l.setActiveOption(j)),!0},advanceSelection:function(a,b){var c,d,e,f,g,h=this;0!==a&&(h.rtl&&(a*=-1),c=a>0?"last":"first",d=r(h.$control_input[0]),h.isFocused&&!h.isInputHidden?(f=h.$control_input.val().length,(a<0?0===d.start&&0===d.length:d.start===f)&&!f&&h.advanceCaret(a,b)):(g=h.$control.children(".active:"+c),g.length&&(e=h.$control.children(":not(input)").index(g),h.setActiveItem(null),h.setCaret(a>0?e+1:e))))},advanceCaret:function(a,b){var c,d,e=this;0!==a&&(c=a>0?"next":"prev",e.isShiftDown?(d=e.$control_input[c](),d.length&&(e.hideInput(),e.setActiveItem(d),b&&b.preventDefault())):e.setCaret(e.caretPos+a))},setCaret:function(b){var c=this;if(b="single"===c.settings.mode?c.items.length:Math.max(0,Math.min(c.items.length,b)),!c.isPending){var d,e,f,g;for(f=c.$control.children(":not(input)"),d=0,e=f.length;d<e;d++)g=a(f[d]).detach(),d<b?c.$control_input.before(g):c.$control.append(g)}c.caretPos=b},lock:function(){this.close(),this.isLocked=!0,this.refreshState()},unlock:function(){this.isLocked=!1,this.refreshState()},disable:function(){var a=this;a.$input.prop("disabled",!0),a.$control_input.prop("disabled",!0).prop("tabindex",-1),a.isDisabled=!0,a.lock()},enable:function(){var a=this;a.$input.prop("disabled",!1),a.$control_input.prop("disabled",!1).prop("tabindex",a.tabIndex),a.isDisabled=!1,a.unlock()},destroy:function(){var b=this,c=b.eventNS,d=b.revertSettings;b.trigger("destroy"),b.off(),b.$wrapper.remove(),b.$dropdown.remove(),b.$input.html("").append(d.$children).removeAttr("tabindex").removeClass("selectized").attr({tabindex:d.tabindex}).show(),b.$control_input.removeData("grow"),b.$input.removeData("selectize"),0==--w.count&&w.$testInput&&(w.$testInput.remove(),w.$testInput=void 0),a(window).off(c),a(document).off(c),a(document.body).off(c),delete b.$input[0].selectize},render:function(b,c){var d,e,f="",g=!1,h=this;return"option"!==b&&"item"!==b||(d=k(c[h.settings.valueField]),g=!!d),g&&(j(h.renderCache[b])||(h.renderCache[b]={}),h.renderCache[b].hasOwnProperty(d))?h.renderCache[b][d]:(f=a(h.settings.render[b].apply(this,[c,l])),"option"===b||"option_create"===b?c[h.settings.disabledField]||f.attr("data-selectable",""):"optgroup"===b&&(e=c[h.settings.optgroupValueField]||"",f.attr("data-group",e),c[h.settings.disabledField]&&f.attr("data-disabled","")),"option"!==b&&"item"!==b||f.attr("data-value",d||""),g&&(h.renderCache[b][d]=f[0]),f[0])},clearCache:function(a){var b=this;void 0===a?b.renderCache={}:delete b.renderCache[a]},canCreate:function(a){var b=this;if(!b.settings.create)return!1;var c=b.settings.createFilter;return a.length&&("function"!=typeof c||c.apply(b,[a]))&&("string"!=typeof c||new RegExp(c).test(a))&&(!(c instanceof RegExp)||c.test(a))}}),w.count=0,w.defaults={options:[],optgroups:[],plugins:[],delimiter:",",splitOn:null,persist:!0,diacritics:!0,
@@ -18889,7 +19090,7 @@ create:!1,createOnBlur:!1,createFilter:null,highlight:!0,openOnFocus:!0,maxOptio
 
 /***/ }),
 
-/***/ 336:
+/***/ 338:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -19398,7 +19599,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ 337:
+/***/ 339:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -19543,7 +19744,195 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ 338:
+/***/ 340:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var core_1 = __webpack_require__(92);
+var Element_1 = __webpack_require__(128);
+var EventListener_1 = __webpack_require__(341);
+var MobileMenu = /** @class */function () {
+    function MobileMenu(settings) {
+        this._state = false;
+        this._error = false;
+        this.menuActiveClass = "js__opened";
+        this.bodyActiveClass = "js__menu-opened";
+        this.body = core_1["default"].getElement("body");
+        this.ignoreWarnings = false;
+        this._settings = settings;
+        this.ignoreWarnings = settings.ignoreWarnings;
+        this.burger = core_1["default"].getElement(settings.burger);
+        this.menuActiveClass = settings.menuActiveClass;
+        this.bodyActiveClass = settings.bodyActiveClass;
+        this.menu = core_1["default"].getElement(settings.menu);
+        this.bindEvents();
+    }
+    Object.defineProperty(MobileMenu.prototype, "error", {
+        set: function set(text) {
+            this._error = true;
+            console.error(text + ". \u041C\u0435\u043D\u044E \u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442");
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "state", {
+        get: function get() {
+            return this._state;
+        },
+        set: function set(newState) {
+            this._state = newState;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "menu", {
+        get: function get() {
+            return this._menu;
+        },
+        set: function set(el) {
+            if (!(el instanceof HTMLElement) && !this.ignoreWarnings) this.error = "Меню не найдено";else this._menu = el;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "burger", {
+        get: function get() {
+            return this._burger;
+        },
+        set: function set(el) {
+            if (!(el instanceof HTMLElement) && !this.ignoreWarnings) this.error = "Бургер не найден";else this._burger = el;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MobileMenu.prototype, "settings", {
+        get: function get() {
+            return this._settings;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MobileMenu.prototype.openMenu = function () {
+        if (!window.matchMedia(this.settings.media).matches) return;
+        console.log(this.settings.fixBody);
+        if (this.settings.fixBody) {
+            this.body.style.top = -window.pageYOffset + "px";
+            this.body.style.position = "fixed";
+        }
+        this.burger.classList.add("js__active");
+        this.menu.classList.add(this.menuActiveClass);
+        this.body.classList.add(this.bodyActiveClass);
+        this.state = true;
+        return this;
+    };
+    MobileMenu.prototype.closeMenu = function () {
+        if (!window.matchMedia(this.settings.media).matches || !this.state) return;
+        var top = 0;
+        if (this.settings.fixBody) {
+            top = Math.abs(parseInt(this.body.style.top));
+            this.body.style.top = "";
+            this.body.style.position = "";
+        }
+        this.burger.classList.remove("js__active");
+        this.menu.classList.remove(this.menuActiveClass);
+        this.body.classList.remove(this.bodyActiveClass);
+        if (this.settings.fixBody) window.scrollTo(0, top);
+        this.state = false;
+        return this;
+    };
+    MobileMenu.prototype.toggleMenu = function () {
+        if (!window.matchMedia(this.settings.media).matches) return;
+        if (this.state) this.closeMenu();else this.openMenu();
+        return this;
+    };
+    MobileMenu.prototype.bindEvents = function () {
+        var _this = this;
+        document.addEventListener("click", function (event) {
+            var target = new Element_1["default"](event.target);
+            if (!target.is(_this.burger) && !new Element_1["default"](_this.burger).has(target) && !target.is(_this.menu) && !new Element_1["default"](_this.menu).has(target)) _this.closeMenu();
+        });
+        new EventListener_1["default"](this.burger).add("click", function (el) {
+            _this.toggleMenu();
+        });
+    };
+    return MobileMenu;
+}();
+exports["default"] = MobileMenu;
+
+/***/ }),
+
+/***/ 341:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __extends = undefined && undefined.__extends || function () {
+    var _extendStatics = function extendStatics(d, b) {
+        _extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) {
+                if (b.hasOwnProperty(p)) d[p] = b[p];
+            }
+        };
+        return _extendStatics(d, b);
+    };
+    return function (d, b) {
+        _extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+exports.__esModule = true;
+var core_1 = __webpack_require__(92);
+var Element_1 = __webpack_require__(128);
+var EventListener = /** @class */function (_super) {
+    __extends(EventListener, _super);
+    function EventListener() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+    * Метод для подписки на событие
+    * @param event: string - название js события
+    * @param callback: function
+    * @param options: object
+    * @retrun EventListener
+    */
+    EventListener.prototype.add = function (event, callback, options) {
+        core_1["default"].each(this.els, function (el, i) {
+            document.body.addEventListener(event, function (e) {
+                var target = e.target;
+                if (el.contains(target) || el == target) callback(el, e, i);
+            }, options);
+        });
+        return this;
+    };
+    /**
+    * Метод для вызова события
+    * @param event: string - название js события
+    * @retrun EventListener
+    */
+    EventListener.prototype.trigger = function (event) {
+        core_1["default"].each(this.els, function (el) {
+            var evt = document.createEvent("HTMLEvents");
+            evt.initEvent(event, false, true);
+            el.dispatchEvent(evt);
+        });
+        return this;
+    };
+    return EventListener;
+}(Element_1["default"]);
+exports["default"] = EventListener;
+
+/***/ }),
+
+/***/ 342:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19613,7 +20002,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 /***/ }),
 
-/***/ 339:
+/***/ 343:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19678,7 +20067,7 @@ var setShadowOpacity = function setShadowOpacity(element, scrollWidth) {
 
 /***/ }),
 
-/***/ 340:
+/***/ 344:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19748,7 +20137,7 @@ exports.default = Sticky;
 
 /***/ }),
 
-/***/ 341:
+/***/ 345:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19842,11 +20231,11 @@ $.fn.countTo.defaults = {
 
 /***/ }),
 
-/***/ 342:
+/***/ 346:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(343);
+var content = __webpack_require__(347);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -19860,7 +20249,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(345)(content, options);
+var update = __webpack_require__(349)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -19893,10 +20282,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 343:
+/***/ 347:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(344)(false);
+exports = module.exports = __webpack_require__(348)(false);
 // imports
 
 
@@ -19908,7 +20297,7 @@ exports.push([module.i, ".fancybox-container,.fancybox-thumbs,.fancybox-thumbs>u
 
 /***/ }),
 
-/***/ 344:
+/***/ 348:
 /***/ (function(module, exports) {
 
 /*
@@ -19991,7 +20380,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 345:
+/***/ 349:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -20060,7 +20449,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(346);
+var	fixUrls = __webpack_require__(350);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -20398,7 +20787,7 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 
-/***/ 346:
+/***/ 350:
 /***/ (function(module, exports) {
 
 
@@ -20494,7 +20883,7 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 347:
+/***/ 351:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25255,457 +25644,6 @@ module.exports = function (css) {
     }
   });
 })(document, window.jQuery || jQuery);
-
-/***/ }),
-
-/***/ 349:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-var App = /** @class */function () {
-    function App() {}
-    App.getElements = function (selector) {
-        var elements = document.querySelectorAll(selector);
-        return elements.length ? elements : [];
-        // return this.elementsGetter(sele ctor)
-    };
-    /**
-    * Метод получения одного объекта по селектору
-    * @param selector: string
-    * @return HTMLElement
-    */
-    App.getElement = function (selector) {
-        var element = document.querySelector(selector);
-        return element;
-    };
-    App.elementsGetter = function (selector) {
-        return App.transformNodeListToArray(document.querySelectorAll(selector));
-    };
-    App.transformNodeListToArray = function (list) {
-        try {
-            return Array.prototype.slice.call(list);
-        } catch (e) {
-            throw Error(e);
-            return [];
-        }
-    };
-    App.wrap = function (selector, wrapper) {
-        var localWrapper;
-        if (typeof wrapper == "string") localWrapper = document.createElement(wrapper);else if (wrapper instanceof HTMLElement) localWrapper = wrapper;
-        // console.log(selector, [localWrapper])
-        App.each(selector, function (el, i) {
-            localWrapper.innerHTML = el.outerHTML;
-            el.parentNode.replaceChild(localWrapper, el);
-        });
-    };
-    App.each = function (elements, callback) {
-        if (!callback) {
-            console.error("Callback does not exists in yours 'each'");
-            return;
-        }
-        if (typeof elements == "string") elements = App.transformNodeListToArray(App.getElements(elements));
-        var i = 0;
-        for (var _i = 0, elements_1 = elements; _i < elements_1.length; _i++) {
-            var el = elements_1[_i];
-            callback(el, i);
-            i++;
-        }
-    };
-    return App;
-}();
-exports["default"] = App;
-
-/***/ }),
-
-/***/ 350:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-var core_1 = __webpack_require__(349);
-var Element = /** @class */function () {
-    function Element(selector) {
-        this._length = 0;
-        if (!selector) this.els = [];else if (typeof selector == "string") this.els = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) this.els = [selector];else if (selector instanceof NodeList) this.els = core_1["default"].transformNodeListToArray(selector);else if (selector instanceof Array && (selector[0] instanceof HTMLElement || !selector.length)) this.els = selector;else if (selector instanceof Element) this.els = selector.els;else throw Error("Invalid selector: " + selector);
-    }
-    Object.defineProperty(Element.prototype, "els", {
-        get: function get() {
-            return this._els;
-        },
-        set: function set(elements) {
-            this._els = elements;
-            this._length = elements.length || 0;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Element.prototype, "length", {
-        get: function get() {
-            return this._length;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Element.prototype.addElement = function (element) {
-        if (typeof element == "string") this.els = this.els.concat(core_1["default"].elementsGetter(element));else if (element instanceof Element) this.els = this.els.concat(element.els);else if (element instanceof HTMLElement) this.els = this.els.concat(element);else if (element instanceof NodeList) this.els = this.els.concat(core_1["default"].transformNodeListToArray(element));else if (element instanceof Array && (element[0] instanceof HTMLElement || !element.length)) this.els = this.els.concat(element);else throw Error("Invalid selector: " + element);
-        return this;
-    };
-    Element.prototype.is = function (selector) {
-        var element;
-        if (typeof selector == "string") element = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) element = [selector];
-        return this.els[0] == element[0];
-    };
-    Element.prototype.has = function (selector) {
-        var searchElements;
-        if (typeof selector == "string") searchElements = core_1["default"].elementsGetter(selector);else if (selector instanceof HTMLElement) searchElements = [selector];else if (selector instanceof Element) searchElements = selector._els;else if (selector instanceof NodeList) searchElements = core_1["default"].transformNodeListToArray(selector);else if (selector instanceof Array && (selector[0] instanceof HTMLElement || !selector.length)) searchElements = selector;else throw Error("Invalid selector: " + selector);
-        var isFinded = false;
-        for (var _i = 0, _a = this.els; _i < _a.length; _i++) {
-            var el = _a[_i];
-            for (var _b = 0, searchElements_1 = searchElements; _b < searchElements_1.length; _b++) {
-                var target = searchElements_1[_b];
-                if (el.contains(target)) {
-                    isFinded = true;
-                    break;
-                }
-            }
-            if (isFinded) return true;
-        }
-        return false;
-    };
-    /**
-    * Назначить класс всем текущим элементам
-    * @param className: string
-    * @return Element
-    */
-    Element.prototype.addClass = function (className) {
-        core_1["default"].each(this.els, function (el) {
-            el.classList.add(className);
-        });
-        return this;
-    };
-    /**
-    * Удалить класс у всех текущих элементов
-    * @param className: string
-    * @return Element
-    */
-    Element.prototype.removeClass = function (className) {
-        core_1["default"].each(this.els, function (el) {
-            el.classList.remove(className);
-        });
-        return this;
-    };
-    /**
-    * Переключения класса у всех текущих элементов
-    * @param className: string
-    * @return Element
-    */
-    Element.prototype.toggleClass = function (className, callback) {
-        core_1["default"].each(this.els, function (el) {
-            if (el.classList.contains(className)) {
-                el.classList.remove(className);
-                if (callback) callback(false);
-            } else {
-                el.classList.add(className);
-                if (callback) callback(true);
-            }
-        });
-        return this;
-    };
-    Element.prototype.hasClass = function (targetClass) {
-        for (var _i = 0, _a = this.els; _i < _a.length; _i++) {
-            var el = _a[_i];
-            if (el.classList.contains(targetClass)) return true;
-        }
-        return false;
-    };
-    /** Метод поиска потомков элемента по селектору
-    * @param selector: string - селектор искомого
-    * @return Element
-    * */
-    Element.prototype.find = function (selector) {
-        var searchingElements = new Array();
-        core_1["default"].each(this.els, function (el) {
-            var findedElements = el.querySelectorAll(selector);
-            if (!findedElements.length) return;
-            for (var _i = 0, _a = core_1["default"].transformNodeListToArray(findedElements); _i < _a.length; _i++) {
-                var el_1 = _a[_i];
-                searchingElements.push(el_1);
-            }
-            // searchingElements.concat(App.transformNodeListToArray(findedElements))
-            // console.log(searchingElements instanceof Array, App.transformNodeListToArray(findedElements) instanceof Array)
-        });
-        return new Element(searchingElements);
-    };
-    /** Метод поиска родителей по селектору
-    * @param selector: string
-    * @return Element
-    */
-    Element.prototype.closest = function (selector) {
-        var searchingElements = new Element();
-        core_1["default"].each(this.els, function (el) {
-            var findedElements = el.closest(selector);
-            if (!findedElements) return;
-            searchingElements.addElement(findedElements);
-        });
-        return searchingElements;
-    };
-    Element.prototype.text = function (text) {
-        if (text) {
-            core_1["default"].each(this.els, function (el) {
-                el.innerText = text;
-            });
-            return this;
-        } else if (this.length > 1) {
-            var textArray_1 = [];
-            core_1["default"].each(this.els, function (el) {
-                textArray_1.push(el.innerText);
-            });
-            return textArray_1;
-        } else return this.els[0].innerText;
-    };
-    /** Метод для получения конкретного элемента по индексу
-    * @param index: number
-    * @return Element*/
-    Element.prototype.get = function (index) {
-        if (this.els[index]) return new Element(this.els[index]);else return new Element();
-    };
-    /** Функция, возвращающая HTMLElement по индексу в коллеции элементов
-    * @param index: nuber
-    * @return HTMLElement
-    */
-    Element.prototype.getHTMLElement = function (index) {
-        return this.els[index];
-    };
-    Element.prototype.height = function (height) {
-        if (!height) return parseInt(getComputedStyle(this.els[0]).height);
-        core_1["default"].each(this.els, function (el) {
-            if (isNaN(height)) el.style.height = height;else el.style.height = height + "px";
-        });
-        return this;
-    };
-    /** Map
-    * @param callback: Function
-    * @return any[] */
-    Element.prototype.map = function (callback) {
-        return this.els.map(callback);
-    };
-    Element.prototype.attr = function (attrName, value) {
-        if (value) {
-            core_1["default"].each(this.els, function (el) {
-                el.setAttribute(attrName, value);
-            });
-            return this;
-        }
-        return this.els[0].getAttribute(attrName);
-    };
-    /** Метод в разработке */
-    Element.prototype.prev = function (selector) {
-        var searchingElements = new Element();
-        core_1["default"].each(this.els, function (el) {
-            var findedElements = el.previousElementSibling;
-            if (!findedElements) return;
-            if (selector) {
-                if (findedElements.classList.contains(selector.replace(".", ""))) searchingElements.addElement(findedElements);
-            } else searchingElements.addElement(findedElements);
-        });
-        return searchingElements;
-    };
-    return Element;
-}();
-exports["default"] = Element;
-
-/***/ }),
-
-/***/ 351:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __extends = undefined && undefined.__extends || function () {
-    var _extendStatics = function extendStatics(d, b) {
-        _extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
-            d.__proto__ = b;
-        } || function (d, b) {
-            for (var p in b) {
-                if (b.hasOwnProperty(p)) d[p] = b[p];
-            }
-        };
-        return _extendStatics(d, b);
-    };
-    return function (d, b) {
-        _extendStatics(d, b);
-        function __() {
-            this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-}();
-exports.__esModule = true;
-var core_1 = __webpack_require__(349);
-var Element_1 = __webpack_require__(350);
-var EventListener = /** @class */function (_super) {
-    __extends(EventListener, _super);
-    function EventListener() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-    * Метод для подписки на событие
-    * @param event: string - название js события
-    * @param callback: function
-    * @param options: object
-    * @retrun EventListener
-    */
-    EventListener.prototype.add = function (event, callback, options) {
-        core_1["default"].each(this.els, function (el, i) {
-            document.body.addEventListener(event, function (e) {
-                var target = e.target;
-                if (el.contains(target) || el == target) callback(el, e, i);
-            }, options);
-        });
-        return this;
-    };
-    /**
-    * Метод для вызова события
-    * @param event: string - название js события
-    * @retrun EventListener
-    */
-    EventListener.prototype.trigger = function (event) {
-        core_1["default"].each(this.els, function (el) {
-            var evt = document.createEvent("HTMLEvents");
-            evt.initEvent(event, false, true);
-            el.dispatchEvent(evt);
-        });
-        return this;
-    };
-    return EventListener;
-}(Element_1["default"]);
-exports["default"] = EventListener;
-
-/***/ }),
-
-/***/ 352:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-var core_1 = __webpack_require__(349);
-var Element_1 = __webpack_require__(350);
-var EventListener_1 = __webpack_require__(351);
-var MobileMenu = /** @class */function () {
-    function MobileMenu(settings) {
-        this._state = false;
-        this._error = false;
-        this.menuActiveClass = "js__opened";
-        this.bodyActiveClass = "js__menu-opened";
-        this.body = core_1["default"].getElement("body");
-        this.ignoreWarnings = false;
-        this._settings = settings;
-        this.ignoreWarnings = settings.ignoreWarnings;
-        this.burger = core_1["default"].getElement(settings.burger);
-        this.menuActiveClass = settings.menuActiveClass;
-        this.bodyActiveClass = settings.bodyActiveClass;
-        this.menu = core_1["default"].getElement(settings.menu);
-        this.bindEvents();
-    }
-    Object.defineProperty(MobileMenu.prototype, "error", {
-        set: function set(text) {
-            this._error = true;
-            console.error(text + ". \u041C\u0435\u043D\u044E \u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442");
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MobileMenu.prototype, "state", {
-        get: function get() {
-            return this._state;
-        },
-        set: function set(newState) {
-            this._state = newState;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MobileMenu.prototype, "menu", {
-        get: function get() {
-            return this._menu;
-        },
-        set: function set(el) {
-            if (!(el instanceof HTMLElement) && !this.ignoreWarnings) this.error = "Меню не найдено";else this._menu = el;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MobileMenu.prototype, "burger", {
-        get: function get() {
-            return this._burger;
-        },
-        set: function set(el) {
-            if (!(el instanceof HTMLElement) && !this.ignoreWarnings) this.error = "Бургер не найден";else this._burger = el;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MobileMenu.prototype, "settings", {
-        get: function get() {
-            return this._settings;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    MobileMenu.prototype.openMenu = function () {
-        if (!window.matchMedia(this.settings.media).matches) return;
-        console.log(this.settings.fixBody);
-        if (this.settings.fixBody) {
-            this.body.style.top = -window.pageYOffset + "px";
-            this.body.style.position = "fixed";
-        }
-        this.burger.classList.add("js__active");
-        this.menu.classList.add(this.menuActiveClass);
-        this.body.classList.add(this.bodyActiveClass);
-        this.state = true;
-        return this;
-    };
-    MobileMenu.prototype.closeMenu = function () {
-        if (!window.matchMedia(this.settings.media).matches || !this.state) return;
-        var top = 0;
-        if (this.settings.fixBody) {
-            top = Math.abs(parseInt(this.body.style.top));
-            this.body.style.top = "";
-            this.body.style.position = "";
-        }
-        this.burger.classList.remove("js__active");
-        this.menu.classList.remove(this.menuActiveClass);
-        this.body.classList.remove(this.bodyActiveClass);
-        if (this.settings.fixBody) window.scrollTo(0, top);
-        this.state = false;
-        return this;
-    };
-    MobileMenu.prototype.toggleMenu = function () {
-        if (!window.matchMedia(this.settings.media).matches) return;
-        if (this.state) this.closeMenu();else this.openMenu();
-        return this;
-    };
-    MobileMenu.prototype.bindEvents = function () {
-        var _this = this;
-        document.addEventListener("click", function (event) {
-            var target = new Element_1["default"](event.target);
-            if (!target.is(_this.burger) && !new Element_1["default"](_this.burger).has(target) && !target.is(_this.menu) && !new Element_1["default"](_this.menu).has(target)) _this.closeMenu();
-        });
-        new EventListener_1["default"](this.burger).add("click", function (el) {
-            _this.toggleMenu();
-        });
-    };
-    return MobileMenu;
-}();
-exports["default"] = MobileMenu;
 
 /***/ }),
 
@@ -36106,6 +36044,68 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+var App = /** @class */function () {
+    function App() {}
+    App.getElements = function (selector) {
+        var elements = document.querySelectorAll(selector);
+        return elements.length ? elements : [];
+        // return this.elementsGetter(sele ctor)
+    };
+    /**
+    * Метод получения одного объекта по селектору
+    * @param selector: string
+    * @return HTMLElement
+    */
+    App.getElement = function (selector) {
+        var element = document.querySelector(selector);
+        return element;
+    };
+    App.elementsGetter = function (selector) {
+        return App.transformNodeListToArray(document.querySelectorAll(selector));
+    };
+    App.transformNodeListToArray = function (list) {
+        try {
+            return Array.prototype.slice.call(list);
+        } catch (e) {
+            throw Error(e);
+            return [];
+        }
+    };
+    App.wrap = function (selector, wrapper) {
+        var localWrapper;
+        if (typeof wrapper == "string") localWrapper = document.createElement(wrapper);else if (wrapper instanceof HTMLElement) localWrapper = wrapper;
+        // console.log(selector, [localWrapper])
+        App.each(selector, function (el, i) {
+            localWrapper.innerHTML = el.outerHTML;
+            el.parentNode.replaceChild(localWrapper, el);
+        });
+    };
+    App.each = function (elements, callback) {
+        if (!callback) {
+            console.error("Callback does not exists in yours 'each'");
+            return;
+        }
+        if (typeof elements == "string") elements = App.transformNodeListToArray(App.getElements(elements));
+        var i = 0;
+        for (var _i = 0, elements_1 = elements; _i < elements_1.length; _i++) {
+            var el = elements_1[_i];
+            callback(el, i);
+            i++;
+        }
+    };
+    return App;
+}();
+exports["default"] = App;
 
 /***/ })
 

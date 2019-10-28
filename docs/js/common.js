@@ -611,8 +611,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
 			if (instance.group.length > 1 && current.$content) {
 				current.$content.append('<button class="fancybox-button fancybox-button--arrow_right next" data-fancybox-next><i class="fa fa-angle-right" aria-hidden="true"></i></button><button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>');
 			}
+		},
+
+		afterShow: function afterShow() {
+			var caption = (0, _jquery2.default)(".fancybox-caption"),
+			    innerCaption = caption.clone().addClass('caption--image');
+
+			(0, _jquery2.default)(".fancybox-slide--current .fancybox-content").append(innerCaption);
+			// caption.not('.caption--image').addClass('caption--bottom');
 		}
+		// caption : function( instance, item ) {
+		// 	return $(this).find('.fancybox-stage').html();
+		// }
 	});
+
+	// $('.best-photos').fancybox({
+	// 	caption : function( instance, item ) {
+	// 		return $(this).find('figcaption').html();
+	// 	}
+	// });
+
 });
 
 // $(window).on("load scroll resize touchmove", e => {

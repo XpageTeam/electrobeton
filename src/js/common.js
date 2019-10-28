@@ -116,8 +116,9 @@ document.addEventListener("DOMContentLoaded", e => {
 	require("./jquery.fancybox.js");
 
 	var galleryThumbs = new Swiper('.gallery-thumbs .swiper-list', {
-		spaceBetween: 23,
+		spaceBetween: 2,
 		slidesPerView: 7,
+		centeredSlides: false,
 		loop: false,
 		freeMode: true,
 		watchSlidesVisibility: true,
@@ -252,6 +253,13 @@ document.addEventListener("DOMContentLoaded", e => {
 			preload: true,
 		},
 		transitionEffect: "slide",
+
+		arrows: false,
+		afterLoad: function(instance, current) {
+		    if (instance.group.length > 1 && current.$content) {
+		      current.$content.append('<button class="fancybox-button fancybox-button--arrow_right next" data-fancybox-next><i class="fa fa-angle-right" aria-hidden="true"></i></button><button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>');
+		    }
+		}
 	});
 
 

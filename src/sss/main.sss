@@ -24,6 +24,65 @@
 @import "about.sss"
 @import "404.sss"
 
+
+.fancybox-caption
+	opacity: 1 !important
+	visibility: visible !important
+	background: #fff !important
+	text-align: center !important
+	color: #000 !important
+
+
+.fancybox-caption::before
+
+	text-align: center !important
+	background: #fff !important
+
+
+.fancybox-button
+	width: 50% !important
+	height: 100% !important
+	opacity: 1
+	z-index: 10000
+	background: transparent !important
+	visibility: visible
+	position: relative
+
+.fancybox-button--arrow_right
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+
+.fancybox-button--arrow_left
+	position: absolute
+	top: 0
+	left: 0
+	bottom: 0
+
+.gallery-thumbs
+	margin: 0
+
+	.swiper-list
+		padding: 2px
+
+	img
+		width: 100%
+		border-radius: 0
+		display: block
+
+.gallery__item, .card-slider
+	img
+		border-radius: 0 !important
+
+.fancybox-is-open .fancybox-bg
+	opacity: 0!important
+
+
+.fancybox-image
+	border: 15px solid #fff !important
+	box-shadow: 0 10px 25px rgba(0,0,0,0.5)
+
 .delInput
 	position: absolute
 	bottom: -33px

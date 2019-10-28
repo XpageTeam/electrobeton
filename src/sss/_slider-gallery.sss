@@ -70,6 +70,7 @@
 
 		&-next
 			right: 0
+			
 .gallery-thumbs
 	position: relative
 	margin: 20px -5px 0
@@ -87,19 +88,24 @@
 
 
 .swiper-slide-thumb-active
-	outline: 5px solid var(--second-color)
-	border-radius: 5px
+	outline: 2px solid var(--second-color)
 
 	img
 		border-radius: 0
 
 
-@media (min-width: 1100px)
+// @media (min-width: 1100px)
 
-	.gallery-thumbs
+.gallery-thumbs
 
-		.swiper-wrapper
-			justify-content: center
+	.swiper-wrapper
+		// justify-content: center
+
+		.swiper-slide
+			&:first-child
+				margin-left: auto !important
+			&:last-child
+				margin-right: auto !important
 			
 
 @media screen and (max-width: 667px)

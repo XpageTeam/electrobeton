@@ -249,6 +249,7 @@ document.addEventListener("DOMContentLoaded", e => {
 		touch: false,
 		buttons: ["fullscreen", "slideShow", "close"],
 		clickContent: false,
+		wheel: false,
 		image: {
 			preload: true,
 		},

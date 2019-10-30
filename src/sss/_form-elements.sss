@@ -282,12 +282,12 @@
 				right: 0
 				bottom: 0
 				cursor: pointer
-				height: 55px
+				height: 45px
 				width: 60px
 				text-align: right
 				line-height: 49px
 				box-sizing: border-box
-				padding-right: 0.83333vw
+				padding-right: 20px
 				font-size: 14px
 	&__error-message
 		position: absolute
@@ -355,6 +355,8 @@
 		margin: 0 0 25px 40px
 		width: 100%
 
+.fancybox-caption.caption--image:empty
+	display: none
 
 @media screen and (max-width: 660px)
 
@@ -406,5 +408,26 @@
 		margin: 15px 0 0
 
 
+	.file_add-form
+		margin-left: 0 !important
 
 
+	.fancybox-active
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+
+		#content, header, footer
+			pointer-events: none
+
+	.popup-form
+		.fancybox-close-small
+			position: absolute !important
+
+
+	.bx-ios
+		.fancybox-active
+
+			footer, footer, #content
+				display: none !important

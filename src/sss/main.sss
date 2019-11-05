@@ -25,6 +25,36 @@
 @import "404.sss"
 
 
+.fancybox-image
+	height: calc(100% - 50px)
+	
+.fancybox-slide--image
+	.fancybox-content
+		box-shadow: 0 10px 25px rgba(0,0,0,0.5), 1px 35px 25px rgba(0,0,0,.5)
+
+.fancybox-content
+	background-color: #fff !important
+
+.fancybox-close-small
+	z-index: 99999 !important
+	background-color: #fff !important
+	display: none !important
+	size: 30px !important
+	padding: 0 !important
+
+.fancybox-toolbar
+	opacity: 0 !important
+	visibility: hidden !important
+
+.fancybox-button.fancybox-button--close
+	size: 40px !important
+
+	svg
+		color: #000
+
+.popup-form
+	box-shadow: 0 0 20px 2px rgba(0,0,0,.16)
+
 .fancybox-caption:not(.caption--image)
 	display: none !important
 
@@ -89,8 +119,10 @@
 
 
 .fancybox-image
-	border: 15px solid #fff !important
-	box-shadow: 0 10px 25px rgba(0,0,0,0.5)
+	// border: 15px solid #fff !important
+	padding: 15px !important
+	
+	background-color: #fff
 
 .delInput
 	position: absolute
@@ -382,6 +414,13 @@ img
 			&-bot
 				justify-content: center
 
+@media (min-width: 667px)
+	
+	.fancybox-button--close
+		display: none !important
+
+
+
 
 @media screen and (max-width: 667px)
 	
@@ -409,3 +448,11 @@ img
 
 	.fancybox-slide::before
 		margin-right: 0 !important
+
+
+
+	.fancybox-close-small
+		display: block !important
+	.fancybox-toolbar
+		opacity: 1 !important
+		visibility: visible !important

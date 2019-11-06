@@ -430,9 +430,12 @@ __webpack_require__(346);
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
-	// $(".main-gallery__item figure").height(Math.max(...$(".main-gallery__item img").map(function(){
-	// 	return $(this).height();
-	// })));
+	if ((0, _jquery2.default)(window).width() > 667) {
+
+		(0, _jquery2.default)(".main-gallery__item figure").height(Math.max.apply(Math, (0, _jquery2.default)(".main-gallery__item figure").map(function () {
+			return (0, _jquery2.default)(this).height();
+		})));
+	}
 
 	(0, _jquery2.default)('body').on("change", "input[type='file']", function () {
 		var value = (0, _jquery2.default)(this)[0].files[0].name;

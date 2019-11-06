@@ -59,14 +59,22 @@ require("../css/jquery.fancybox.css");
 
 document.addEventListener("DOMContentLoaded", e => {
 
-	// $(".main-gallery__item figure").height(Math.max(...$(".main-gallery__item img").map(function(){
-	// 	return $(this).height();
-	// })));
+
+	if($(window).width() > 667){
+
+		$(".main-gallery__item figure").height(Math.max(...$(".main-gallery__item figure").map(function(){
+			return $(this).height();
+		})));
+
+	}
+
 
 	$('body').on("change", "input[type='file']", function(){
 		var value = $(this)[0].files[0].name;
 		$(this).closest('.multifile-container').find('.forms__input--file-support[type="text"]').val(value);
 	});
+
+
 	
 
 
